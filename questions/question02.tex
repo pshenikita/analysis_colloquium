@@ -1,0 +1,59 @@
+\section{Вычисление первообразных непосредственным интегрированием, интегрированием по частям и заменой переменной. Примеры}
+
+Указанные ниже равенства верны на соответствующих областях определения (промежутках):
+
+\begin{enumerate}
+    \begin{minipage}{.33\textwidth}
+        \item $\ds\int 0dx = const$.
+        \item $\ds\int x^\alpha dx = \frac{x^{\alpha + 1}}{\alpha + 1} + C, \alpha \ne -1$
+        \item $\ds\int\frac{dx}{x} = \ln\abs{x} + C$
+    \end{minipage}
+    \begin{minipage}{.33\textwidth}
+        \item $\ds\int e^xdx = e^x + C$
+        \item $\ds\int\cos xdx = \sin x + C$
+        
+            $\ds\int\sin xdx = -\cos x + C$
+    \end{minipage}
+    \begin{minipage}{.33\textwidth}
+        \item $\ds\int \frac{dx}{\cos^2x} = \tg x + C$
+
+            $\ds\int \frac{dx}{\sin^2x} = -\ctg x + C$
+        \item $\ds\int\ddfrac{dx}{\sqrt{1 - x^2}} = \arcsin x + C$
+
+            $\ds\int\ddfrac{dx}{1 + x^2} = \arctg x + C$
+    \end{minipage}
+    \item Длинный логарифм:
+        \[
+            \br{\ln\abs{x + \sqrt{x^2 \pm 1}}}^\prime = \ddfrac{1 + \frac{2x}{2\sqrt{x^2 \pm 1}}}{x + \sqrt{x^2 \pm 1}} = \frac{1}{\sqrt{x^2 \pm 1}},\quad \int\ddfrac{dx}{\sqrt{x^2 \pm 1}} = \ln\abs{x + \sqrt{x^2 + 1}} + C
+        \]
+
+        Высокий логарифм:
+        \begin{multline*}
+            \int\frac{dx}{x^2 - 1} = \int\frac{dx}{(x - 1)(x + 1)} = \int\frac{1}{2}\br{\frac{1}{x - 1} - \frac{1}{x + 1}}dx =\\ = \frac{1}{2}\int\frac{dx}{x - 1} + \frac{1}{2}\int\frac{dx}{x + 1} = \frac{1}{2}\ln\abs{x - 1} - \frac{1}{2}\ln\abs{x + 1} + C = \frac{1}{2}\ln\abs{\frac{x - 1}{x + 1}} + C
+        \end{multline*}
+\end{enumerate}
+
+По правилу Лейбница,
+\[
+    d(uv) = du \cdot v + u \cdot dv.
+\]
+
+Найдём первообразную от обеих частей:
+\[
+    \int vdu + \int udv = uv + C\quad\text{или же}\quad\int u^\prime vdx = uv - \int u v^\prime dx.
+\]
+
+Эта формула называется \textit{формулой интегрирования по частям}.
+
+По правилу дифференцированию сложной функции
+\[
+    (F(\varphi(t)))^\prime = F^\prime(\varphi(t))\varphi^\prime(t).
+\]
+
+Найдём первообразную от обеих частей:
+\[
+    \int f(\varphi(t))\varphi^\prime(t)dt = \left.\int f(x)dx\right\vert_{x = \varphi(t)}.
+\]
+
+Читать последнее равенство также можно как $\ds\int f(\varphi(t))\underbrace{\varphi^\prime(t)dt}_{d\varphi} = \int f(\varphi)d\varphi$.
+

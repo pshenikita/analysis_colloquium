@@ -1,0 +1,29 @@
+\section{Вариация непрерывно дифференцируемых функций. Спрямляемые кривые, критерий спрямляемости}
+
+\begin{theorem}
+    Допустим, $f \in C^{(1)}[a; b]$. Тогда $f \in BV[a; b]$ и $\ds\V_a^bf = \int\limits_a^b\abs{f^\prime(x)}dx$.
+\end{theorem}
+
+\begin{proof}
+    По условию, $f^\prime \in C[a; b]$, значит, $\abs{f^\prime} \in R[a; b]$ и $\ds\int\limits_a^b\abs{f^\prime(x)}dx = \vcentcolon I$ определён. Докажем, что $\V\limits_a^bf = I$.
+
+    Сначала установим неравенство $\V\limits_a^bf < +\infty$. Возьмём любое разбиение $T = \{[a_{i - 1}; a_i]\}_{i = 1}^m$ отрезка $[a; b]$ и оценим $V(f, T)$:
+    \begin{multline*}
+        V(f, T) = \sum_{i = 1}^m\abs{f(a_i) - f(a_{i - 1})} \overset{\text{т.\,Лагранжа}}{=\joinrel=} \sum_{i = 1}^m\abs{f^\prime(\xi_i)}(a_i - a_{i - 1}) \leqslant\\\leqslant \max\limits_{x \in [a; b]}\abs{f^\prime(x)}\sum_{i = 1}^m(a_i - a_{i - 1}) = \max\limits_{x \in [a; b]}\abs{f^\prime(x)}(b - a).
+    \end{multline*}
+
+    Мы воспользовались тем, что функция $\abs{f^\prime}$ непрерывна, а потому ограничена на $[a; b]$. Из последнего неравенства мы видим, что $\V\limits_a^b \leqslant \max\limits_{x \in [a; b]}\abs{f^\prime(x)}(b - a) < +\infty$.
+
+    Далее, возьмём произвольное $\varepsilon > 0$. Найдётся $\delta > 0$ такое, что для всякого отмеченного $\delta$-разбиения $T\xi$ отрезка $[a; b]$ верно $\abs{\mathcal{S}(\abs{f^\prime}, T\xi) - I} < \varepsilon$. Найдём разбиение $T = \{[a_{i - 1}; a_i]\}_{i = 1}^m$, для которого
+    \[
+        \V\limits_a^bf - \varepsilon < V(f, T) \leqslant \V_a^bf.
+    \]
+
+    Размельчая $T$ так, чтобы диаметр стал меньше $\delta$, мы не уменьшим $V(f, T)$ и сохраним последнее неравенство. Поэтому сразу считаем $d(T) < \delta$. Получаем: $V(f, T) = \mathcal{S}(\abs{f^\prime}, T\xi)$.
+    \[
+        \abs{\V_a^bf - I} \leqslant \abs{\V_a^bf - V(f, T)} + \abs{V(f, T) - \mathcal{S}(\abs{f^\prime}, T\xi)} + \abs{\mathcal{S}(\abs{f^\prime}, T\xi) - I} \leqslant 2\varepsilon.
+    \]
+
+    Т.\,к. $\varepsilon > 0$ выбиралось произвольным, $\V\limits_a^bf = I$.
+\end{proof}
+

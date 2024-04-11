@@ -1,0 +1,98 @@
+\section{Интегральные суммы Римана. Интеграл Римана. Интегрируемость по Риману и ограниченность}
+
+\begin{definition}
+    Пусть имеем отрезок $[a; b]$ и конечный набор точек
+    \[
+        a = a_0 < a_1 < \ldots < a_{m - 1} < a_m = b,
+    \]
+    тем самым разбив $[a; b]$ на попарно неперекрывающиеся отрезки $\Delta_i \vcentcolon = [a_{i - 1}; a_i]$, $1 \leqslant i \leqslant m$. Набор $T = \{\Delta_i\}_{i = 1}^m$ этих отрезков --- \textit{разбиение} отрезка $[a; b]$.
+\end{definition}
+
+\begin{definition}
+    Добавим к $T$ произвольный набор $\xi = \{\xi_i\}_{i = 1}^m$ точек $\xi_i \in \Delta_i$ (\textit{меток разбиения} $T$). \textit{Отмеченное разбиение} $T\xi$ отрезка $[a; b]$ --- это множество пар $\{(\Delta_i, \xi_i)\}_{i = 1}^m$.
+\end{definition}
+
+\begin{definition}
+    \textit{Интегральная сумма} (\textit{сумма Римана}) функции $f: [a; b] \to \R$, соответствующая отмеченному разбиению $T\xi = \{(\Delta_i, \xi_i)\}_{i = 1}^m$ отрезка $[a; b]$, есть сумма
+    \[
+        \mathcal{S}(f, T\xi) \vcentcolon = \sum_{i = 1}^mf(\xi_i)|\Delta_i|.
+    \]
+\end{definition}
+
+\textbf{Геометрический смысл сумм Римана}. Рассмотрим определённую на $[a; b]$ неотрицательную функцию $f$ и криволинейную трапецию
+\[
+    A = A_{f, [a; b]} \vcentcolon = \left\{(x, y) \in \R^2\;\middle\vert\; x \in [a; b] \wedge y \in [0; f(x)]\right\} \subset \R^2,
+\]
+связанную с графиком функции $f$. Тогда интегральная сумма $\mathcal{S}(f, T\xi)$ совпадает с площадью объединения прямоугольников, построенных на отрезка разбиения $T$ как на основаниях и имеющих высоту $f(\xi_i)$:
+
+\begin{center}
+    \Large\scshape КАРТИНКА
+\end{center}
+
+\begin{definition}
+    \textit{Диаметр} разбиения $T = \{\Delta_i\}_{i = 1}^m$ --- число
+    \[
+        d(T) \vcentcolon = \underset{i = 1, \ldots, m}{\max}|\Delta_i|.
+    \]
+\end{definition}
+
+\begin{definition}
+    Если $d(T) < \delta$, то разбиение $T$ назовём \textit{$\delta$-разбиением}.
+\end{definition}
+
+\begin{definition}[Интеграл Римана]
+    Функция $f: [a; b] \to \R$ называется \textit{интегрируемой по Риману} на отрезке $[a; b]$ (пишем $f \in R[a; b]$), если существует число $I \in \R$ такое, что для любого $\varepsilon > 0$ найдётся $\delta > 0$ такое, что для любого $\delta$-разбиения $T\xi = \{(\Delta_i, \xi_i)\}_{i = 1}^m$ отрезка $[a; b]$ выполнено неравенство
+    \[
+        \abs{\mathcal{S}(f, T\xi) - I} = \abs{\sum_{i = 1}^mf(\xi)|\Delta_i| - I} < \varepsilon.
+    \]
+    Число $I$ называют \textit{интегралом Римана} функции $f$ по отрезку $[a; b]$, обозначается $\ds\int\limits_a^bf(x)dx$.
+\end{definition}
+
+Следующая задача даёт способ вычисления интеграла Римана:
+
+\begin{problem}
+    (А) Пусть $f \in R[a; b]$, $\{T^n\xi^n\}_{n = 1}^\infty$ --- последовательность отмеченных разбиений отрезка $[a; b]$, причём $d(T^n) \to 0$ при $n \to \infty$. Докажите, что
+    \[
+        \int\limits_a^bf(x)dx = \lim_{n \to \infty}\mathcal{S}(f, T^n\xi^n).
+    \]
+
+    (Б) Разобъём отрезок $[a; b]$ на $n$ равных отрезков $\Delta_j^{(n)}$, $1 \leqslant j \leqslant n$ длины $(b - a) / n$, а затем в каждом из них произвольным образом выберем метку $\xi_j^{(n)}$. Покажите, что
+    \[
+        \int\limits_a^bf(x)dx = \lim_{n \to \infty}\frac{b - a}{n}\sum_{j = 1}^nf(\xi_j^{(n)}).
+    \]
+\end{problem}
+
+\begin{solution}
+    (А) По определению предела последовательности $d(T^n)$,
+    \[
+        \forall \varepsilon > 0\;\exists \mathcal{N}_\varepsilon: (n > \mathcal{N}_\varepsilon) \Rightarrow \br{\abs{d(T^n)} < \varepsilon}\eqno(\ast)
+    \]
+    По определению интеграла Римана
+    \[
+        \forall \varepsilon > 0\; \exists \delta > 0: \br{d(T) < \delta} \Rightarrow \br{\abs{\mathcal{S}(f, T\xi) - I} < \varepsilon}.
+    \]
+    Перепишем последнее высказывание с учётом $(\ast)$:
+    \[
+        \forall\varepsilon > 0\; \exists N_\varepsilon \vcentcolon = \mathcal{N}_\varepsilon: (n > N_\varepsilon) \Rightarrow (\abs{\mathcal{S}(f, T\xi) - I} < \varepsilon).
+    \]
+    Значит, утверждение теоремы верно по опредлению предела последовательности.
+
+    (Б) По предыдущему пункту
+    \[
+        \int\limits_a^bf(x)dx = \lim_{n \to \infty}\mathcal{S}(f, T^n\xi^n) = \lim_{n \to \infty}\br{\sum_{j = 1}^nf(\xi_j^{(n)})|\Delta_j^{(n)}|} = \lim_{n \to \infty}\frac{b - a}{n}\sum_{j = 1}^nf(\xi_j^{(n)}).
+    \]
+\end{solution}
+
+\begin{proposal}
+    Если $f$ интегрируема по Риману на отрезке $[a; b]$, то она ограничена на $[a; b]$.
+\end{proposal}
+
+\begin{proof}
+    Допустим, $f \in R[a; b]$, но $f \notin B[a; b]$. Возьмём любые $C > 0$ и разбиение $T = \{\Delta_i\}$. Тогда $f$ не ограничена на $\Delta_i$ по крайней мере для одного $i$ ($=\vcentcolon i_0$). При всех $i \ne i_0$ расставим метки $\xi_i \in \Delta_i$ произвольным образом, а метку $\xi_{i_0} \in \Delta_{i_0}$ выберем так, что
+    \[
+        \abs{\mathcal{S}(f, T\xi)} = \abs{\sum_if(\xi_i)\abs{\Delta_i}} \geqslant \abs{f(\xi_{i_0})\abs{\Delta_{i_0}}} - \abs{\sum_{i \ne i_0}f(\xi_i)\abs{\Delta_i}} > C.
+    \]
+
+    Это возможно благодаря неограниченности $f$ на отрезке $\Delta_{i_0}$. Итак, для всех разбиений $T$ имеем $\sup\limits_\xi\abs{\mathcal{S}(f, T\xi)} = \infty$, поэтому ни для какого $\varepsilon > 0$ мы не сможем найти $\delta > 0$ такое, что неравенство \[\ds\abs{\mathcal{S}(f, T\xi) - \int\limits_a^bf(x)dx} < \varepsilon\] выполнялось бы для всех ометченных $\delta$-разбиений $T\xi$, что противоречит тому, что $f \in R[a; b]$.
+\end{proof}
+

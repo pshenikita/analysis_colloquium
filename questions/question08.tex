@@ -1,0 +1,85 @@
+\section{Свойства интеграла Римана (единственность, линейность, интеграл от постоянной функции, интегрирование неравенств, интегрируемость модуля функции и произведения функций)}
+
+\begin{theorem}[Единственность интеграла]
+    Если $\ds (R)\int\limits_a^bf(x)dx$ существует, то он единственен.
+\end{theorem}
+
+\begin{proof}
+    Если $\ds(R)\int\limits_a^bf(x)dx$ существует, он совпадает с интегралом Дарбу $\ds(D)\int\limits_a^bf(x)dx$, а последний определяется однозначно.
+\end{proof}
+
+\begin{theorem}[О линейности интеграла]
+    Если $f, g \in R[a; b]$ и $\alpha, \beta \in \R$, то $\alpha f + \beta g \in R[a; b]$ и
+    \[
+        \int\limits_a^b\br{\alpha f(x) + \beta g(x)}dx = \alpha\int\limits_a^bf(x)dx + \beta\int\limits_a^bg(x)dx.
+    \]
+\end{theorem}
+
+\begin{proof}
+    Для каждого разбиения $T\xi = \{(\Delta_i, \xi_i)\}$ отрезка $[a; b]$ имеем:
+    \[
+        \mathcal{S}(\alpha f + \beta g, T\xi) = \sum_i\br{\alpha f(\xi_i) + \beta g(\xi_i)}\abs{\Delta_i} = \alpha\sum_i f(\xi_i)\abs{\Delta_i} + \beta\sum_i g(\xi_i)\abs{\Delta_i} = \alpha\mathcal{S}(f, T\xi) + \beta\mathcal{S}(g, T\xi).
+    \]
+    Пусть $\varepsilon > 0$, $\ds I_f \vcentcolon = \int\limits_a^bf$, $\ds I_g \vcentcolon = \int\limits_a^bg$. По определению, существует $\delta > 0$ такое, что
+    \[
+        \abs{\mathcal{S}(f, T\xi) - I_f} < \varepsilon\text{ и }\abs{\mathcal{S}(g, T\xi) - I_g} < \varepsilon
+    \]
+    для всех отмеченных $\delta$-разбиений $T\xi$ отрезка $[a; b]$. Для тех же $T\xi$
+    \begin{multline*}
+        \abs{\mathcal{S}(\alpha f + \beta g, T\xi) - (\alpha I_f + \beta I_g)} = \abs{\alpha \mathcal{S}(f, T\xi) + \beta\mathcal{S}(g, T\xi) - (\alpha I_f + \beta I_g)} \leqslant\\\leqslant \abs{\alpha}\abs{\mathcal{S} - I_f} + \abs{\beta}\abs{\mathcal{S}(g, T\xi) - I_g} < \br{\abs{\alpha} + \abs{\beta}}\varepsilon.
+    \end{multline*}
+    Это и значит, что утверждение теоремы верно.
+\end{proof}
+
+\begin{statement}[Интеграл константы]
+    $\ds\int\limits_a^bCdx = C(b - a)$.
+\end{statement}
+
+\begin{proof}
+    Если $F(x) \equiv C$ на $[a; b]$, то $\ds\mathcal{S}(f, T\xi) = \sum_{T\xi}C\abs{\Delta_i} = C(b - a)$ для каждого отмеченного разбиения $T\xi = \{(\Delta_i, \xi_i)\}$.
+\end{proof}
+
+\begin{theorem}[Об интегрировании неравенств]
+    Если $f, g \in R[a; b]$ и $f(x) \leqslant g(x)$ для всех $x \in [a; b]$, то $\ds\int\limits_a^bf(x)dx \leqslant \int\limits_a^bg(x)dx$.
+\end{theorem}
+
+\begin{proof}
+    Если $f \leqslant g$ на $[a; b]$, на каждом отмеченном разбиении $T\xi = \{(\Delta_i, \xi_i)\}$ выполнено
+    \[
+        \mathcal{S}(f, T\xi) = \sum_{T\xi}f(\xi_i)\abs{\Delta_i} \leqslant \sum_{T\xi}g(\xi_i)\abs{\Delta_i} = \mathcal{S}(g, T\xi).
+    \]
+    Отсюда $s(f, T) \leqslant s(g, T)$, что влечёт $\ds(D)\lowint_a^bf \leqslant (D)\lowint_a^bg$. По теореме Дарбу нижние интегралы Дарбу можно заменить на интегралы Римана. Это даёт нужное равенство.
+\end{proof}
+
+\begin{theorem}[Об интегрируемости модуля функции]
+    Если $f \in R[a; b]$, то $\abs{f} \in R[a; b]$ и
+    \[
+        \abs{\int\limits_a^bf(x)dx} \leqslant \int\limits_a^b\abs{f(x)}dx.
+    \]
+\end{theorem}
+
+\begin{proof}
+    Если $f \in R[a; b]$, то $f$ ограничена на $[a; b]$, $\abs{f}$ тоже. По теореме Дарбу для любого $\varepsilon > 0$ найдётся такое разбиение $T = \{\Delta_i\}$ такое, что $\omega(f, T) < \varepsilon$. Тогда
+    \[
+        \omega(\abs{f}, T) = \sum_i\omega(\abs{f}, \Delta_i)\abs{\Delta_i} \leqslant \sum_i\omega(f, \Delta_i)\abs{\Delta_i} = \omega(f, T) < \varepsilon.
+    \]
+    Неравенство выполнено в силу свойств колебаний функции. Применяя в обратную сторону теорему Дарбу, получаем $\abs{f} \in R[a; b]$. Линейность даёт $-\abs{f} \in R[a; b]$. Интегрируя неравенство $-\abs{f(x)} \leqslant f(x) \leqslant \abs{f(x)}$, получим
+    \[
+        -\int\limits_a^b\abs{f} \leqslant \int\limits_a^bf \leqslant \int\limits_a^b\abs{f},
+    \]
+    что и есть утверждение теоремы.
+\end{proof}
+
+\begin{theorem}[Об интегрируемости произведения]
+    Пусть $f, g \in R[a; b]$, тогда $fg \in R[a; b]$.
+\end{theorem}
+
+\begin{proof}
+    Интегрируемость влечёт ограниченность: $\abs{f(x)} \leqslant M$ и $\abs{g(x)} \leqslant M$ для некоторого $M > 0$ и всех $x \in [a; b]$. Из интегрируемости также вытекает (теорема Дарбу), что для любого $\varepsilon > 0$ найдутся разбиения $T_1$ и $T_2$ отрезка $[a; b]$ такие, что $\omega(f, T_1) < \varepsilon$ и $\omega(g, T_2) < \varepsilon$. Разбиение $T = \{\Delta_i\} \vcentcolon = T_1 \cap T_2$ мельче $T_1$ и $T_2$, отсюда
+    \begin{gather*}
+        \omega(f, T) \leqslant \omega(f, T_1) < \varepsilon,\quad\omega(g, T) \leqslant \omega(g, T_1) < \varepsilon;\\
+        \omega(fg, T) = \sum_i\omega(fg, \Delta_i)\abs{\Delta_i} \leqslant M\sum_i\br{\omega(f, \Delta_i) + \omega(g, \Delta_i)}\abs{\Delta_i} = M\br{\omega(f, T) + \omega(g, T)} < 2M\varepsilon.
+    \end{gather*}
+    Применяя в обратную сторону теорему Дарбу, получаем $fg \in R[a; b]$.
+\end{proof}
+

@@ -1,0 +1,59 @@
+\section{Формула Валлиса}
+
+Положим $\ds I_n \vcentcolon = \int\limits_0^{\pi / 2} \sin^nxdx$, $n \in \N \cup \{0\}$. Если $n \geqslant 2$, то
+\begin{multline*}
+    I_n = \int\limits_0^{\pi / 2}\sin^{n - 1}x\sin xdx = -\int\limits_0^{\pi / 2}\sin^{n - 1}xd\cos x =\\ = -\sin^{n - 1}x\cos x\bigg|_0^{\pi / 2} + \int\limits_0^{\pi / 2}\cos x d\sin^{n - 1}x = 0 + (n - 1)\int\limits_0^{\pi / 2}\cos^2x\sin^{n - 2}xdx =\\ = (n - 1)\int\limits_0^{\pi / 2}\br{\sin^{n - 2}x - \sin^nx}dx = (n - 1)(I_{n - 2} - I_n).
+\end{multline*}
+
+Отсюда $\ds I_n = \frac{n - 1}{n}I_{n - 2}$ --- рекуррентная формула для последовательности $I_n$. Рассмотрим её отдельно для чётных и нечётных $n$.
+
+\begin{minipage}{.5\textwidth}
+    \begin{align*}
+        I_0 &= \frac{\pi}{2},\\
+        I_2 &= \frac{1}{2} \cdot I_0 = \frac{1}{2} \cdot \frac{\pi}{2},\\
+        I_4 &= \frac{3}{4} \cdot I_2 = \frac{3}{4} \cdot \frac{1}{2} \cdot \frac{\pi}{2},\\
+        &\vdots\\
+        I_{2k} &= \ldots = \frac{(2k - 1) \cdot (2k - 3) \cdot \ldots \cdot 1}{2k \cdot (2k - 2) \cdot \ldots \cdot 2}\cdot\frac{\pi}{2},\\
+        &\vdots
+    \end{align*}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+    \begin{align*}
+        I_1 &= 1,\\
+        I_3 &= \frac{2}{3} \cdot I_1 = \frac{2}{3},\\
+        I_5 &= \frac{4}{5} \cdot I_3 = \frac{4}{5} \cdot \frac{2}{3},\\
+        &\vdots\\
+        I_{2k + 1} &= \ldots = \frac{2k \cdot (2k - 2) \cdot \ldots \cdot 2}{(2k + 1) \cdot (2k - 1) \cdot \ldots \cdot 1},\\
+        &\vdots
+    \end{align*}
+\end{minipage}
+Отсюда
+\begin{gather*}
+    I_{2k} = \frac{2k \cdot (2k - 1) \cdot (2k - 2) \cdot \ldots \cdot 2 \cdot 1}{\br{2k \cdot (2k - 2) \cdot \ldots \cdot 2}^2} \cdot \frac{\pi}{2} = \frac{(2k)!}{4^k\cdot (k!)^2}\cdot \frac{\pi}{2} = \frac{C_{2k}^k}{4^k}\cdot \frac{\pi}{2},\\
+    I_{2k + 1} = \frac{(2k \cdot (2k - 2) \cdot \ldots \cdot 2)^2}{(2k + 1) \cdot 2k \cdot (2k - 1) \cdot \ldots \cdot 2 \cdot 1} = \frac{4^k(k!)^2}{(2k + 1)!} = \frac{4^k}{2k + 1}\cdot\frac{1}{C_{2k}^k}.
+\end{gather*}
+
+Рассмотрим последовательность $\{I_k\}_{k = 0}^\infty$. Т.\,к. $\sin^n x \geqslant \sin^{n + 1}x$ для всех $x \in [0; \pi / 2]$, причём неравенство строгое при $x \in (0; \pi / 2)$, то (достаточное условие положительности интеграла) $I_k > I_{k + 1}$, т.\,е. последовательность $\{I_k\}$ убывает. Итак,
+\begin{gather*}
+    I_{2k + 1} < I_{2k} < I_{2k - 1},\\
+    \frac{4^k}{2k + 1} \cdot \frac{1}{C_{2k}^k} < \frac{C_{2k}^k}{4^k} \cdot \frac{\pi}{2} < \frac{4^{k - 1}}{2k - 1}\cdot\frac{1}{C_{2k - 2}^{k - 1}},\\
+    \frac{4^{2k}}{2k + 1}\cdot\frac{1}{\br{C_{2k}^k}^2} < \frac{\pi}{2} < \frac{4^{2k - 1}}{2k - 1} \cdot \frac{1}{C_{2k - 2}^{k - 1} \cdot C_{2k}^k},\\
+    \underbrace{\frac{4^{2k}}{2k + 1} \cdot \frac{1}{\br{C_{2k}^k}^2}}_{A_k} < \frac{\pi}{2} < \underbrace{\frac{4^{2k}}{2k} \cdot \frac{1}{\br{C_{2k}^k}^2}}_{B_k = \frac{2k + 1}{2k}A_k}.
+\end{gather*}
+
+Последовательность $\{A_k\}_{k = 0}^\infty$ возрастает:
+\[
+    A_{k + 1} = \frac{4^{2k + 2}}{2k + 3} \cdot \frac{1}{\br{C_{2k + 2}^{k + 1}}^2} = \underbrace{\frac{4^{2k}}{2k + 1} \cdot \frac{1}{\br{C_{2k}^k}^2}}_{A_k} \cdot \frac{2k + 1}{2k + 3} \cdot 16 \cdot \frac{(k + 1)^4}{(2k + 1)^2(2k + 2)^2} = A_k \cdot \frac{(2k + 2)^2}{(2k + 1)(2k + 3)} > A_k.
+\]
+
+Т.\,к. $\{A_k\}$ возрастает и ограничена сверху (числом $\pi / 2$), $\exists\lim\limits_{k \to \infty}A_k = A$. Далее,
+\[
+    B_k = A_k \cdot \frac{2k + 1}{2k},\quad \lim_{k \to \infty}B_k = \lim_{k \to \infty}A_k \cdot \lim_{k \to \infty}\frac{2k + 1}{2k} = A.
+\]
+
+По теореме о трёх последовательностях, $\ds A \leqslant \frac{\pi}{2} \leqslant A$, откуда $\ds A = \frac{\pi}{2}$. В итоге
+\[
+    \frac{\pi}{2} = \lim_{k \to \infty}\frac{4^{2k}}{2k + 1} \cdot \frac{1}{\br{C_{2k}^k}^2}.
+\]
+--- \textit{формула Валлиса}.
+

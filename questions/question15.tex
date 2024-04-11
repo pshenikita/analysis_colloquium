@@ -1,0 +1,79 @@
+\section{Преобразование Абеля. Вторая теорема о среднем для интеграла Римана}
+
+\begin{lemma}
+    Пусть числа $A_k \vcentcolon = \sum_{i = 1}^ka_i$, $k = 1, 2, \ldots, n$, удовлетворяют неравенствам $m \leqslant A_k \leqslant M$, а $b_i \geqslant b_{i + 1} \geqslant 0$ при $i = 1, 2, \ldots, n - 1$. Тогда
+    \[
+        mb_i \leqslant \sum_{i = 1}^na_ib_i \leqslant Mb_1.
+    \]
+\end{lemma}
+
+\begin{proof}
+    Докажем правое из неравенств (левое аналогично):
+    \[
+        \sum_{i = 1}^na_ib_i = A_nb_n + \sum_{i = 1}^{n - 1}A_i(b_i - b_{i + 1}) \leqslant Mb_n + \sum_{i = 1}^{n - 1}M(b_i  b_{i + 1}) = Mb_n + Mb_1 - Mb_n = Mb_1.
+    \]
+\end{proof}
+
+\begin{theorem}[Вторая теорема о среднем для интеграла Римана]
+    Допустим, $f, g \in R[a; b]$ и функция $f$ монотонна на $[a; b]$. Тогда $\exists\xi \in [a; b]$ такое, что
+    \[
+        \int\limits_a^bf(x)g(x)dx = f(a)\int\limits_a^\xi g(x)dx + f(b)\int\limits_\xi^bg(x)dx.
+    \]
+\end{theorem}
+
+Нам понадобится лемма:
+
+\begin{lemma}
+    Допустим, $f, g \in R[a; b]$, причём функция $f$ неотрицательна и не возрастает на отрезке $[a; b]$. Тогда $\exists\xi \in [a; b]$ такое, что
+    \[
+        \int\limits_a^bf(x)g(x)dx = f(a)\int\limits_a^\xi g(x)dx.
+    \]
+\end{lemma}
+
+\begin{proof}
+    Функия $\ds G(x) \vcentcolon = \int\limits_a^x g(t)dt$ непрерывна на $[a; b]$. Поэтому она ограничена на $[a; b]$, обозначим $m \vcentcolon = \min\limits_{x \in [a; b]} G(x)$, $M \vcentcolon = \max\limits_{x \in [a; b]} G(x)$. Сначала установим формулу
+    \[
+        mf(a) \leqslant \int\limits_a^bf(x)g(x)dx \leqslant Mf(a).\eqno(\ast)
+    \]
+
+    Возьмём любое $\varepsilon > 0$. Т.\,к. $g \in R[a; b]$, то $\abs{g(x)} \leqslant C < +\infty$ на $[a; b]$, а т.\,к. $f \in R[a; b]$, согласно теореме Дарбу найдётся разбиение $T = \{\Delta_i = [x_{i - 1}; x_i]\}_{i = 1}^n$ отрезка $[a; b]$, для которого $\omega(f, T) < \varepsilon / C$. Имеем
+    \begin{multline*}
+        \int\limits_a^bf(x)g(x)dx = \sum_{i = 1}^n\int\limits_{x_{i - 1}}^{x_i}f(x)g(x)dx = \sum_{i = 1}^n\int\limits_{x_{i - 1}}^{x_i}\br{f(x_{i - 1}) + f(x) - f(x_{i - 1})}g(x)dx =\\ = \sum_{i = 1}^nf(x_{i - 1})\int\limits_{x_{i = 1}}^{x_i}g(x)dx + E,\qquad E \vcentcolon = \sum_{i = 1}^n\int\limits_{x_{i - 1}}^{x_i}\br{f(x) - f(x_{i - 1})}g(x)dx,
+    \end{multline*}
+    причём $E$ мало по абсолютной величине:
+    \begin{multline*}
+        \abs{E} \leqslant \sum_{i = 1}^n\int\limits_{x_{i - 1}}^{x_i}\abs{f(x) - f(x_{i - 1})}\abs{g(x)}dx \leqslant C\sum_{i = 1}^n\int\limits_{x_{i - 1}}^{x_i}\omega(g, \Delta_i)dx = C\sum_{i = 1}^n\int\limits_{x_{i - 1}}^{x_i}\omega(f, \Delta_i)dx =\\ = C\sum_{i = 1}^n\omega(f, \Delta_i)\abs{\Delta_i} = C\omega(f, T) < \varepsilon.
+    \end{multline*}
+    Учтём неотрицательность и невозрастание функции $f$ на $[a; b]$ и применим лемму 1 с 
+    \begin{gather*}
+        a_i \vcentcolon = G(x_i) - G(x_{i - 1}),\quad b_i \vcentcolon = f(x_{i - 1}),\\
+        A_k = \sum_{i = 1}^ka_i = \sum_{i = 1}^k\br{G(x_i) - G(x_{i - 1})} = G(x_k) - G(x_0) = G(x_k);\\
+        m \leqslant A_k = G(x_k) \leqslant M.
+    \end{gather*}
+    Получим
+    \begin{gather*}
+        mf(a) \leqslant \sum_{i = 1}^nf(x_{i - 1})\br{G(x_i - G(x_{i - 1}))} \leqslant Mf(a);\\
+        mf(a) \leqslant \sum_{i = 1}^nf(x_{i - 1})\int\limits_{x_{i - 1}}^{x_i}g(x)dx \leqslant Mf(a);\\
+        mf(a) \leqslant \int\limits_a^bf(x)g(x)dx - E \leqslant Mf(a),\quad\abs{E} < \varepsilon.
+    \end{gather*}
+    Т.\,к. $\varepsilon > 0$ произвольно, то из последнего неравенства вытекает ($\ast$).
+
+    Теперь выведем из $(\ast)$ утверждение теоремы. Отметим, что если $f(a) = 0$, то из $(\ast)$ следует, что $\ds\int\limits_a^bf(x)g(x)dx = 0$, а значит, обе части равенства из формулировки леммы равны нулю, значит, утверждение выполнено. Пусть теперь $f(a) > 0$. Функция $G(x)$, как было отмечено ранее, непрерывна, причём найдутся такие точки $c, d \in [a; b]$, что
+    \[
+        G(c) \leqslant \int\limits_a^bf(x)g(x)dx \bigg/f(a) \leqslant G(d).
+    \]
+
+    Таким образом, по теореме о промежуточных значения непрерывной функции, найдётся точка $\xi \in [a; b]$ такая, что $\ds G(\xi) = \int\limits_a^bf(x)g(x)dx$, а это и есть утверждение леммы.
+\end{proof}
+
+Теперь докажем теорему, ради которой тут собрались:
+
+\begin{proof}
+    Если $f$ не убывает на $[a; b]$, то функция $h(x) \vcentcolon = f(b) - f(x)$ неотрицательна, невозрастает и интегрируема на $[a; b]$. Применим лемму и проведём преобразования:
+    \begin{gather*}
+        \int\limits_a^bh(x)g(x)dx = h(a)\int\limits_a^\xi g(x)dx;\quad\int\limits_a^b\br{f(b) - f(x)}g(x)dx = \br{f(b) - f(a)}\int\limits_a^\xi g(x)dx;\\
+        f(b)\br{\int\limits_a^bf(x)dx - \int\limits_a^\xi f(x)dx} + f(a)\int\limits_a^\xi g(x)dx = \int\limits_a^bf(x)g(x)dx.
+    \end{gather*}
+    Если $f$ не возрастает на $[a; b]$, функция $h(x) \vcentcolon = f(x) - f(b)$ неотрицательна, не возрастает и интегрируема на $[a; b]$. Повторяя выкладки выше, снова получим требуемое.
+\end{proof}
+

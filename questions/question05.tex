@@ -1,0 +1,58 @@
+\section{Колебания функции на множестве}
+
+\begin{definition}
+    \textit{Колебание} функции $f: X \to \R$ \textit{на множестве} $A \subset X$ --- величина
+    \[
+        \omega(f, A) \vcentcolon = \sup\limits_{x_1, x_2 \in A}\abs{f(x_1) - f(x_2)}.
+    \]
+\end{definition}
+
+Если $f$ ограничена на $A$, то величина $\omega(f, A)$ конечна. В самом деле, ограниченность означает существование $C > 0$ такого, что $|f(x)| \leqslant C$ для любого $x \in A$. В этом случае
+\[
+    \forall x_1, x_2 \in A\;\abs{f(x_1) - f(x_2)} \leqslant |f(x_1)| + |f(x_2)| \leqslant 2C \Rightarrow w(f, A) \leqslant 2C.
+\]
+
+Напротив, если $f$ не ограничена на $A$, то $w(f, A) = +\infty$, т.\,к. можно, фиксировав $x_2$, за счёт выбора $x_1$ сделать величину $\abs{f(x_1) - f(x_2)}$ больше любого наперёд заданного $C$.
+
+\begin{proposal}
+    Если $f$ ограничена на множестве $A$, то
+    \[
+        \omega(f, A) = \sup\limits_{x \in A}f(x) - \inf\limits_{x \in A}f(x).\eqno(\ast)
+    \]
+\end{proposal}
+
+\begin{proof}
+    Возьмём произвольное $\varepsilon > 0$. Согласно определению $\sup$ и $\inf$ найдутся такие $x_1, x_2 \in A$, что
+    \[
+        \sup\limits_{x \in A}f(x) - \varepsilon < f(x_1),\quad f(x_2) < \inf\limits_{x \in A}f(x) + \varepsilon.
+    \]
+    Из определения колебания функции на множестве вытекает существование $x_3, x_4 \in A$, для которых $\omega(f, A) - \varepsilon < \abs{f(x_3) - f(x_4)}$. Не ограничивая общности, считаем $f(x_3) \geqslant f(x_4)$, так что
+    \[
+        \omega(f, A) - \varepsilon < f(x_3) - f(x_4).
+    \]
+    Получаем:
+    \[
+        \omega(f, A) - \varepsilon < f(x_3) - f(x_4) \leqslant \sup\limits_{x \in X}f(x) - \inf\limits_{x \in X}f(x) < f(x_1) - f(x_2) + 2\varepsilon \leqslant \omega(f, A) + 2\varepsilon,
+    \]
+    откуда $\omega(f, A) - \varepsilon < \sup\limits_{x \in X}f(x) - \inf\limits_{x \in X}f(x) < \omega(f, A) + 2\varepsilon$. Т.\,к. $\varepsilon > 0$ выбиралось произвольно, то имеет место $(\ast)$.
+\end{proof}
+
+\begin{proposal}[Свойства колебания]
+    Пусть $\abs{f(x)} \leqslant M$ и $\abs{g(x)} \leqslant M$ для некоторого $M > 0$ и всех $x \in [a; b]$, а $\alpha, \beta \in \R$. Тогда
+    \begin{enumerate}
+        \begin{minipage}{.5\textwidth}
+            \item $\omega(\abs{f}, A) \leqslant \omega(f, A)$;
+            \item $\omega(fg, A) \leqslant M\br{\omega(f, A) + \omega(g, A)}$;
+            \item $\omega(\alpha f, A) = \abs{\alpha}\omega(f, A)$;
+        \end{minipage}
+        \begin{minipage}[b]{.5\textwidth}
+            \item $\omega(f + g, A) \leqslant \omega(f, A) + \omega(g, A)$;
+            \item $\omega(\alpha f + \beta g) \leqslant \abs{\alpha}\omega(f, A) + \abs{\beta}\omega(g, A)$.
+        \end{minipage}
+    \end{enumerate}
+\end{proposal}
+
+\begin{proof}
+    Найду силы --- напишу.
+\end{proof}
+

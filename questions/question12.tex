@@ -1,0 +1,74 @@
+\section{Замена переменной и интегрирование по частям в интеграле Римана. Формула Тейлора с остаточным членом в интегральной форме}
+
+\begin{theorem}[О замене переменной в интеграле Римана]
+    Пусть заданы функции $f \in C[a; b]$ и $\varphi: [\alpha; \beta] \to [a; b]$, причём $\varphi \in C^1[\alpha; \beta]$, $\varphi(\alpha) = a$ и $\varphi(\beta) = b$. Тогда
+    \[
+        \int\limits_a^bf(x)dx = \int\limits_\alpha^\beta(f \circ \varphi)(t)\varphi^\prime(t)dt.
+    \]
+\end{theorem}
+
+\begin{proof}
+    По условию теоремы все функции $f$, $\varphi$ и $\varphi^\prime$ непрерывны, поэтому подынтегральная функция в интеграле справа непрерывна.
+
+    Пусть $F$ --- первообразная для непрерывной функции $f$ на отрезке $[a; b]$. Имеем
+    \[
+        \int\limits_a^bf(x)dx = F(b) - F(a).
+    \]
+    Далее, $F^\prime(x) = f(x)$ $\forall x \in [a; b]$. Поэтому (теорема о производной композиции функций)
+    \[
+        (F \circ \varphi)^\prime(t) = (f \circ \varphi)(t)\varphi^\prime(t)\quad\forall t \in [\alpha; \beta],
+    \]
+    т.\,е. $F \circ \varphi$ --- первообразная для непрерывной функции $(f \circ \varphi) \cdot \varphi^\prime$ на отрезке $[\alpha; \beta]$. Отсюда
+    \[
+        \int\limits_\alpha^\beta(f \circ \varphi)(t)\varphi^\prime(t)dt = (F \circ \varphi)(\beta) - (F \circ \varphi)(\alpha) = F(b) - F(a) = \int\limits_a^bf(x)dx.
+    \]
+\end{proof}
+
+\begin{theorem}[Об интегрировании по частям в интеграле Римана]
+    Если $u, v \in C^1[a; b]$, то
+    \begin{gather*}
+        \int\limits_a^bu(x)v^\prime(x)dx = u(x)v(x)\bigg|_a^b - \int\limits_a^bu^\prime(x)v(x)dx,
+        \int\limits_a^budv = uv\bigg|_a^b - \int\limits_a^bvdu.
+    \end{gather*}
+\end{theorem}
+
+\begin{proof}
+    Второе из равенств в условии --- лишь другая форма записи первого равенства, поэтому будем доказывать лишь первое равенство. Т.\,к. $u, v, \in C^1[a; b]$, то $uv \in C^1[a; b]$. Значит, $(uv)^\prime$ непрерывна, и $uv$ служит для неё первообразной на отрезке $[a; b]$. Тогда
+    \[
+        \int\limits_a^b\br{u(x)v(x)}^\prime dx = u(x)v(x)\bigg|_a^b.
+    \]
+    Отсюда, применяя правило Лейбница, и получаем требуемое.
+\end{proof}
+
+\begin{theorem}
+    Пусть $n \in \N \cup \{0\}$, $f \in C^{n + 1}(a; b)$ и $x_0 \in (a; b)$. Тогда для всех $x \in (a; b)$ имеет место \textit{формула Тейлора с остаточным членом в интегральной форме}
+    \[
+        f(x) = \sum_{k = 0}^n\frac{f^{(k)}(x_0)}{k!}(x - x_0)^k + \frac{1}{n!}\int\limits_{x_0}^x(x - t)^nf^{(n + 1)}(t)dt.
+    \]
+\end{theorem}
+
+\begin{proof}
+    Докажем индукцией по $n$. Если $n = 0$, то $f \in C^1(a; b)$, а $f^\prime \in C(a; b)$. Значит, $f$ --- первообразная для функции $f^\prime$ на интервале $(a; b) \supset [x_0; x]$, и верна формула Ньютона "---Лейбница:
+    \[
+        f(x) - f(x_0) = \int\limits_{x_0}^xf^\prime(t)dt.
+    \]
+    После переноса $f(x_0)$ в правую часть получается формула из условия при $n = 0$.
+
+    Допустим, что утверждение верно для $n - 1$:
+    \[
+        f(x) = \sum_{k = 0}^{n - 1}\frac{f^{(k)}(x_0)}{k!}(x - x_0)^k + \frac{1}{(n - 1)!}\int\limits_{x_0}^x(x - t)^{n - 1}f^{(n)}(t)dt.\eqno(\ast)
+    \]
+    Покажем, что утверждение верно и для $n$. Вычислим интеграл в $(\ast)$ по частям:
+    \begin{multline*}
+        \frac{1}{(n - 1)!}\int\limits_{x_0}^x(x - t)^{n - 1}f^{(n)}(t)dt =
+        \left\{
+            \begin{array}{cc}
+                u = f^{(n)}(t), & du = f^{(n + 1)}(t)dt,\\
+                dv = (x - t)^{n - 1}dt, & v = -\frac{1}{n}(x - t)^n
+            \end{array}
+        \right\} =\\ = \frac{1}{(n - 1)!}\br{-f^{(n)}(t)\frac{1}{n}(x - t)^n\bigg|_{x_0}^x + \int\limits_{x_0}^x\frac{1}{n}(x - t)^nf^{(n + 1)}(t)dt} =\\ = \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n + \frac{1}{n!}\int\limits_{x_0}^x(x - t)^nf^{(n + 1)}(t)dt.
+    \end{multline*}
+
+    Функции $u(t) = f^{(n)}(t)$ и $v(t) = -\frac{1}{n}(x - t)^n$ непрерывно дифференцируемы на $(a; b) \supset [x_0; x]$, поэтому можно применять интегрирование по частям. Подставив найденный интеграл в $(\ast)$, получим формулу из формулировки теоремы.
+\end{proof}
+

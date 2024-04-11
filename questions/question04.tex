@@ -1,0 +1,105 @@
+\section{Суммы Дарбу. Интеграл Дарбу}
+
+До конца пункта считаем, что задана функция $f: [a; b] \to \R$.
+
+\begin{definition}
+    Пусть $T = \{\Delta_i\}_{i = 1}^m$ --- разбиение отрезка $[a; b]$,
+    \[
+        m_i \vcentcolon = \inf\limits_{x \in \Delta_i}f(x),\quad M_i \vcentcolon = \sup\limits_{x \in \Delta_i}f(x).
+    \]
+    Величины
+    \[
+        s(f, T) \vcentcolon = \sum_{i = 1}^mm_i\abs{\Delta_i}\quad\text{и}\quad S(f, T) \vcentcolon = \sum_{i = 1}^mM_i\abs{\Delta_i}
+    \]
+    --- \textit{нижняя} и \textit{верхняя сумма Дарбу} функции $f$ для разбиения $T$ (соответственно).
+\end{definition}
+
+\textbf{Геометрический смысл сумм Дарбу}. Пусть функция $f: [a; b] \to \R$ положительна (не обязательно непрерывна), $A = A_{f, [a; b]}$ --- криволинейная трапеция под её графиком. Тогда нижняя сумма Дарбу $s(f, T)$ совпадает с точной верней гранью площадей $T$-фигур, вписанных в $A$.
+
+\begin{center}
+    \Large\scshape КАРТИНКА
+\end{center}
+
+В свою очередь, верхняя сумма Дарбу $S(f, T)$ совпадает с точной нижней гранью площадей $T$-фигур, описанных над $A$.
+
+\begin{center}
+    \Large\scshape КАРТИНКА
+\end{center}
+
+Часто приходится рассматривать \textit{разность Дарбу} $\omega(f, T) \vcentcolon = S(f, T) - s(f, T)$. Геометрически величина $\omega(f, T)$ для непрерывной функции есть площадь <<зазора>> между наименьшей описанной над $A$ и наибольшей вписанной в $A$ фигурами.
+
+Выразим разность Дарбу $\omega(f, T)$ через колебания функции $f$ на отрезках разбиения $T = \{\Delta_i\}$:
+\[
+    \omega(f, T) = S(f, T) - s(f, T) = \sum_i\br{\sum\limits_{\Delta_i}f - \inf\limits_{\Delta_i}f}\abs{\Delta_i} = \sum_i\omega(f, T)\abs{\Delta_i}.
+\]
+
+Установим связь между суммами Дарбу и Римана.
+
+\begin{lemma}
+    Для любого разбиения $T$ имеем
+    \[
+        s(f, T) = \inf\limits_\xi\mathcal{S}(f, T\xi),\quad S(f, T) = \sup\limits_\xi\mathcal{S}(f, T\xi)
+    \]
+    (точные грани берутся по всем наборам $\xi$ меток разбиения $T$).
+\end{lemma}
+
+\begin{proof}
+    Пусть $T = \{\Delta_i\}_{i = 1}^m$. Поскольку $m_i \leqslant f(\xi_i)$ для любых $\xi_i \in \Delta_i$, то
+    \[
+        s(f, T) = \sum_im_i\abs{\Delta_i} \leqslant \mathcal{S}(f, T\xi)
+    \]
+    для каждого набора $\xi = \{\xi_i\}_{i = 1}^m$ меток разбиения $T$. С другой стороны, для любого $\varepsilon > 0$ найдутся такие $\xi_i \in \Delta_i$, что $f(\xi_i)\abs{\Delta_i} < m_i\abs{\Delta_i} + \frac{\varepsilon}{m}$. Тогда соответствующая интегральная сумма
+    \[
+        \mathcal{S}(f, T\xi) = \sum_{i = 1}^mf(\xi_i)\abs{\Delta_i} < \sum_{i = 1}^m\br{m_i\abs{\Delta_i} + \frac{\varepsilon}{m}} = s(f, T) + \varepsilon.
+    \]
+    Отсюда следует, что $s(f, T) = \sup\limits_{\xi}\mathcal{S}(f, T\xi)$. Вторая формула доказывается аналогично.
+\end{proof}
+
+\begin{definition}
+    Пусть даны разбиения $T_1$ и $T_2$. Тогда говорят, что $T_1$ \textit{мельче} $T_2$ (и пишут $T_1 \leqslant T_2$), если для любого $\Delta \in T_1$ найдётся $\Theta \in T_2$ такой, что $\Delta \subseteq \Theta$. Иными словами, $T_1$ получено из $T_2$ добавлением ещё нескольких точек разбиения.
+\end{definition}
+
+Введённое выше отношение транзитивно. В самом делем, пусть $T_1 \leqslant T_2$ и $T_2 \leqslant T_3$, пусть также $T_1$, $T_2$ и $T_3$ определяются наборами точек соответственно $A_1$, $A_2$ и $A_3$. Тогда $A_1 \supseteq A_2 \supseteq A_3$, откуда $A_1 \supseteq A_3$, т.\,е. $T_1 \leqslant T_3$.
+
+\begin{lemma}
+    Если $T_1 \leqslant T_2$, то
+    \[
+        s(f, T_1) \geqslant s(f, T_2),\quad S(f, T_1) \leqslant S(f, T_2),\quad \omega(f, T_1) \leqslant \omega(f, T_2).
+    \]
+    Иными словами, при измельчении разбиения нижние суммы Дарбу не убывают, а верхние суммы Дарбу и разности Дарбу не возрастают.
+\end{lemma}
+
+\begin{proof}
+    Достаточно показать утверждение в случае, когда $T_1$ получается из $T_2 = \{\Delta_i\}_{i = 1}^m$ путём разбиения одного из отрезков $\Delta_i$ ($= \vcentcolon \Delta_{i_0}$) на два неперекрывающихся отрезка ($= \vcentcolon \Delta^\prime$ и $= \vcentcolon \Delta^{\prime\prime}$). Имеем:
+    \begin{multline*}
+        S(f, T_2) = \sum_{i = 1}^m\sup\limits_{\Delta_i}f \cdot \abs{\Delta_i} = \sum_{i \ne i_0}\sup\limits_{\Delta_i}f \cdot \abs{\Delta_i} + \sup\limits_{\Delta_{i_0}}f \cdot \abs{\Delta_{i_0}} =\\ = \sum_{i \ne i_0}\sup\limits_{\Delta_i}f \cdot \abs{\Delta_i} + \sup\limits_{\Delta_{i_0}}f \cdot \abs{\Delta^\prime} + \sup\limits_{\Delta_{i_0}}f \cdot \abs{\Delta^{\prime\prime}} \geqslant\\ \geqslant \sum_{i \ne i_0}\sup\limits_{\Delta_i}f \cdot \abs{\Delta_i} + \sup\limits_{\Delta^\prime}f \cdot \abs{\Delta^\prime} + \sup\limits_{\Delta^{\prime\prime}}f \cdot \abs{\Delta^{\prime\prime}} = S(f, T_1).
+    \end{multline*}
+
+    Второе равенство доказывается аналогично, а третье есть прямое следствие первых двух.
+\end{proof}
+
+\begin{definition}
+    Пусть даны разбиения $T_1 = \{\Delta_i\}$ и $T_2 = \{\Theta_j\}$. Разбиение \[T_1 \cap T_2 \vcentcolon = \{\Delta_i \cap \Theta_j\text{ с непустой внутренностью}\}\] называется \textit{пересечением} разбиений $T_1$ и $T_2$.
+\end{definition}
+
+Очевидно, $T_1 \cap T_2 \leqslant T_1$ и $T_1 \cap T_2 \leqslant T_2$.
+
+\begin{lemma}
+    Для любых разбиений $T_1$ и $T_2$ выполнено $s(f, T_1) \leqslant S(f, T_2)$.
+\end{lemma}
+
+\begin{proof}
+    Лемма 2 даёт $s(f, T_1) \leqslant s(f, T_1 \cap T_2) \leqslant S(f, T_1 \cap T_2) \leqslant S(f, T_2)$.
+\end{proof}
+
+\begin{definition}[Интеграл Дарбу]
+    Величины
+    \[
+        (D)\lowint\limits_a^bf(x)dx \vcentcolon = \sup\limits_Ts(f, T)\quad\text{и}\quad
+        (D)\upint\limits_a^bf(x)dx \vcentcolon = \inf\limits_TS(f, T)
+    \]
+    называются соответственно \textit{нижним} и \textit{верхним интегралами Дарбу} функции $f$ (по отрезку $[a; b]$). Если нижний и верхний интегралы Дарбу совпадают, то их общее значение назовём \textit{интегралом Дарбу} функции $f$ по отрезку $[a; b]$ и обозначим $\ds(D)\int\limits_a^bf(x)dx$.
+\end{definition}
+
+Из леммы 3 видно, что $\ds(D)\lowint\limits_a^bf(x)dx \leqslant (D)\upint\limits_a^bf(x)dx$.
+

@@ -1,0 +1,40 @@
+\section{Интегрируемость по Риману непрерывных и монотонных функций. Геометрический смысл интегралов Дарбу и Римана}
+
+\begin{statement}
+    Если функция $f: [a; b] \to \R$ имеет конечное число точек разрыва и ограничена, она интегрируема по Риману на этом отрезке.
+\end{statement}
+
+\begin{proof}
+    Возьмём $\varepsilon > 0$ и такое $C > 0$, что $\abs{f(x)} \leqslant C$ для всех $x \in [a; b]$ (существует из ограниченности $f$). Пользуясь тем, что функция $f$ имеет конечное число точек разрыва, построим разбиение $T = T^1 \sqcup T^2$ отрезка $[a; b]$ так, что сумма длин отрезков $\Delta_i \in T^1$ меньше $\frac{\varepsilon}{4C}$, а на всех отрезках $\Delta_i \in T^2$ функция $f$ непрерывна. Последнее означает, что $f$ равномерно непрерывна на $\Delta_i$, поэтому найдётся $\delta > 0$ такое, что $\ds\br{\abs{x - z} < \delta} \wedge \br{x, z \in \Delta_i} \Rightarrow \abs{f(x) - f(z)} < \frac{\varepsilon}{2(b - a)}$.
+
+    Т.\,к. набор $T^2$ конечен, $\delta > 0$ можно выбрать общим для всех $\Delta_i \in T^2$ (взяв $\delta \vcentcolon = \min\limits_{i}\Delta_i$). Имеем:
+    \begin{multline*}
+        S(f, T) - s(f, T) = S(f, T^1) - s(f, T^1) + S(f, T^2) - s(f, T^2) = \sum_{\Delta_i \in T^1}\br{\sup_{\Delta_i}f - \inf\limits_{\Delta_i}f}\abs{\Delta_i} +\\ + \sum_{\Delta_i \in T^2}\br{\sup_{\Delta_i}f - \inf_{\Delta_i}f}\abs{\Delta_i} < 2C\sum_{\Delta_i \in T^1}\abs{\Delta_i} + \frac{\varepsilon}{b - a}\sum_{\Delta_i \in T^2}\abs{\Delta_i} < \varepsilon.
+    \end{multline*}
+\end{proof}
+
+\begin{corollary}
+    Если функция $f$ непрерывна на отрезке $[a; b]$ функция $f$ интегрируема по Риману на этом отрезке.
+\end{corollary}
+
+\begin{statement}
+    Любая монотонная функция на отрезке $[a; b]$ функция $f$ интегрируема по Риману на этом $[a; b]$.
+\end{statement}
+
+\begin{proof}
+    Без ограничения общности считаем, что $f$ не постоянна и не убывает на $[a; b]$. Очевидно, что $f$ ограничена на $[a; b]$. Далее, возьмём любое $\varepsilon > 0$, положим $\ds\delta \vcentcolon = \frac{\varepsilon}{f(b) - f(a)}$ и рассмотрим произвольное $\delta$-разбиение $T = \{\Delta_i = [a_{i - 1}; a_i]\}_{i = 1}^m$ отрезка $[a; b]$. Пользуясь неубыванием $f$, оценим величину $\omega(f, T)$:
+    \begin{multline*}
+        \omega(f, T) = \sum_{i = 1}^m\br{\sup_{\Delta_i}f - \inf_{\Delta_i}f}\abs{\Delta_i} \overset{\text{$f$ не убывает}}{=\joinrel=} \sum_{i = 1}^m\br{f(a_i) - f(a_{i - 1})}\abs{\Delta_i} <\\ < \frac{\varepsilon}{f(b) - f(a)}\sum_{i = 1}^m\br{f(a_i) - f(a_{i - 1})} = \frac{\varepsilon}{f(b) - f(a)}\br{f(b) - f(a)} = \varepsilon.
+    \end{multline*}
+\end{proof}
+
+\textbf{Геометрический смысл интегралов Дарбу и Римана.} Пусть функция $f: [a; b] \to \R$ положительна, $A$ --- криволинейная трапеция под её графиком. Тогда нижний интеграл Дарбу совпадает с точной верхней гранью $T$-фигур, вписанных в $A$, а верхний интеграл Дарбу --- с точной нижней гранью $T$-фигур, описанных над $A$. Пусть функция $f \in R[a; b]$ положительна, $A = A(f, [a; b])$ --- криволинейная трапеция под её графиком, $S(A)$ --- площадь этой трапеции. Тогда
+\[
+    s(f, T) \leqslant S(A) \leqslant S(f, T)
+\]
+для любого разбиения $T$, следовательно,
+\[
+    (D)\lowint_a^b f \leqslant S(A) \leqslant (D)\upint_a^b f.
+\]
+Т.\,к. (критерий Дарбу) верхний и нижний интегралы равны, то $\ds S(A) = \int\limits_a^bf(x) dx$.
+

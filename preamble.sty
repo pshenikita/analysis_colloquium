@@ -1,0 +1,238 @@
+\ProvidesPackage{preamble}
+
+% Корректность отображения всех шрифтов, кодировок и мат. символов
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathtools}
+
+% Настройки шрифта
+\usepackage{fontspec}
+\setmainfont{CMU Serif}
+\setsansfont{CMU Sans Serif}
+\setmonofont{CMU Typewriter Text}
+
+% Отображение содержания
+\usepackage{tocloft}
+\addto\captionsrussian{\renewcommand*{\contentsname}{Программа коллоквиума}}
+\renewcommand{\cftsecfont}{\mdseries}
+\renewcommand{\cftsecpagefont}{\mdseries}
+
+% Заголовки секций
+\usepackage{titlesec}
+\titleformat{\section}[hang]{\large\centering\scshape}{\thesection.\:}{0pt}{}
+
+% Отступ у первого абзаца
+\usepackage{indentfirst}
+
+% Вставка картинок
+\usepackage{graphicx}
+\graphicspath{img/}
+
+% Asymptote для иллюстраций
+\usepackage{asymptote}
+
+% Огибание картинок текстом
+\usepackage{wrapfig}
+
+% Римские числа из арабских
+\newcommand{\rnum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+% Гиперссылки
+\usepackage{hyperref}
+\hypersetup{
+    frenchlinks=true,
+    linktocpage=true,
+}
+
+\urlstyle{same}
+
+% Цвета
+\usepackage{xcolor}
+
+% Часто используемые обозначения
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\rk}{\operatorname{rk}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\codim}{\operatorname{codim}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\BV}{\operatorname{BV}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Mat}{\operatorname{Mat}}
+\newcommand{\ord}{\operatorname{ord}}
+\renewcommand{\gcd}{\operatorname{НОД}}
+\newcommand{\lcm}{\operatorname{НОК}}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\br}[1]{\left(#1\right)}
+\newcommand{\sqbr}[1]{\left[#1\right]}
+\newcommand{\ddfrac}[2]{\frac{\ds #1}{\ds #2}}
+\DeclareMathOperator*{\lowint}{\underline{\int}}
+\DeclareMathOperator*{\upint}{\overline{\int}}
+\DeclareMathOperator*{\V}{V}
+\newcommand\bigzero{\scalebox{2}{$0$}}
+
+% Отступы между абзацами
+\setlength{\parskip}{.5ex}
+
+% Отступы
+\usepackage[left=18mm, right=18mm, top=20mm, bottom=14mm, includefoot]{geometry}
+
+% Для работы со списками
+\usepackage{enumitem}
+
+% Оболочка для теоремы
+\newcounter{theorem}[section]
+\newenvironment{theorem}[1][]{\par\smallskip
+\refstepcounter{theorem}
+    \ifx&#1&
+        \smallskip\noindent{\bfseries Теорема \thetheorem.}
+    \else
+        \smallskip\noindent{\bfseries Теорема \thetheorem\;{\mdseries(#1)}.}
+    \fi
+    }{
+    \par\smallskip
+}
+
+% Оболочка для доказательства
+\renewenvironment{proof}{\smallskip
+    \noindent{\bfseries Доказательство.}
+}{
+    \hfill$\blacksquare$\par\smallskip
+}
+
+% Оболочка для решения
+\newenvironment{solution}{\smallskip
+    \noindent$\vartriangleright$
+}{
+    \hfill$\blacktriangleleft$\par\smallskip
+}
+
+% Оболочки для леммы, предложения и утверждения
+\newcounter{lemma}[section]
+\newenvironment{lemma}[1][]{\par\smallskip
+\refstepcounter{lemma}
+    \ifx&#1&
+        \smallskip\noindent{\bfseries Лемма \thelemma.}
+    \else
+        \smallskip\noindent{\bfseries Лемма \thelemma\;{\mdseries(#1)}.}
+    \fi
+    }{
+    \par\smallskip
+}
+
+\newcounter{proposal}[section]
+\newenvironment{proposal}[1][]{\par\smallskip
+\refstepcounter{proposal}
+    \ifx&#1&
+        \smallskip\noindent{\bfseries Предложение \theproposal.}
+    \else
+        \smallskip\noindent{\bfseries Предложение \theproposal\;{\mdseries(#1)}.}
+    \fi
+    }{
+    \par\smallskip
+}
+
+\newcounter{statement}[section]
+\newenvironment{statement}[1][]{\par\smallskip
+\refstepcounter{statement}
+    \ifx&#1&
+        \smallskip\noindent{\bfseries Утверждение \thestatement.}
+    \else
+        \smallskip\noindent{\bfseries Утверждение \thestatement\;{\mdseries(#1)}.}
+    \fi
+    }{
+    \par\smallskip
+}
+
+% Оболочка для определения
+\newcounter{definition}[section]
+\newenvironment{definition}[1][]{\par\smallskip
+\refstepcounter{definition}
+    \ifx&#1&
+        \smallskip\noindent{\bfseries Определение \thedefinition.}
+    \else
+        \smallskip\noindent{\bfseries Определение \thedefinition\;{\mdseries(#1)}.}
+    \fi
+    }{
+    \par\smallskip
+}
+
+% Оболочка для примечания
+\newenvironment{remark}[1][]{\par\smallskip
+    \ifx&#1&
+        \smallskip\noindent{\bfseries Примечание.}
+    \else
+        \smallskip\noindent{\bfseries Примечание\;(#1).}
+    \fi
+    }{
+    \par\smallskip
+}
+
+% Оболочка для следствия
+\newcounter{corollary}[theorem]
+\newenvironment{corollary}[1][]{\par\smallskip
+\refstepcounter{corollary}
+    \ifx&#1&
+        \smallskip\noindent{\bfseries Следствие \thecorollary.}
+    \else
+        \smallskip\noindent{\bfseries Следствие \thecorollary\;{\mdseries(#1)}.}
+    \fi
+    }{
+\par\smallskip
+}
+
+% Оболочка для упражнения
+\newcounter{exercise}[section]
+\newenvironment{exercise}[1][]{\par\smallskip
+\refstepcounter{exercise}
+    \ifx&#1&
+        \smallskip\noindent{\bfseries Упражнение \theexercise.}
+    \else
+        \smallskip\noindent{\bfseries Упражнение \theexercise\;{\mdseries(#1)}.}
+    \fi
+    }{
+    \par\smallskip
+}
+
+% Оболочка для примера
+\newcounter{example}[section]
+\newenvironment{example}[1][]{\par\smallskip
+\refstepcounter{example}
+    \ifx&#1&
+        \smallskip\noindent{\bfseries Пример \theexample.}
+    \else
+        \smallskip\noindent{\bfseries Пример \theexample\;{\mdseries(#1)}.}
+    \fi
+    }{
+    \par\smallskip
+}
+
+% Оболочка для упражнения
+\newcounter{problem}
+\newenvironment{problem}[1][]{\par\smallskip
+\refstepcounter{problem}
+    \ifx&#1&
+        \smallskip\noindent{\bfseries Задача \theproblem.}
+    \else
+        \smallskip\noindent{\bfseries Задача \theproblem\;{\mdseries(#1)}.}
+    \fi
+    }{
+    \par\smallskip
+}
+

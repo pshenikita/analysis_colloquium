@@ -1,0 +1,63 @@
+\section{Первая теорема о среднем для интеграла Римана. Преобразование Абеля}
+
+\begin{theorem}[Первая теорема о среднем для интеграла Римана]
+    Пусть:
+    \begin{enumerate}
+        \item $f \in B[a; b]$, $m \leqslant f(x) \leqslant M$ для всех $x \in [a; b]$;
+        \item $g \in R[a; b]$ и $g(x) \geqslant 0$ для каждого $x \in [a; b]$;
+        \item $fg \in R[a; b]$.
+    \end{enumerate}
+    Тогда
+    \[
+        m\int\limits_a^bg(x)dx \leqslant \int\limits_a^bf(x)g(x)dx \leqslant M\int\limits_a^bg(x)dx.\eqno(\ast)
+    \]
+
+    Если, дополнительно, $f \in C[a; b]$, то существует $c \in [a; b]$ такое, что
+    \[
+        \int\limits_a^bf(x)g(x)dx = f(c)\int\limits_a^bg(x)dx.\eqno(\star)
+    \]
+\end{theorem}
+
+\begin{proof}
+    Если $g(x) \geqslant 0$, то $mg(x) \leqslant f(x)g(x) \leqslant Mg(x)$. Интегрируя, получаем $(\ast)$.
+
+    Докажем второе утверждение теоремы. Если интеграл $\ds\int\limits_a^bg$ равен нулю, то из $(\ast)$ видно, что $\int\limits_a^bfg = 0$, и равенство $(\star)$ верно при любом $c \in [a; b]$; если не равен, поделим на него $(\ast)$:
+    \[
+        m \leqslant \int\limits_a^bf(x)g(x)dx \bigg/ \int\limits_a^bg(x)dx \leqslant M.
+    \]
+    По теореме о промежуточном значении для непрерывной функции, заключаем, что найдётся $c \in [a; b]$ такое, что
+    \[
+        f(c) = \int\limits_a^bf(x)g(x)dx \bigg/ \int\limits_a^bg(x)dx.
+    \]
+\end{proof}
+
+Взяв $g \equiv 1$, получаем
+
+\begin{corollary}
+    Если $f \in C[a; b]$, то для некоторого $c \in [a; b]$ справедливо равенство
+    \[
+        \int\limits_a^bf(x)dx = f(c)(b - a).
+    \]
+\end{corollary}
+
+\begin{remark}
+    Формула $(\star)$ даёт следующую оценку для интеграла в её левой части:
+    \[
+        \abs{\int\limits_a^bf(x)g(x)dx} \leqslant \max\limits_{x \in [a; b]}\abs{f(x)}\int\limits_a^bg(x)dx.
+    \]
+\end{remark}
+
+\begin{theorem}[Преобразование Абеля]
+    Пусть $A_k \vcentcolon = \sum\limits_{i = 1}^ka_i$, $k = 0, 1, \ldots, n$ (при $k = 0$ пустая сумма). Тогда
+    \[
+        \sum_{i = 1}^na_ib_i = A_nb_n + \sum_{i = 1}^{n - 1}A_i(b_i - b_{i + 1}).
+    \]
+\end{theorem}
+
+\begin{proof}
+    В самом деле,
+    \begin{multline*}
+        \sum_{i = 1}^na_ib_i = \sum_{i = 1}^n(A_i - A_{i - 1})b_i = \sum_{i = 1}^nA_ib_i - \sum_{i = 1}^nA_{i - 1}b_i = \sum_{i = 1}^nA_ib_i - \sum_{i = 0}^{n - 1}A_ib_{i + 1} =\\ = A_nb_n - A_0b_1 + \sum_{i = 1}^{n - 1}A_i(b_i - b_{i + 1}) = A_nb_n + \sum_{i = 1}^{n - 1}A_i(b_i - b_{i + 1}).
+    \end{multline*}
+\end{proof}
+

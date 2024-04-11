@@ -1,0 +1,70 @@
+\section{Интеграл Римана с переменным верхним пределом, его непрерывность и достаточное условие дифференцируемости. Теоремы о существование первообразной/обобщённой первообразной на отрезке. Формула Ньютона "---Лейбница}
+
+\begin{definition}
+    Если задана функция $f \in R[a; b]$, то функцию $F: [a; b] \to \R$,
+    \[
+        F(x) \vcentcolon = \int\limits_a^xf(t)dt,\quad F(a) \vcentcolon = 0,
+    \]
+    называют \textit{интегралом (Римана) с переменным верхним пределом}.
+\end{definition}
+
+\begin{theorem}
+    $F \in C[a; b]$.
+\end{theorem}
+
+\begin{proof}
+    Т.\,к. $f \in R[a; b]$, $f \in B[a; b]$, то $\abs{f(x)} \leqslant C$ для некоторого $C > 0$ и всех $x \in [a; b]$. Имеем:
+    \begin{gather*}
+        F(x + h) - F(x) = \int\limits_a^{x + h}f(t)dt - \int\limits_a^xf(t)dt = \int\limits_a^xf(t)dt + \int\limits_x^{x + h}f(t)dt - \int\limits_a^xf(t)dt = \int\limits_x^{x + h}f(t)dt;\\
+        \abs{F(x + h) - F(x)} = \abs{\int\limits_x^{x + h}f(t)dt} \leqslant \abs{\int\limits_x^{x + h}\abs{f(t)}dt} \leqslant C\abs{h}.
+    \end{gather*}
+
+    При $h \to 0$ имеем $C\abs{h} \to 0$, поэтому и $\abs{F(x + h) - F(x)} \to 0$, т.\,е. $F \in C(x)$. Точка $x \in [a; b]$ могла быть любой, следовательно, $F \in C[a; b]$.
+\end{proof}
+
+\begin{theorem}
+    Если $f \in C(x)$, то $F \in D(x)$ и $F^\prime(x) = f(x)$.
+\end{theorem}
+
+\begin{proof}
+    Воспользуемся тем, что $f \in C(x)$ и для каждого $\varepsilon > 0$ найдём $\delta > 0$ такое, что
+    \[
+        \abs{t - x} < \delta \Rightarrow \abs{f(t) - f(x)} < \varepsilon.
+    \]
+    При $0 < h < \delta$ имеем:
+    \begin{multline*}
+        \abs{\frac{F(x + h) - F(x)}{h} - f(x)} = \frac{1}{h}\abs{F(x + h) - F(x) - f(x)h} = \frac{1}{h}\abs{\int\limits_x^{x + h}f(t)dt - f(x)h} =\\ = \frac{1}{h}\abs{\int\limits_x^{x + h}\br{f(t) - f(x)}dt} \leqslant \frac{1}{h}\int\limits_x^{x + h}\abs{f(t) - f(x)}dt \leqslant \frac{1}{h} \cdot \varepsilon h = \varepsilon.
+    \end{multline*}
+    При $-\delta < h < 0$ оценка тоже верна. Т.\,к. $\varepsilon > 0$ выбиралось произвольным,
+    \[
+        \exists F^\prime(x) = \lim\limits_{h \to 0}\frac{F(x + h) - F(x)}{h} = f(x).
+    \]
+\end{proof}
+
+\begin{theorem}[О существовании первообразной/обобщёной первообразной на отрезке]
+    Если $f \in C[a; b]$ \textcolor{gray}{(или $f$ ограничена и имеет конечное число точек разрыва либо кусочно-непрерывна на $[a; b]$)}, то всякая функция вида $\ds F(x) = \int\limits_a^xf(t)dt + C$ является \textcolor{gray}{(обобщённой)} первообразной для функции $f(x)$ на отрезке $[a; b]$ и верна \textit{формула Ньютона "---Лейбница}:
+    \[
+        \int\limits_a^bf(x)dx = F(b) - F(a).
+    \]
+\end{theorem}
+
+\begin{proof}
+    Если $f \in C[a; b]$, то $f \in R[a; b]$ и $F^\prime(x) = f(x)$ для всех $x \in [a; b]$ (по предыдущей теореме), т.\,е. $F$ --- первообразная для $f$ на $[a; b]$. Из определения функции $F$ следует
+    \[
+        F(b) - F(a) = \int\limits_a^bf(t)dt + C - C = \int\limits_a^bf(t)dt.
+    \]
+    Если $f$ ограничена и имеет конечное число точек разрыва, то $f \in R[a; b]$ (см. утверждение 1 в вопросе 7). Далее, пусть $a_1, \ldots, a_n$ --- точки разрыва функции $f$. Из предыдущих теорем в этом вопросе вытекает, что $F \in C[a; b]$ и $F^\prime(x) = f(x)$ для всех $x \in [a; b] \setminus \{a_1, \ldots, a_n\}$, т.\,е. $F$ --- обобщённая первообразная для $f$ на $[a; b]$. Доказательство формулы Ньютона "---Лейбница такое же.
+\end{proof}
+
+\begin{remark}
+    Случай кусочно-непрерывной функции включается в уже доказанный во втором абзаце.
+\end{remark}
+
+\begin{theorem}
+    Если $f \in C[a; b]$ \textcolor{gray}{(или ограничена и имеет конечное число точек разрыва)}, а $F$ --- \textcolor{gray}{(обобщённая)} первообразная для $f$ на $[a; b]$, то верна формула Ньютона "---Лейбница.
+\end{theorem}
+
+\begin{proof}
+    Докажем первое утверждение, а второе доказывается по той же схеме. По предыдущей теореме все функции вида $\ds\int\limits_a^xf(t)dt + C$ есть первообразные для $f(x)$ на $[a; b]$ и других первообразных нет (по теореме о множестве всех первообразных). Поэтому $\ds F(x) = \int\limits_a^xf(t)dt + C$ при некотором $C$. Остаётся применить предыдущую теорему.
+\end{proof}
+
