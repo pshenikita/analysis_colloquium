@@ -1,0 +1,97 @@
+\section{Теорема о длине гладкой кривой. Длина гладкой кривой, описывающейся явно заданной функцией}
+
+\begin{theorem}[О длине гладкой кривой]
+    Пусть задана плоская простая кривая
+    \[
+        \gamma:
+        \begin{cases}
+            x = x(t),\\
+            y = y(t)
+        \end{cases}\quad t \in [a; b],
+    \]
+    причём $x(t), y(t) \in C^{(1)}[a; b]$. Тогда $\gamma$ спрямляема и
+    \[
+        \ell(\gamma) = \int\limits_a^b\sqrt{(x^\prime(t))^2 + (y^\prime(t))^2}dt.\eqno(\ast)
+    \]
+\end{theorem}
+
+\begin{proof}
+    Т.\,к. $x(t), y(t) \in C^{(1)}[a; b]$, то $x(t)$ и $y(t)$ --- функции ограниченной вариации. Тогда (критерий спрямляемости кривой) кривая $\gamma$ спрямляема.
+
+    Докажем формулу $(\ast)$. По условию, $x(t), y(t) \in C^{(1)}[a; b]$, поэтому $x^\prime(t), y^\prime(t) \in C[a; b]$. Значит, функция $f(t) \vcentcolon = \sqrt{(x^\prime(t))^2 + (y^\prime(t))^2}$ непрерывна, и интеграл в $(\ast)$ определён.
+
+    Возьмём какое-нибудь $\varepsilon > 0$. Т.\,к. $f \in R[a; b]$, найдётся $\delta_1 > 0$ такое, что для каждого отмеченного $\delta_i$-разбиения $T\xi$ отрезка $[a; b]$ верно
+    \[
+        \abs{\mathcal{S}(f, T\xi) - \int\limits_a^bf(t)dt} < \varepsilon.
+    \]
+
+    Т.\,к. $y^\prime(t)$ непрерывна на $[a; b]$, то она равномерно непрерывна на $[a; b]$, т.\,е. существует $\delta_2 > 0$ такое, что
+    \[
+        (\varphi - \psi) < \delta_2 \Rightarrow \abs{y^\prime(\varphi) - y^\prime(\psi)} < \varepsilon.
+    \]
+
+    Положим $\delta \vcentcolon = \min\{\delta_1, \delta_2\}$. Далее, найдём разбиение $T = \{\Delta_i = [a_{i - 1}, a_i]\}_{i = 1}^m$, для которого длина вписанной ломаной $\varepsilon$-ближка к длине кривой:
+    \[
+        \ell(\gamma) - \varepsilon < \sum_{i = 1}^m\abs{P_{i - 1}P_i} \leqslant \ell(\gamma).
+    \]
+
+    При размельчении $T$ сумма $\sum\limits_{i = 1}^m\abs{P_{i - 1}P_i}$ не уменьшается, а последнее неравенство сохраняется. Размельчим $T$ так, чтобы $d(T) < \delta$. Оценим длину вписанной ломаной:
+    \begin{multline*}
+        \sum_{i = 1}^m\abs{P_{i - 1}P_i} = \sum_{i = 1}^m\sqrt{(x(a_i) - x(a_{i - 1}))^2 + (y(a_i) - y(a_{i - 1}))^2} \overset{\text{т.\,Лагранжа}}{=\joinrel=}\\ = \sum_{i = 1}^m\sqrt{(x^\prime(\varphi_i))^2 + (y^\prime(\psi_i))^2}\abs{\Delta_i} = \sum_{i = 1}^m\sqrt{(x^\prime(\varphi_i))^2 + (y^\prime(\varphi_i))^2}\abs{\Delta_i} + E = \mathcal{S}(f, T\xi) + E,
+    \end{multline*}
+    где $\ds E \vcentcolon = \sum_{i = 1}^m\br{\sqrt{(x^\prime(\varphi_i))^2 + (y^\prime(\psi_i))^2}} - \sqrt{(x^\prime(\varphi_i))^2 + (y^\prime(\varphi_i))^2}\abs{\Delta_i}$, а отмеченное разбиение $T\xi$ получилось добавлением меток $\xi_i$ к имеющемуся разбиению $T$.
+
+    Для оценки величины $E$ нам потребуется неравенство
+    \[
+        \abs{\sqrt{a^2 + b^2} - \sqrt{a^2 + c^2}} \leqslant \abs{b - c},\quad a, b, c \geqslant 0.
+    \]
+
+    Это опять же просто неравенство для вот такого треугольника:
+    \begin{center}
+        \begin{asy}
+            size(8cm);
+            import geometry;
+
+            pair a = (0, 2), b = (3, 0), c = (6, 0), o = (0, 0);
+
+            fill(a--b--c--cycle, palecyan);
+            draw(o--a);
+            draw(o--b);
+            draw(b--c, currentpen + 1);
+            draw(L=Label("$\sqrt{a^2 + b^2}$", position=Relative(0.5), Rotate(b - a)), a--b, currentpen + 1);
+            draw(L=Label("$\sqrt{a^2 + c^2}$", position=Relative(0.5), Rotate(c - a), align=N), a--c, currentpen + 1);
+
+            label("$a$", a / 2 + (-0.2, 0));
+            label("$b$", b / 2 + (0, -0.25));
+            label("$|b - c|$", (c + b) / 2 + (0, -0.25));
+            perpendicular(o, NE, b - o);
+        \end{asy}
+    \end{center}
+
+    \begin{multline*}
+        \abs{E} = \abs{\sum_{i = 1}^m\br{\sqrt{(x^\prime(\varphi_i))^2 + (y^\prime(\psi_i))^2}} - \sqrt{(x^\prime(\varphi_i))^2 + (y^\prime(\varphi_i))^2}\abs{\Delta_i}} \leqslant\\\leqslant \sum_{i = 1}^m\abs{y^\prime(\psi_i) - y^\prime(\varphi_i)}\abs{\Delta_i} < \varepsilon(b - a).
+    \end{multline*}
+
+    Наконец, оценим разность между длиной кривой и интегралом:
+    \begin{multline*}
+        \abs{\ell(\gamma) - \int\limits_a^bf(t)dt} \leqslant \abs{\ell(\gamma) - \sum_{i = 1}^m\abs{P_{i - 1}P_i}} + \abs{\sum_{i = 1}^m\abs{P_{i - 1}P_i} - \mathcal{S}(f, T\xi)} + \abs{\mathcal{S}(f, T\xi) - \int\limits_a^bf(t)dt} \leqslant\\ \leqslant \varepsilon + \varepsilon(b - a) + \varepsilon = \varepsilon(2 + b - a).
+    \end{multline*}
+
+    Т.\,к. $\varepsilon > 0$ выбиралось произвольным, верна формула $(\ast)$.
+\end{proof}
+
+\textbf{О длине гладкой кривой, описывающейся явно заданной функцией.} Пусть кривая $\gamma$ задаётся уравнением $y = f(x)$, $x \in [a; b]$. Считаем $f^\prime \in C[a; b]$. Тогда
+\[
+    \ell(\gamma) = \int\limits_a^b\sqrt{1 + (y^\prime(x))^2}dx.
+\]
+В самом деле, положим
+\[
+    x(t) = t,\quad y(t) = (y \circ x)(t),\quad a \leqslant t \leqslant b.
+\]
+Тогда
+\[
+    x^\prime(t) = 1,\quad y^\prime(t) = y^\prime(x)x^\prime(t) = y^\prime(x),\quad dx = dt.
+\]
+
+Остаётся применить теорему о длине гладкой кривой.
+

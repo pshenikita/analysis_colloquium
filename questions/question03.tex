@@ -26,7 +26,29 @@
 связанную с графиком функции $f$. Тогда интегральная сумма $\mathcal{S}(f, T\xi)$ совпадает с площадью объединения прямоугольников, построенных на отрезка разбиения $T$ как на основаниях и имеющих высоту $f(\xi_i)$:
 
 \begin{center}
-    \Large\scshape КАРТИНКА
+    \begin{asy}
+        size(10cm);
+        import graph;
+        draw((0, -0.7)--(0, 2), Arrow(HookHead, 1.5mm));
+        draw((-0.5, 0)--(5.5, 0), Arrow(HookHead, 1.5mm));
+
+        real f(real x)
+        {
+            return 0.2 * (-1/3 * x * x * x + x * x + 2 * x + 3);
+        }
+
+        real x;
+        for (x = 0.5; x < 4.5; x += 0.5)
+        {
+            fill((x, 0)--(x + 0.5, 0)--(x + 0.5, f(x + 0.3))--(x, f(x + 0.3))--cycle, palecyan);
+            draw((x, 0)--(x, f(x + 0.3))--(x + 0.5, f(x + 0.3))--(x + 0.5, 0));
+            draw((x + 0.3, 0)--(x + 0.3, f(x + 0.3)), dashed);
+            dot("${}$", (x + 0.3, f(x + 0.3)), dir(0));
+            /* % */ label(format("$\xi_%d$", (int)(2 * x)), (x + 0.3, -0.2));
+        }
+
+        draw(graph(f, -0.3, 5), currentpen + 1);
+    \end{asy}
 \end{center}
 
 \begin{definition}

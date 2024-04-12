@@ -27,3 +27,70 @@
     Т.\,к. $\varepsilon > 0$ выбиралось произвольным, $\V\limits_a^bf = I$.
 \end{proof}
 
+\begin{definition}
+    \textit{Плоская кривая} $\gamma \subset \R^2$ задаётся параметрически заданной функцией (\textit{путём})
+    \[
+        \begin{cases}
+            x = x(t),\\
+            y = y(t)
+        \end{cases}\quad t \in [a; b].
+    \]
+    Формально, $\gamma$ есть образ отрезка $[a; b]$ при отображении
+    \[
+        t \in [a; b] \mapsto (x(t), y(t)) \in \R^2.
+    \]
+\end{definition}
+
+\begin{remark}
+    Считаем $x(t), y(t) \in C[a; b]$; в этом случае как сама кривая, так и задающий её путь называется \textit{непрерывными}. Также предполагаем, что $\gamma$ --- простая кривая без кратных точек, что означает следующее. Если $P_1 = (x(t_1), y(t_1))$ и $P_2 = (x(t_2), y(t_2))$ и $t_1 \ne t_2$, то $P_1 \ne P_2$.
+\end{remark}
+
+Разобъём кривую точками $P_i$ ($i = 0, \ldots, m$) на $m$ дуг. Т.\,к. кривая не имеет самопересечений, такому разбиению на дуги однозначно соответствует некоторое разбиение $T = \{\Delta_i = [a_{i - 1}; a_i]\}_{i = 1}^m$ отрезка $[a; b]$. А именно, если $(x_i, y_i)$ --- координаты точек $P_i$, то $x_i = x(a_i)$ и $y_i - y(a_i)$ для $i = 0, \ldots, m$.
+
+Длина хорды, стягивающей дугу $P_{i - 1}P_i$ есть $\abs{P_{i - 1}P_i}$. Длина $\ell(P_0P_1\ldots P_m)$ всей ломаной равна $\sum\limits_{i = 1}^m\abs{P_{i - 1}P_i}$.
+
+\begin{definition}
+    Если $\ell(\gamma) < +\infty$,
+    \[
+        \ell(\gamma) \vcentcolon = \sup_{P_0P_1\ldots P_m}\sum_{i = 1}^m\abs{P_{i - 1}P_i} = \sup_T\sum_{i = 1}^m\abs{P_{i - 1}P_i},
+    \]
+    то кривая $\gamma$ называется \textit{спрямляемой}, а $\ell(\gamma)$ --- её \textit{длиной}.
+\end{definition}
+
+\begin{theorem}[Критерий спрямляемости кривой]
+    Плоская непрерывная кривая
+    \[
+        \gamma:
+        \begin{cases}
+            x = x(t),\\
+            y = y(t)
+        \end{cases}\quad t \in [a; b]
+    \]
+    без кратных точек спрямляема тогда и только тогда, когда $x(t)$ и $y(t)$ --- функции ограниченной вариации.
+\end{theorem}
+
+\begin{proof}
+    $\Rightarrow$. Допустим, $\gamma$ --- спрямляемая кривая, т.\,е.
+    \[
+        \sup_T\sum_{i = 1}^m\abs{P_{i - 1}P_i} = \ell(\gamma) < +\infty.
+    \]
+
+    Тогда имеем
+    \[
+        \sum_{i = 1}^m\abs{x(a_i) - x(a_{i - 1})} \leqslant \sum_{i = 1}^m\abs{P_{i - 1}P_i} \leqslant \sup_T\sum_{i = 1}^m\abs{P_{i - 1}P_i} = \ell(\gamma).
+    \]
+
+    Значит, $\V\limits_a^bx(t) \leqslant \ell(\gamma) < +\infty$, т.\,е. $x(t) \in BV[a; b]$. Аналогично, $y(t) \in BV[a; b]$.
+
+    $\Leftarrow$. Пусть $\V\limits_a^bx(t) < +\infty$ и $\V\limits_a^by(t) < +\infty$. Тогда 
+    \[
+        \sum_{i = 1}^m\abs{P_{i - 1}P_i} \leqslant \sum_{i = 1}^m\abs{x(a_i) - x(a_{i - 1})} + \sum_{i = 1}^m\abs{y(a_i) - y(a_{i - 1})} \leqslant \V_a^bx + \V_a^by.
+    \]
+
+    Значит, $\ell(\gamma) = \sup\limits_T\sum\limits_{i = 1}^m\abs{P_{i - 1}P_i} \leqslant \V\limits_a^b + \V\limits_a^by < +\infty$.
+\end{proof}
+
+\begin{remark}
+    Все неравенства выше --- это просто следствия из неравенства треугольника.
+\end{remark}
+
