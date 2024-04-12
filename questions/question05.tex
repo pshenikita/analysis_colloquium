@@ -53,6 +53,44 @@
 \end{proposal}
 
 \begin{proof}
-    Найду силы --- напишу.
+    \begin{enumerate}
+        \item Проверяем:
+            \begin{align*}
+                \abs{\abs{f(x_i)} - \abs{f(x_2)}} \leqslant \abs{f(x_i) - f(x_2)} \leqslant \omega(f, A),&\qquad x_1, x_2 \in A;\\
+                \omega(\abs{f}, A) = \sup\limits_{x_1, x_2 \in A}\abs{\abs{f(x_1)} - \abs{f(x_2)}} \leqslant \omega(f, A).&
+            \end{align*}
+        \item Проверяем:
+            \begin{multline*}
+                \abs{f(x_1)g(x_1) - f(x_2)g(x_2)} = \abs{f(x_1)(g(x_1) - g(x_2)) + g(x_2)(f(x_1) - f(x_2))} \leqslant\\
+                M\abs{g(x_1) - g(x_2)} + M\abs{f(x_1) - f(x_2)} \leqslant M(\omega(f, A) + \omega(g, A)),\quad x_1, x_2 \in A;
+            \end{multline*}
+            \[
+                \omega(fg, A) = \sup\limits_{x_1, x_2 \in A}\abs{f(x_1)g(x_1) - f(x_2)g(x_2)} \leqslant M(\omega(f, A) + \omega(g, A)).
+            \]
+        \item Если $\alpha = 0$, обе части неравенства равны нулю, и всё доказано. Если $\alpha \ne 0$,
+            \begin{gather*}
+                \abs{\alpha f(x_1) - \alpha f(x_2)} = \abs{\alpha}\abs{f(x_1) - f(x_2)} \leqslant \abs{\alpha}\omega(f, A),\quad x_1, x_2 \in A\\
+                \omega(\alpha f, A) = \sup\limits_{x_1, x_2 \in A}\abs{\alpha f(x_1) - \alpha f(x_2)} \leqslant \abs{\alpha}\omega(f, A)
+            \end{gather*}
+
+            Теперь возьмём любое $\varepsilon > 0$ и отыщем $x_1, x_2 \in A$ такие, что
+            \[
+                \omega(f, A) < \abs{f(x_1) - f(x_2)} + \frac{\varepsilon}{\abs{\alpha}}.
+            \]
+            Тогда
+            \[
+                \abs{\alpha}\omega(f, A) < \abs{\alpha f(x_1) - \alpha f(x_2)} + \varepsilon \leqslant \omega(\alpha f, A) + \varepsilon.\eqno(\star)
+            \]
+
+            Из $(\ast)$ и $(\star)$ вытекает, с учётом произвольности $\varepsilon > 0$, требуемое равенство.
+        \item Проверяем:
+            \begin{multline*}
+                \abs{(f + g)(x_1) - (f + g)(x_2)} \leqslant \abs{f(x_1) - f(x_2)} + \abs{g(x_1) - g(x_2)} \leqslant\\ \leqslant \omega(f, A) + \omega(g, A),\quad x_1, x_2 \in A
+            \end{multline*}
+            \[
+                \omega(f + g, A) = \sup\limits_{x_1, x_2 \in A}\abs{(f + g)(x_1) - (f + g)(x_2)} \leqslant \omega(f, A) + \omega(g, A).
+            \]
+        \item Следствие п.\,3 и 4
+    \end{enumerate}
 \end{proof}
 
