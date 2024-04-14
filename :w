@@ -62,47 +62,4 @@
 Итак, каждое нормированное пространство можно рассматривать как метрическое.
 
 \textbf{Пространство $\R^n$, метрики и нормы на нём}. Рассмотрим множество
-\[
-    \R^n = \left\{(x_1, \ldots, x_n)^t : x_j \in \R\text{ для всех }j = 1, \ldots, n\right\}.
-\]
-
-$\R^n$ является линейным пространством относительно операций умножения вектора на число и сложения двух векторов, которые выполняются покоординатно. Покажем, что $\R^n$ является нормированным пространством, причём существуют разнообразные способы определить норму в $\R^n$ (не только те, что приведены ниже).
-
-Для $x = (x_1, \ldots, x_n)^t$ положим
-\[
-    \norm{x}_1 \vcentcolon = \sum_{i = 1}^n\abs{x_i}
-\]
---- \textit{манхэттенская норма} и 
-\[
-    \norm{x}_\infty \vcentcolon = \max\limits_{i = 1, \ldots, n}\abs{x_i}
-\]
---- \textit{$max$-норма}.
-
-Пожалуй, наиболее распространённой нормой в $\R^n$ является \textit{евклидова норма}
-\[
-    \norm{x}_2 = \sqrt{\sum_{i = 1}^nx_i^2}.
-\]
-
-Она является частным случае целой серии норм. А именно, для любого $p > 1$ положим
-\[
-    \norm{x}_p = \br{\sum_{i = 1}^n\abs{x_i}^p}^{1 / p}.
-\]
-
-Проверим выполнение аксиом нормы для $\norm{\cdot}_p$:
-\[
-    \begin{array}{r l}
-        (1) & \ds\norm{x}_p = \br{\sum_{i = 1}^n\abs{x_i}^p}^{1 / p}
-        \begin{cases}
-            {} > 0,& x \ne 0,\\
-            {} = 0,& x = 0;
-        \end{cases}\\
-        (2) & \ds\br{\sum_{i = 1}^n\abs{\lambda x_i}^p}^{1 / p} = \br{\abs{\lambda}^p\sum_{i = 1}^n\abs{x_i}^p}^{1 / p} = \abs{\lambda}\br{\sum_{i = 1}^n\abs{x_i}^p}^{1 / p} = \abs{\lambda}\norm{x}_p;\\
-        (3) & \ds\norm{x + y}_p = \br{\sum_{i = 1}^n\abs{x_i + y_i}^p}^{1 / p} \overset{\text{нер-во Минковского}}{\leqslant} \br{\sum_{i = 1}^n\abs{x_i}^p}^{1 / p} + \br{\sum_{i = 1}^n\abs{y_i}^p}^{1 / p} = \norm{x}_p + \norm{y}_p.
-    \end{array}
-\]
-
-Нормы $\norm{\cdot}_1$, $\norm{\cdot}_p$ и $\norm{\cdot}_\infty$ порождают метрики
-\begin{gather*}
-    \rho_1(x, y) = \norm{x - y}_1 = \sum_{i = 1}^n\abs{x_i - y_i},\quad\rho_p(x, y) = \norm{x - y}_p = \br{\sum_{i = 1}^n\abs{x_i - y_i}^p}^{1 / p},\\\rho_\infty(x, y) = \norm{x - y}_\infty = \max\limits_{i = 1, \ldots, n}\abs{x_i - y_i}.
-\end{gather*}
 

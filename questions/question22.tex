@@ -1,0 +1,52 @@
+\section{Аддитивность интеграла Римана "---Стилтьеса от непрерывных функций. Связь интегралов Римана "---Стилтьеса и Римана}
+
+\begin{theorem}[Об аддитивности интеграла Римана "---Стилтьеса]
+    Если $f \in C[a; b]$, $G \in BV[a; b]$ и $c \in (a; b)$, то
+    \[
+        (RS)\int\limits_a^bfdG = (RS)\int\limits_a^cfdG + (RS)\int\limits_c^bfdG.
+    \]
+\end{theorem}
+
+\begin{remark}
+    Т.\,к. $G \in Bv[a; b]$ и $a < c < b$, то $G \in BV[a; c] \cap BV[c; b]$, все интегралы в последнем выражении существуют согласно достаточному условию интегрируемости по Риману "---Стилтьесу.
+\end{remark}
+
+\begin{proof}
+    Все интегралы в этом доказательстве понимаем как интегралы в смысле Римана "---Стилтьеса от $f$ по $G$. Возьмём любое $\varepsilon > 0$ и найдём $\delta > 0$ такое, что
+    \[
+        \abs{\mathcal{S}(fdG, T^1\xi^1) - \int\limits_a^cfdG} < \varepsilon,\quad\abs{\mathcal{S}(fdG, T^2\xi^2) - \int\limits_c^bfdG} < \varepsilon,\quad\abs{\mathcal{S}(fdG, T\xi) - \int\limits_a^bfdG} < \varepsilon
+    \]
+    для любых отмеченных $\delta$-разбиений $T^1\xi^1$, $T^2\xi^2$ и $T\xi$ отрезков $[a; c]$, $[c; b]$ и $[a; b]$, соответственно. Возьмём какие-нибудь $T^1\xi^1$ и $T^2\xi^2$ указанного типа. Тогда $T\xi \vcentcolon = T^1\xi^1 \sqcup T^2\xi^2$ --- отмеченное $\delta$-разбиение отрезка $[a; b]$ и, очевидно,
+    \[
+        \mathcal{S}(fdG, T\xi) = \mathcal{S}(fdG, T^1\xi^1) + \mathcal{S}(fdG, T^2\xi^2).
+    \]
+
+    С учётом последнего равенства получаем следующее:
+    \begin{multline*}
+        \abs{\int\limits_a^bfdG - \int\limits_a^cfdG - \int\limits_c^bfdG} =\\ = \abs{\br{\int\limits_a^bfdG - \int\limits_a^cfdG - \int\limits_c^bfdG} - \br{\mathcal{S}(fdG, T\xi) - \mathcal{S}(fdG, T^1\xi^1) - \mathcal{S}(fdG, T^2\xi^2)}} \leqslant\\ \leqslant \abs{\int\limits_a^bfdG - \mathcal{S}(fdG, T\xi)} + \abs{\int\limits_a^cfdG - \mathcal{S}(fdG, T^1\xi^1)} + \abs{\int\limits_c^bfdG - \mathcal{S}(fdG, T^2\xi^2)} < 3\varepsilon.
+    \end{multline*}
+    В силу произвольности выбора $\varepsilon > 0$, последняя цепочка влечёт требуемое.
+\end{proof}
+
+\begin{theorem}[О сведении интеграла Римана "---Стилтьеса к интегралу Римана]
+    Допустим, $f \in R[a; b]$ и $G \in C^{(1)}[a; b]$. Тогда $f$ интегрируема по $G$ на отрезке $[a; b]$ в смысле Римана "---Стилтьеса и
+    \[
+        (RS)\int\limits_a^bf(x)dG(x) = (R)\int\limits_a^bf(x)G^\prime(x)dx.
+    \]
+\end{theorem}
+
+\begin{proof}
+    Берём любое $\varepsilon > 0$. Пользуясь равномерной непрерывностью на отрезке $[a; b]$ функции $G^\prime$, находим $\delta_1 > 0$, для которого $\abs{G^\prime(\varphi_i) - G^\prime(\psi_i)} < \varepsilon$, как только $\abs{\varphi_i - \psi_i} < \delta_1$. Обозначим за $I$ интеграл справа в условии. Подберём $\delta_2 > 0$ так, чтобы $\abs{\mathcal{S}(fG^\prime, T\xi) - I} < \varepsilon$, если $d(T) < \delta_2$.
+
+    Положим $\delta \vcentcolon = \min\{\delta_1, \delta_2\}$ и возьмём произвольное отмеченное $\delta$-разбиение $T\xi = \{\br{[a_{i - 1}; a_i], \xi_i}\}$ отрезка $[a; b]$. Для него
+    \[
+        \abs{\mathcal{S}(fdG, T\xi) - I} \leqslant \abs{\mathcal{S}(fdG, T\xi) - \mathcal{S}(fG^\prime, T\xi)} + \abs{\mathcal{S}(fG^\prime, T\xi) - I},\eqno(\ast)
+    \]
+    причём второе слагаемое справа меньше $\varepsilon$, а первое есть
+    \begin{multline*}
+        \abs{\sum_if(\xi_i)\br{G(a_i) - G(a_{i - 1})} - \sum_if(\xi_i)G^\prime(\xi_i)(a_i - a_{i - 1})} \overset{\text{т.\,Лагранжа}}{=\joinrel=}\\ = \abs{\sum_if(\xi_i)G^\prime(\eta_i)(a_i - a_{i - 1}) - \sum_if(\xi_i)G^\prime(\xi_i)(a_i - a_{i - 1})} =\\ = \abs{\sum_if(\xi_i)\br{G^\prime(\eta_i) - G^\prime(\xi_i)}(a_i - a_{i - 1})} \leqslant \sup\limits_{[a; b]}\abs{f} \cdot \varepsilon(b - a),\quad\eta_i \in (a_{i - 1}; a_i).
+    \end{multline*}
+
+    В итоге левая часть $(\ast)$ меньше $\varepsilon\br{1 + \sup\limits_{[a; b]}\abs{f}(b - a)}$, откуда вытекает требуемое.
+\end{proof}
+

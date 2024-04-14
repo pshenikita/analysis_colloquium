@@ -1,0 +1,98 @@
+\section{Интеграл Римана "---Стилтьеса: определение, линейнойсть, достаточное условие существования, оценка абсолютной величины}
+
+Чтобы определить интеграл Римана "---Стилтьеса, сначала задаётся \textit{интегрирующая функция} ограниченной вариации $G(x): [a; b] \to \R$.
+
+\begin{definition}
+    \textit{Интегральной суммой Римана "---Стилтьеса} функции $f: [a; b] \to \R$ по функции $G \in BV[a; b]$, соответствующей отмеченному разбиению $T\xi = \{\br{[a_{i - 1}; a_i], \xi_i}\}_{i = 1}^m$ отрезка $[a; b]$, называют сумму
+    \[
+        \mathcal{S}(fdG, T\xi) \vcentcolon = \sum_{i = 1}^mf(\xi_i)(G(a_i) - G(a_{i - 1})).
+    \]
+\end{definition}
+
+\begin{definition}[Интеграл Римана "---Стилтьеса]
+    Функция $f: [a; b] \to \R$ \textit{интегрируема в смысле Римана "---Стилтьеса} функции $f: [a; b] \to \R$ по функции $G \in BV[a; b]$ к значению $I \in \R$, если для каждого $\varepsilon > 0$ найдётся $\delta > 0$ такое, что всех отмеченных $\delta$-разбиений $T\xi = \{\br{[a_{i - 1}; a_i], \xi_i}\}_{i = 1}^m$ отрезка $[a; b]$ выполнено неравенство
+    \[
+        \abs{\mathcal{S}(fdG, T\xi) - I} = \abs{\sum_{i = 1}^mf(\xi_i)(G(a_i) - G(a_{i - 1})) - I} < \varepsilon.
+    \]
+    Запись: $\ds (RS)\int\limits_a^bf(x)dG(x) = I$. Число $I$ есть \textit{интеграл Римана "---Стилтьеса} от функции $f$ по функции $G$ по отрезку $[a; b]$.
+\end{definition}
+
+\begin{remark}
+    При $G(x) = x$ интегральная сумма Римана "---Стилтьеса превращается в обычную интегральную сумму Римана $\sum\limits_{i = 1}^mf(\xi_i)(a_i - a_{i - 1})$, а интеграл Римана "---Стилтьеса становится интегралом Римана.
+\end{remark}
+
+\begin{theorem}[Единственность интеграла]
+    Если $\ds (RS)\int\limits_a^bf(x)dG(x)$ существует, то он единственен.
+\end{theorem}
+
+\begin{proof}
+    Допустим, $\ds(RS)\int\limits_a^bf(x)dG(x) = I_1$ и ${} = I_2$, $I_1 \ne I_2$. Возьмём $\varepsilon \vcentcolon = \abs{I_1 - I_2} / 2$ и найдём $\delta_1, \delta_2 > 0$ такие, что для всех отмеченных $\delta_1$- и $\delta_2$-разбиений $T\xi$ отрезка $[a; b]$ выполнено соответственно
+    \[
+        \abs{\mathcal{S}(fdG, T\xi) - I_1} < \varepsilon\quad\text{ и }\quad\abs{\mathcal{S}(fdG, T\xi) - I_2} < \varepsilon.
+    \]
+
+    Тогда для любого отмеченного $\delta$-разбиения $T\xi$, $\delta \vcentcolon = \min\{\delta_1, \delta_2\}$, выполнены оба последних неравенства, что приводит к противоречивому неравенству $\abs{I_1 - I_2} < \abs{I_1 - I_2}$.
+\end{proof}
+
+\begin{theorem}[Линейность интеграла]
+    Интеграл Римана "---Стилтьеса является линейным как по интегрируемой функции, так и по интегрирующей.
+\end{theorem}
+
+\begin{remark}
+    Теорема доказывается по той же схеме, что и для интеграла Римана. Сначала нужно установить линейность интегральных сумм по $f$ и по $G$:
+    \begin{gather*}
+        \mathcal{S}((\alpha_1f_1 + \alpha_2f_2)dG, T\xi) = \alpha_1\mathcal{S}(f_1dG, T\xi) + \alpha_2\mathcal{S}(f_2dG, T\xi),\\
+        \mathcal{S}(fd(\alpha_1G_1 + \alpha_2G_2), T\xi) = \alpha_1\mathcal{S}(fdG_1, T\xi) + \alpha_2\mathcal{S}(fdG_2, T\xi).
+    \end{gather*}
+\end{remark}
+
+\begin{theorem}[Достаточное условие существования интеграла Римана "---Стилтьеса]
+    Если $f \in C[a; b]$, то $f$ интегрируема по Риману "---Стилтьесу на отрезке $[a; b]$ по любой функции $G \in BV[a; b]$.
+\end{theorem}
+
+\begin{proof}
+    Любая функция ограниченной вариации есть разность двух неубывающих функций, поэтому в силу линейности достаточно провести доказательство для неубывающих $G$.
+
+    Итак, пусть $G$ не убывает. Для каждого разбиения $T = \{[a_{i - 1}; a_i]\}$ отрезка $[a; b]$ составим \textit{нижнюю} и $\textit{верхнюю суммы Дарбу}$ для интеграла Римана "---Стилтьеса $\ds\int\limits_a^bfdG$:
+    \begin{gather*}
+        s(fdG, T) = \sum_im_i\br{G(a_i) - G(a_{i - 1})},\quad m_i \vcentcolon = \min\limits_{[a_{i - 1}; a_i]}f;\\
+        S(fdG, T) = \sum_iM_i\br{G(a_i) - G(a_{i - 1})},\quad M_i \vcentcolon = \max\limits_[a_{i - 1}; a_i]f.
+    \end{gather*}
+
+    Почти дословно повторяя рассуждения, изложенные выше, несложно доказать, что
+    \[
+        s(fdG, T) \leqslant S(fdG, \widetilde{T})\text{ для любых разбиений $T$ и $\widetilde{T}$ отрезка $[a; b]$}
+    \]
+    (здесь существенно, что $G$ не убывает). Положим $I \vcentcolon = \sup\limits_Ts(fdG, T)$ и покажем, что $\ds\int\limits_a^bfdG = I$.
+
+    Берём любое $\varepsilon > 0$. Пользуясь равномерной непрерывностью на $[a; b]$ функции $f$, отыщем $\delta > 0$ такое, что
+    \[
+        \abs{f(x_1) - f(x_2)} < \varepsilon\text{ как только }\abs{x_1 - x_2} < \delta.
+    \]
+
+    Возьмём любое $\delta$-разбиение $T = \{[a_{i - 1}; a_i]\}$ отрезка $[a; b]$ и любой набор $\xi$ меток к нему. Имеем:
+    \[
+        s(fdG, T) \leqslant \mathcal{S}(fdG, T\xi) \leqslant S(fdG, T),\quad s(fdG, T) \leqslant I \leqslant S(fdG, T).\eqno(\ast)
+    \]
+    Кроме того,
+    \[
+        S(fdG, T) - s(fdG, T) = \sum_i(M_i - m_i)(G(a_i) - G(a_{i - 1})) < \varepsilon\sum_i(G(a_i) - G(a_{i - 1})) = \varepsilon(G(b) - g(a)).
+    \]
+
+    Отсюда и из $(\ast)$ получаем $\abs{\mathcal{S}(fdG, T\xi) - I} < \varepsilon(G(b) - G(a))$. Следовательно, $f$ интегрируема по $G$ на отрезке $[a; b]$ и $\ds(RS)\int\limits_a^bfdG = I$.
+\end{proof}
+
+\begin{theorem}[Оценка абсолютной величины интеграла Римана "---Стилтьеса]
+    Если $f \in B[a; b]$, $G \in BV[a; b]$ и существует $\ds(RS)\int\limits_a^bfdG$, то
+    \[
+        (RS)\int\limits_a^bfdG \leqslant \sup\limits_{[a; b]}\abs{f}\cdot \V\limits_a^bG.
+    \]
+\end{theorem}
+
+\begin{proof}
+    Вытекает из цепочки
+    \[
+        \abs{\mathcal{S}(fdG, T\xi)} \leqslant \abs{\sum_{T\xi}f(\xi_i)(G(a_i) - G(a_{i - 1}))} \leqslant \sup\limits_{[a; b]}\abs{f} \cdot \sum_T\abs{G(a_i) - G(a_{i - 1})} \leqslant \sup\limits_{[a; b]}\abs{f} \cdot \V\limits_a^b G.
+    \]
+\end{proof}
+
