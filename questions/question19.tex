@@ -1,0 +1,144 @@
+\section{Вычисление длин кривых и площадей в полярных координатах}
+
+\begin{theorem}[О длине кривой в полярных координатах]
+    Пусть кривая $\gamma$ задана в полярных координатах функцией $r = r(\varphi)$, $\varphi \in [\alpha; \beta]$. Считаем $r(\varphi) \in C^{(1)}[\alpha; \beta]$. Тогда
+    \[
+        \ell(\gamma) = \int\limits_\alpha^\beta\sqrt{\br{r^\prime(\varphi)}^2 + r^2(\varphi)}d\varphi.
+    \]
+\end{theorem}
+
+\begin{proof}
+    Равенства $x = r\cos\varphi$ и $y = r\sin\varphi$ связывают декартовы координаты с полярными, поэтому можно считать, что $\gamma$ параметризована параметром $\varphi$ так:
+    \[
+        \varphi:
+        \begin{cases}
+            x = x(\varphi) \vcentcolon = r(\varphi)\cos\varphi,\\
+            y = y(\varphi) \vcentcolon = r(\varphi)\sin\varphi
+        \end{cases}\quad \varphi \in [\alpha; \beta].
+    \]
+
+    Т.\,к. $r(\varphi) \in C^{(1)}[\alpha; \beta]$, то $x(\varphi), y(\varphi) \in C^{(1)}[\alpha; \beta]$. По теореме о длине гладкой кривой $\gamma$ спрямляема и
+    \[
+        \ell(\gamma) = \int\limits_\alpha^\beta\sqrt{(x^\prime(\varphi))^2 + (y^\prime(\varphi))^2}d\varphi.
+    \]
+    Вычислим $x^\prime(\varphi)$ и $y^\prime(\varphi)$:
+    \begin{gather*}
+        x^\prime(\varphi) = (r(\varphi)\cos\varphi)^\prime = r^\prime(\varphi) - r(\varphi)\sin\varphi;\\
+        y^\prime(\varphi) = (r(\varphi)\sin\varphi)^\prime = r^\prime(\varphi)\sin\varphi + r(\varphi)\cos\varphi;\\
+        (x^\prime(\varphi))^2 + (y^\prime(\varphi))^2 = \br{r^\prime(\varphi)\cos\varphi - r(\varphi)\sin\varphi}^2 + \br{r^\prime(\varphi)\sin\varphi - r(\varphi)\cos\varphi}^2 = (r^\prime(\varphi))^2 + (r(\varphi))^2.
+    \end{gather*}
+
+    Подставив в формулу длины гладкой кривой, получаем требуемое.
+\end{proof}
+
+\begin{theorem}[О площади плоских фигур в полярных координатах]
+    Пусть на отрезка $[\varphi_1; \varphi_2] \subset [0; 2\pi]$ задана непрерывная функция $r(\varphi) \in R[\varphi_1; \varphi_2]$. Рассмотрим в полярной системе кординат криволинейный сектор $OAB$, ограниченный графиком функции $r(\varphi)$ и лучами $\varphi = \varphi_1$ и $\varphi = \varphi_2$. Тогда площадь этого сектора равна
+    \[
+        S(OAB) = \frac{1}{2}\int\limits_{\varphi_1}^{\varphi_2}r^2(\varphi)d\varphi.
+    \]
+\end{theorem}
+
+\begin{proof}
+    Рассмотрим произвольное разбиение $T = \{[a_{i - 1}; a_i]\}_{i = 1}^m$ отрезка $[\varphi_1; \varphi_2]$. Ему соответствуют точки $P_i(a_i, r(a_i))$ на кривой $AB$.
+
+    % \begin{wrapfigure}{r}{0.3\textwidth}
+        \begin{center}
+            \begin{asy}
+                size(5.5cm);
+                import graph;
+                import geometry;
+
+                real r(real phi)
+                {
+                    return 2 * phi;
+                }
+
+                path s = polargraph(r, pi / 6, pi / 3);
+                pair o = (0, 0), a = point(s, 0), b = point(s, 100);
+                fill(o--s--cycle, palecyan);
+                draw(s, currentpen + 1);
+
+                dot("$A$", a, dir(-90));
+                dot("$B$", b, dir(45 + 90));
+                dot("$O$", o, dir(-90));
+
+                draw(o--a^^o--b);
+                draw((-0.1, 0)--(1, 0), Arrow(HookHead, 1.5mm));
+                markangle(Label("$\varphi_1$", Relative(0.5)), n=1, radius=20, (1, 0), o, a);
+                markangle(Label("$\varphi_2$", Relative(0.75)), n=2, radius=45, (1, 0), o, b);
+            \end{asy}
+            \hspace{2cm}
+            \begin{asy}
+                size(5.5cm);
+                import graph;
+                import geometry;
+
+                real r(real phi)
+                {
+                    return 2 * phi;
+                }
+
+                path s = polargraph(r, pi / 6, pi / 3);
+                pair o = (0, 0), a = point(s, 0), b = point(s, 100);
+                fill(o--s--cycle, palecyan);
+                draw(s, currentpen + 1);
+
+                dot("$A = P_0$", a, dir(-60));
+                dot("$B = P_m$", b, dir(90));
+                dot("$P_1$", point(s, 20), dir(0));
+                dot("$P_{i - 1}$", point(s, 40), dir(0));
+                dot("$P_i$", point(s, 60), dir(0));
+                dot("$P_{m - 1}$", point(s, 80), dir(0));
+                dot("$O$", o, dir(-90));
+                for (int i = 20; i < 100; i += 20)
+                    draw(o--point(s, i));
+
+                draw(o--a^^o--b);
+                draw((-0.1, 0)--(1, 0), Arrow(HookHead, 1.5mm));
+            \end{asy}
+            \hspace{2cm}
+            \begin{asy}
+                size(5.5cm);
+                import graph;
+                import geometry;
+
+                real r(real phi)
+                {
+                    return 2 * phi;
+                }
+
+                path s = polargraph(r, pi / 6, pi / 3);
+                pair o = (0, 0), a = point(s, 0), b = point(s, 100);
+                path s1 = arc((0, 0), r=length(a), angle1=60, angle2=30);
+                path s2 = arc((0, 0), r=length(b), angle1=60, angle2=30);
+                fill(o--s2--cycle, 0.7 * white + 0.3 * orange);
+                fill(o--s1--cycle, palecyan);
+                draw(s, currentpen + 1);
+
+                dot("$P_i$", a, dir(-60));
+                dot("$P_{i + 1}$", b, dir(90));
+                dot("$O$", o, dir(-90));
+
+                draw(s1^^s2);
+                draw(o--b^^o--point(s2, 100));
+                draw((-0.1, 0)--(1, 0), Arrow(HookHead, 1.5mm));
+            \end{asy}
+        \end{center}
+    % \end{wrapfigure}
+
+    Тогда (аддитивность функции площади) $S(OAB) = \sum\limits_{i = 1}^mS(OP_{i - 1}P_i)$. Каждый криволинейный сектор $OP_{i - 1}P_i$ содержит сектор круга с вершиной $O$ и двумя радиусами длины $\inf\limits_{\varphi \in [a_{i - 1}; a_i]}r(\varphi)$, лежащими на лучах $OP_{i - 1}$ и $OP_i$. В то же время, $OP_{i - 1}P_i$ лежит в секторе круга с вершиной $O$ и двумя радиусами длины $\sup\limits_{\varphi \in a_{i - 1}; a_i]}r(\varphi)$, лежащими на лучах $OP_{i - 1}$ и $OP_i$. Значит (монотонность функции площади) верна оценка
+    \begin{gather*}
+        m_i(a_i - a_{i - 1}) \leqslant S(OP_{i - 1}P_i) \leqslant M_i(a_i - a_{i - 1}),\\
+        m_i \vcentcolon = \inf\limits_{\varphi \in [a_{i - 1}; a_i]}\frac{1}{2}r^2(\varphi),\quad M_i \vcentcolon = \sup\limits_{\varphi \in [a_{i - 1}; a_i]}\frac{1}{2}r^2(\varphi).
+    \end{gather*}
+    Складываем по $i$:
+    \begin{gather*}
+        \sum_{i = 1}^mm_i(a_i - a_{i - 1}) \leqslant \sum_{i = 1}^mS(OP_{i - 1}P_i) \leqslant \sum_{i = 1}^mM_i(a_i - a_{i - 1});\\
+        s\br{\frac{r^2}{2}, T} \leqslant S(OAB) \leqslant S\br{\frac{r^2}{2}, T};\\
+        \sup\limits_Ts\br{\frac{r^2}{2}, T} \leqslant S(OAB) \leqslant \inf\limits_TS\br{\frac{r^2}{2}, T};\\
+        (D)\lowint\limits_{\varphi_1}^{\varphi_2}\frac{r^2(\varphi)}{2}d\varphi \leqslant S(OAB) \leqslant (D)\upint\limits_{\varphi_1}^{\varphi_2}\frac{r^2(\varphi)}{2}d\varphi.
+    \end{gather*}
+
+    Заметим, что (критерий Дарбу) $\ds(D)\lowint\limits_{\varphi_1}^{\varphi_2}\frac{r^2(\varphi)}{2}d\varphi = (D)\upint\limits_{\varphi_1}^{\varphi_2}\frac{r^2(\varphi)}{2}d\varphi = \int\limits_{\varphi_1}^{\varphi_2}\frac{r^2(\varphi)}{2}d\varphi$, отсюда получаем требуемое.
+\end{proof}
+

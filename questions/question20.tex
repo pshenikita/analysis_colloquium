@@ -1,0 +1,75 @@
+\section{Площади плоских фигур в прямоугольных координатах. Объёмы тел вращения}
+
+Пусть заданы функции $y(t) \in C[\alpha; \beta]$ и $x(t) \in C^{(1)}[\alpha; \beta]$, причём $y(t) \geqslant 0$ $\forall t \in [\alpha; \beta]$, а $x(t)$ возрастает на $[\alpha; \beta]$. Рассмотрим плоскую кривую
+\[
+    \gamma:
+    \begin{cases}
+        x = x(t),\\
+        y = y(t)
+    \end{cases}\quad t \in [\alpha; \beta].
+\]
+
+Т.\,к. функция $x(t)$ возрастает, то $a < b$, где $a \vcentcolon = x(\alpha)$, $b \vcentcolon = x(\beta)$, а также
+\[
+    \forall (x, y) \in \gamma\ \exists ! t \in [\alpha; \beta]: (x = x(t) \wedge y = y(t)).
+\]
+Отсюда вытекает, в частности, что $\gamma$ --- кривая без самопересечений.
+
+Снова воспользуемся тем, что функция $x(t): [\alpha; \beta] \to [a; b]$ возрастает. Т.\,к. она ещё и непрерывна, то (теорема об обратной функции) найдётся непрерывная обратная функция $t = t(x): [a; b] \to [\alpha; \beta]$. Покажем, что $\gamma$ --- график функции $y = f(x): [a; b] \to \R$, где $f(x) \vcentcolon = (y \circ t)(x)$.
+
+В самом деле,
+\[
+    (x, y) \in \gamma \Leftrightarrow \exists ! t \in [\alpha; \beta]: \br{x = x(t) \wedge y = y(t)} \Leftrightarrow f(x) = (y \circ t)(x).
+\]
+
+\begin{theorem}[О площади плоских фигур в прямоугольных координатах]
+    Площадь криволинейной трапеции с параметричеси заданной верхней границей равна
+    \[
+        S(A(f, [a; b])) = \int\limits_\alpha^\beta y(t)x^\prime(t)dt.
+    \]
+\end{theorem}
+
+\begin{proof}
+    Площадь этой криволинейной трапеции равна $\ds S(A(f, [a; b])) = \int\limits_a^bf(x)dx$. Применим теорему о замене переменной в интеграле Римана
+    \[
+        \int\limits_a^bf(x)dx = \int\limits_\alpha^\beta(f \circ x)(t)x^\prime(t)dt = \int\limits_\alpha^\beta(y \circ t \circ x)(t)x^\prime(t)dt = \int\limits_\alpha^\beta y(t)x^\prime(t)dt.
+    \]
+\end{proof}
+
+\begin{theorem}[Об объёме тела вращения]
+    Пусть $f \in C[a; b]$ и $f(x) \geqslant 0$ $\forall x \in [a; b]$. Рассмотрим криволинейную трапецию $A(f, [a; b])$; будем вращать её вокруг отрезка $[a; b]$. Тогда объём получающегося при этом тела равен
+    \[
+        V_f(a, b) = \pi\int\limits_a^bf^2(x)dx.
+    \]
+\end{theorem}
+
+\begin{proof}
+    Обозначим за $V_f(c, d)$ объём тела, полученного вращением криволинейной трапеции $A(f, [c; d])$ вокруг отрезка $[c; d] \subseteq [a; b]$. Возьмём произвольное разбиение $T = \{[a_{i - 1}; a_i]\}_{i = 1}^m$ отрезка $[a; b]$. Ему соответствуют точки $P_i(a_i, r(a_i))$ на кривой стороне $AB$. По свойству аддитивности объёма:
+    \[
+        V_f(a, b) = \sum_{i = 1}^mV_f(a_{i - 1}, a_i).
+    \]
+
+    Согласно свойству монотонности объёма, величины $V_f(a_{i - 1}, a_i)$ оцениваются через объёмы вписанного и описанного цилиндров:
+    \begin{gather*}
+        \sum_{i = 1}^m\pi m_i^2(a_i - a_{i - 1}) \leqslant \sum_{i = 1}^m V_f(a_{i - 1}, a_i) = V_f(a, b) \leqslant \sum_{i = 1}^m\pi M_i^2(a_i - a_{i - 1}),\\
+        m_i \vcentcolon = \inf\limits_{x \in [a_{i - 1}; a_i]}f(x),\quad M_i \vcentcolon = \sup\limits_{x \in [a_{i - 1}; a_i]}f(x).
+    \end{gather*}
+
+    Объём цилиндра есть произведение площади круга на высоту цилиндра. Перепишем неравенство выше, перейдя к суммам и интегралам Дарбу:
+    \[
+        \pi \cdot s(f^2(x), T) \leqslant V(a, b) \leqslant \pi \cdot S(f^2(x), T),
+    \]
+    откуда
+    \[
+        \pi \cdot (D)\lowint\limits_a^b f^2(x)dx \leqslant V(a, b) \leqslant \pi \cdot (D)\upint\limits_a^b f^2(x)dx.
+    \]
+    Имеем (критерий Дарбу):
+    \[
+        \pi \cdot (D)\lowint\limits_a^b f^2(x)dx = \pi \cdot (D)\upint\limits_a^b f^2(x)dx = \pi \cdot \int\limits_a^b f^2(x)dx.
+    \]
+    В итоге,
+    \[
+        V(a, b) = \pi \int\limits_a^bf^2(x)dx.
+    \]
+\end{proof}
+

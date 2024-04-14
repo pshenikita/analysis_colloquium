@@ -17,16 +17,16 @@
 
 \begin{proof}
     Для каждого разбиения $T\xi = \{(\Delta_i, \xi_i)\}$ отрезка $[a; b]$ имеем:
-    \[
-        \mathcal{S}(\alpha f + \beta g, T\xi) = \sum_i\br{\alpha f(\xi_i) + \beta g(\xi_i)}\abs{\Delta_i} = \alpha\sum_i f(\xi_i)\abs{\Delta_i} + \beta\sum_i g(\xi_i)\abs{\Delta_i} = \alpha\mathcal{S}(f, T\xi) + \beta\mathcal{S}(g, T\xi).
-    \]
+    \begin{multline*}
+        \mathcal{S}(\alpha f + \beta g, T\xi) = \sum_i\br{\alpha f(\xi_i) + \beta g(\xi_i)}\abs{\Delta_i} = \alpha\sum_i f(\xi_i)\abs{\Delta_i} + \beta\sum_i g(\xi_i)\abs{\Delta_i} =\\ = \alpha\mathcal{S}(f, T\xi) + \beta\mathcal{S}(g, T\xi).
+    \end{multline*}
     Пусть $\varepsilon > 0$, $\ds I_f \vcentcolon = \int\limits_a^bf$, $\ds I_g \vcentcolon = \int\limits_a^bg$. По определению, существует $\delta > 0$ такое, что
     \[
         \abs{\mathcal{S}(f, T\xi) - I_f} < \varepsilon\text{ и }\abs{\mathcal{S}(g, T\xi) - I_g} < \varepsilon
     \]
     для всех отмеченных $\delta$-разбиений $T\xi$ отрезка $[a; b]$. Для тех же $T\xi$
     \begin{multline*}
-        \abs{\mathcal{S}(\alpha f + \beta g, T\xi) - (\alpha I_f + \beta I_g)} = \abs{\alpha \mathcal{S}(f, T\xi) + \beta\mathcal{S}(g, T\xi) - (\alpha I_f + \beta I_g)} \leqslant\\\leqslant \abs{\alpha}\abs{\mathcal{S} - I_f} + \abs{\beta}\abs{\mathcal{S}(g, T\xi) - I_g} < \br{\abs{\alpha} + \abs{\beta}}\varepsilon.
+        \abs{\mathcal{S}(\alpha f + \beta g, T\xi) - (\alpha I_f + \beta I_g)} = \abs{\alpha \mathcal{S}(f, T\xi) + \beta\mathcal{S}(g, T\xi) - (\alpha I_f + \beta I_g)} \leqslant\\\leqslant \abs{\alpha}\abs{\mathcal{S}(f, T\xi) - I_f} + \abs{\beta}\abs{\mathcal{S}(g, T\xi) - I_g} < \br{\abs{\alpha} + \abs{\beta}}\varepsilon.
     \end{multline*}
     Это и значит, что утверждение теоремы верно.
 \end{proof}

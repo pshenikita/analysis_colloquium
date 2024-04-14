@@ -9,10 +9,10 @@
 
 Если $f$ ограничена на $A$, то величина $\omega(f, A)$ конечна. В самом деле, ограниченность означает существование $C > 0$ такого, что $|f(x)| \leqslant C$ для любого $x \in A$. В этом случае
 \[
-    \forall x_1, x_2 \in A\;\abs{f(x_1) - f(x_2)} \leqslant |f(x_1)| + |f(x_2)| \leqslant 2C \Rightarrow w(f, A) \leqslant 2C.
+    \forall x_1, x_2 \in A\ \abs{f(x_1) - f(x_2)} \leqslant |f(x_1)| + |f(x_2)| \leqslant 2C \Rightarrow \omega(f, A) \leqslant 2C.
 \]
 
-Напротив, если $f$ не ограничена на $A$, то $w(f, A) = +\infty$, т.\,к. можно, фиксировав $x_2$, за счёт выбора $x_1$ сделать величину $\abs{f(x_1) - f(x_2)}$ больше любого наперёд заданного $C$.
+Напротив, если $f$ не ограничена на $A$, то $\omega(f, A) = +\infty$, т.\,к. можно, фиксировав $x_2$, за счёт выбора $x_1$ сделать величину $\abs{f(x_1) - f(x_2)}$ больше любого наперёд заданного $C$.
 
 \begin{proposal}
     Если $f$ ограничена на множестве $A$, то
@@ -56,7 +56,7 @@
     \begin{enumerate}
         \item Проверяем:
             \begin{align*}
-                \abs{\abs{f(x_i)} - \abs{f(x_2)}} \leqslant \abs{f(x_i) - f(x_2)} \leqslant \omega(f, A),&\qquad x_1, x_2 \in A;\\
+                \abs{\abs{f(x_1)} - \abs{f(x_2)}} \leqslant \abs{f(x_1) - f(x_2)} \leqslant \omega(f, A),&\qquad x_1, x_2 \in A;\\
                 \omega(\abs{f}, A) = \sup\limits_{x_1, x_2 \in A}\abs{\abs{f(x_1)} - \abs{f(x_2)}} \leqslant \omega(f, A).&
             \end{align*}
         \item Проверяем:

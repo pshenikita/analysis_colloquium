@@ -33,7 +33,7 @@
 \end{theorem}
 
 \begin{proof}
-    Из интегрируемости $f$ вытекает (теорема Дарбу) существование разбиения $T$ такого, что $\omega(f, T) < \varepsilon$. Добавим к набору точек, порождающих $T$, точки $c$ и $d$. Получим более мелкое разбиение $\widetilde{T}$ отрезка $[a; b]$ (для него $\omega(f, \widetilde{T}) < \omega(f, T) < \varepsilon$), содержащее в себе разбиение $\widetilde{T}^0$ отрезка $[c; d]$. Получаем
+    Из интегрируемости $f$ вытекает (теорема Дарбу) существование разбиения $T$ такого, что $\omega(f, T) < \varepsilon$. Добавим к набору точек, порождающих $T$, точки $c$ и $d$. Получим более мелкое разбиение $\widetilde{T}$ отрезка $[a; b]$ (для него $\omega(f, \widetilde{T}) \leqslant \omega(f, T) < \varepsilon$), содержащее в себе разбиение $\widetilde{T}^0$ отрезка $[c; d]$. Получаем
     \[
         \varepsilon > \omega(f, \widetilde{T}) = \sum_{\Delta \in \widetilde{T}^0}\br{\sup\limits_{\Delta}f - \inf\limits_{\Delta}}\abs{\Delta} + \sum_{\Delta \notin \widetilde{T}^0}\br{\sup\limits_{\Delta}f - \inf\limits_{\Delta}f}\abs{\Delta} \geqslant \sum_{\Delta \in \widetilde{T}^0}\br{\sup\limits_{\Delta}f - \inf\limits_{\Delta}}\abs{\Delta} = \omega(f, \widetilde{T}^0).
     \]
@@ -52,9 +52,9 @@
 \begin{lemma}
     Если $f$ ограничена на отрезке $[a; b]$ и $a < c < b$, то
     \[
-        (D)\lowint_a^b = (D)\lowint_a^cf + (D)\lowint_c^bf,\eqno(\ast)
+        (D)\lowint_a^bf = (D)\lowint_a^cf + (D)\lowint_c^bf,\eqno(\ast)
     \]
-    и аналогичное равенство справедливо для верхний интегралов Дарбу.
+    и аналогичное равенство справедливо для верхних интегралов Дарбу.
 \end{lemma}
 
 \begin{proof}
@@ -64,14 +64,15 @@
     \]
     Для разбиений $T = T^1 \sqcup T^2$ отрезка $[a; b]$ имеем:
     \begin{multline*}
-        (D)\lowint_a^bf \geqslant s(f, T) = \sum_{\Delta_i \in T}\inf\limits_{\Delta_i}\cdot\abs{\Delta_i} = \sum_{\Delta_i \in T^1}\inf\limits_{\Delta_i}\cdot\abs{\Delta_i} + \sum_{\Delta_i \in T^2}\inf\limits_{\Delta_i}\cdot\abs{\Delta_i} =\\ = s(f, T^1) + s(f, T^2) > (D)\lowint_a^cf + (D)\lowint_c^bf - 2\varepsilon.
+        (D)\lowint_a^bf \geqslant s(f, T) = \sum_{\Delta_i \in T}\inf\limits_{\Delta_i}f\cdot\abs{\Delta_i} = \sum_{\Delta_i \in T^1}\inf\limits_{\Delta_i}f\cdot\abs{\Delta_i} + \sum_{\Delta_i \in T^2}\inf\limits_{\Delta_i}f\cdot\abs{\Delta_i} =\\ = s(f, T^1) + s(f, T^2) > (D)\lowint_a^cf + (D)\lowint_c^bf - 2\varepsilon.
     \end{multline*}
     Т.\,к. $\varepsilon > 0$ произвольно, левая часть $(\ast)$ не меньше правой.
 
-    Снова зададимся произвольным $\varepsilon > 0$ и найдём разбиение $T$ отрезка $[a; b]$ такое, что
+    Снова возьмём произвольное $\varepsilon > 0$ и найдём разбиение $T$ отрезка $[a; b]$ такое, что
     \[
         s(f, T) > (D)\lowint_a^bf - \varepsilon.
     \]
+
     Если в набор точек, порождающих $T$, не входила точка $c$, добавим её и получим новое, более мелкое разбиение (оставим ему старое название $T$), для которого тем более верно последнее неравенство (при измельчении разбиения нижние суммы Дарбу могут только возрасти). Разбиение $T$ есть $T^1 \sqcup T^2$, где $T^1$ --- разбиение отрезка $[a; c]$, а $T^2$ --- разбиение отрезка $[c; b]$. Имеем:
     \[
         (D)\lowint_a^bf < s(f, T) + \varepsilon = s(f, T^1) + s(f, T^2) + \varepsilon \leqslant (D)\lowint_a^cf + (D)\lowint_c^bf + \varepsilon.

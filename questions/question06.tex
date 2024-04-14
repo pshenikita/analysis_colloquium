@@ -35,7 +35,7 @@
         \omega(f, \widetilde{T}) = S(f, \widetilde{T}) - s(f, \widetilde{T}) \leqslant S(f, T_2) - s(f, T_1) < \varepsilon.
     \]
 
-    $(3) \Rightarrow (1)$. Т.\,к. функция $f: [a; b] \to \R$ ограничена, найдётся $M > 0$ такое, что $\abs{f(x)} \leqslant M$ для всех $x \in [a; b]$. Выберем любое $\varepsilon > 0$ и найдём разбиение $\widetilde{T} = \{\sqbr{a_{i - 1}, a_i}\}_{i = 1}^m$ отрезка $[a; b]$ такое, что $\omega(f, \widetilde{T}) < \varepsilon$ . Положим $\delta \vcentcolon = \varepsilon / m$ и рассмотрим все концы, исключая крайние, отрезков из $\widetilde{T}$, т.\,е. точки $a_1, \ldots, a_{m - 1}$. Окружим каждую из них $\delta$-окрестностью и $2\delta$-корестностью и возьмём объединения
+    $(3) \Rightarrow (1)$. Т.\,к. функция $f: [a; b] \to \R$ ограничена, найдётся $M > 0$ такое, что $\abs{f(x)} \leqslant M$ для всех $x \in [a; b]$. Выберем любое $\varepsilon > 0$ и найдём разбиение $\widetilde{T} = \{\sqbr{a_{i - 1}, a_i}\}_{i = 1}^m$ отрезка $[a; b]$ такое, что $\omega(f, \widetilde{T}) < \varepsilon$ . Положим $\delta \vcentcolon = \varepsilon / m$ и рассмотрим все концы, исключая крайние, отрезков из $\widetilde{T}$, т.\,е. точки $a_1, \ldots, a_{m - 1}$. Окружим каждую из них $\delta$-окрестностью и $2\delta$-окрестностью и возьмём объединения
     \[
         A \vcentcolon = \bigcup_{i = 1}^{m - 1}(a_i - \delta, a_i + \delta),\quad
         B \vcentcolon = \bigcup_{i = 1}^{m - 1}(a_i - 2\delta, a_i + 2\delta),\quad
@@ -43,18 +43,18 @@
 
     Пусть $T\xi = \{(\Delta_j, \xi_j)\}$ --- произвольное отмеченное $\delta$-разбиение отрезка $[a; b]$. Если $\xi_j \in A$, то $\Delta_j \subset B$. Если же $\xi_j \in [a; b] \setminus A$, то $\Delta_j \subset \sqbr{a_{i - 1}, a_i}$ для некоторого $i$. Имеем:
     \begin{multline*}
-        \omega(f, T) = \sum_{j}\omega(f, \Delta_j)\abs{\Delta_j} = \sum_{\xi_j \in A}\omega(f, \Delta_j)\abs{\Delta_j} + \sum_{\xi_j \notin A}\omega(f, \Delta_j)\abs{\Delta_j} \leqslant\\ \leqslant 2M \cdot 4\delta m + \sum_{i = 1}^m\sum_{\Delta_j \subset \sqbr{a_{i - 1}, a_i}}\omega(f, \Delta_j)\abs{\Delta_j} = 8M\varepsilon + \sum_{i = 1}^m\omega(f, \sqbr{a_{i - 1}, a_i})\sum_{\Delta_j \subset \sqbr{a_{i - 1}, a_i}}\abs{\Delta_j} \leqslant\\ \leqslant 8M\varepsilon + \sum_{i = 1}^m \omega(f, \sqbr{a_{i - 1}, a_i})(a_i - a_{i - 1}) \leqslant 8M\varepsilon + \omega(f, \widetilde{T}) < \varepsilon C,\quad C \vcentcolon = 8M + 1.
+        \omega(f, T) = \sum_{j}\omega(f, \Delta_j)\abs{\Delta_j} = \sum_{\xi_j \in A}\omega(f, \Delta_j)\abs{\Delta_j} + \sum_{\xi_j \notin A}\omega(f, \Delta_j)\abs{\Delta_j} \leqslant\\ \leqslant 2M \cdot 4\delta m + \sum_{i = 1}^m\sum_{\Delta_j \subset \sqbr{a_{i - 1}, a_i}}\omega(f, \Delta_j)\abs{\Delta_j} \leqslant 8M\varepsilon + \sum_{i = 1}^m\omega(f, \sqbr{a_{i - 1}, a_i})\sum_{\Delta_j \subset \sqbr{a_{i - 1}, a_i}}\abs{\Delta_j} \leqslant\\ \leqslant 8M\varepsilon + \sum_{i = 1}^m \omega(f, \sqbr{a_{i - 1}, a_i})(a_i - a_{i - 1}) \leqslant 8M\varepsilon + \omega(f, \widetilde{T}) < \varepsilon C,\quad C \vcentcolon = 8M + 1.
     \end{multline*}
 
     Таким образом, $\omega(f, T) < \varepsilon C$. Положим $\ds I \vcentcolon = (D)\lowint_a^bf(x)dx$ (можно взять и верхний). Имеем:
     \[
         s(f, T) \leqslant \mathcal{S}(f, T\xi) \leqslant S(f, T),\quad s(f, T) \leqslant I \leqslant (D)\upint_a^bf(x)dx \leqslant S(f, T).
     \]
-    Отсюда $\abs{\mathcal{S}(f, T\xi) - I} < S(f, T) - s(f, T) = \omega(f, T) < \varepsilon C$. Т.\,к. $\varepsilon > 0$ и отмеченное $\delta$-разбиение $T\xi$ произвольные, а $C > 0$ от них не зависит, то $f \in R[a; b]$ и $\ds (R)\int_a^bf(x)dx = I$.
+    Отсюда $\abs{\mathcal{S}(f, T\xi) - I} < S(f, T) - s(f, T) = \omega(f, T) < \varepsilon C$. Т.\,к. $\varepsilon > 0$ и отмеченное $\delta$-разбиение $T\xi$ произвольные, а $C > 0$ от них не зависит, то $f \in R[a; b]$ и $\ds (R)\int\limits_a^bf(x)dx = I$.
 \end{proof}
 
 \begin{corollary}[Критерий Дарбу интегрируемости по Риману]
-    Если функция $f: [a; b] \to \R$ ограничена, то $\ds\exists (R)\int_a^bf(x)dx = I \Leftrightarrow \exists (D)\int_a^bf(x)dx = I$.
+    Если функция $f: [a; b] \to \R$ ограничена, то $\ds\exists (R)\int\limits_a^bf(x)dx = I \Leftrightarrow \exists (D)\int\limits_a^bf(x)dx = I$.
 \end{corollary}
 
 \begin{statement}
@@ -71,7 +71,7 @@
 \begin{proof}
     В самом деле, возьмём произвольное разбиение $T = \{\Delta_i\}$ отрезка $[a; b]$. В каждом отрезке $\Delta_i$ есть точки как из $\Q$, так и не из $\Q$. Следовательно,
     \[
-        s(\operatorname{Dir}, T) = \sum_i\inf\limits_{\Delta_i}\operatorname{Dir} \cdot \abs{\Delta_i} = 0,\quad S(\operatorname{Dir}, T) = \sum_i\sup\limits_{\Delta_i}\operatorname{Dir} \cdot \abs{\Delta_i} = \sum_i 1 \cdot \Delta_i = b - a.
+        s(\operatorname{Dir}, T) = \sum_i\inf\limits_{\Delta_i}\operatorname{Dir} \cdot \abs{\Delta_i} = 0,\quad S(\operatorname{Dir}, T) = \sum_i\sup\limits_{\Delta_i}\operatorname{Dir} \cdot \abs{\Delta_i} = \sum_i 1 \cdot \abs{\Delta_i} = b - a.
     \]
     Значит, $\ds(D)\lowint\limits_a^b\operatorname{Dir} = 0$ и $\ds (D)\upint\limits_a^b\operatorname{Dir} = b - a$. Несовпадение интегралов даёт $f \notin R[a; b]$.
 \end{proof}
