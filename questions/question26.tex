@@ -44,7 +44,7 @@
     \end{enumerate}
 \end{proof}
 
-\begin{theorem}[ритерий сходимости последовательности в $\R^n$]
+\begin{theorem}[Критерий сходимости последовательности в $\R^n$]
     Допустим, $\{x^m = (x_1^m, \ldots, x_n^m)^t\}_{m = 1}^\infty$ --- последовательность в пространстве $(\R^n, \rho_2)$ с евклидовой метрикой, $a = (a_1, \ldots, a_n)^t \in \R^n$. Тогда
     \[
         \lim_{m \to \infty}x^m = a \Leftrightarrow \lim_{m \to \infty}x^m_i = a_i\quad\text{для всех $i = 1, \ldots, n$}.
@@ -54,7 +54,7 @@
 \begin{proof}
     Из неравенства
     \[
-        \max\limits_{i = 1, \ldots, n}\abs{b_k} \leqslant \sqrt{\sum_{i = 1}^nb_i^2} \leqslant \sum_{i = 1}^n\abs{b_i}
+        \max\limits_{i = 1, \ldots, n}\abs{b_i} \leqslant \sqrt{\sum_{i = 1}^nb_i^2} \leqslant \sum_{i = 1}^n\abs{b_i}
     \]
     вытекает, что
     \[
@@ -81,6 +81,10 @@
         \item Пространство $(\R \setminus \{0\}, \rho)$ (с той же метрикой $\rho$) не является полным: последовательность $\{x^m = 1 / m\}$ фундаментальна, но не имеет предела в $\R \setminus \{0\}$.
     \end{enumerate}
 \end{example}
+
+\begin{theorem}[Критерий Коши сходимости последовательности в $\R^n$]
+    Последовательность в $(\R^n, \rho)$ фундаментальна тогда и только тогда, когда она сходится.
+\end{theorem}
 
 \begin{proof}
     Заметим, что
