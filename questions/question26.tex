@@ -1,0 +1,100 @@
+\section{Предел последовательностей в метрических и нормированных пространствах. Критерий сходимости последовательности в $\R^n$. Понятие о фундаментальной последовательности. Критерий Коши сходимости последовательности в $\R^n$}
+
+\begin{definition}
+    Пусть $(X, \rho)$ --- метрическое пространство и $\{x_n\}_{n = 1}^\infty$ --- последовательность элементов $X$. Если $\lim\limits_{n \to \infty}\rho(x_n, A) = 0$, то последовательность $\{x_n\}_{n = 1}^\infty$ называется \textit{сходящейся}, а элемент $A \in X$ --- её \textit{пределом}. Запись: $\lim\limits_{n \to \infty}x_n = a$.
+\end{definition}
+
+\begin{proposal}
+    $A$ --- предел последовательности $\{x_n\}$ тогда и только тогда, когда в любой окрестности $U(A)$ содержатся все члены последовательности за исключением конечного их числа.
+\end{proposal}
+
+\begin{proof}
+    $\Rightarrow$. Если $x_n \to A$ при $n \to \infty$, то возьмём произвольную окрестность $B_r(A)$ и, согласно определению предела, найдём $N \in \N$ такое, что $\rho(x_n, A) < r$ для всех $n \geqslant N$. Тогда все члены последовательности за исключением $x_1, \ldots, x_{N - 1}$ содержатся в $B_r(A)$.
+
+    $\Leftarrow$. Допустим, в каждой окрестности $U(A)$ содержатся все члены последовательности $\{x_n\}$ за исключением конечного их числа. Возьмём произвольный шар $B_r(A)$, и пусть $N$ --- максимальный из номеров $n$ таких, что $x_n \notin B_r(A)$. Тогда $x_n \in B_r(A)$ для всех $n \geqslant N + 1$. Т.\,к. $B_r(A)$ выбирался произвольно, то $x_n \to A$ при $n \to \infty$.
+\end{proof}
+
+\begin{theorem}
+    \begin{enumerate}[nolistsep]
+        \item Предел сходящейся последовательности единственен.
+        \item Любая сходящаяся последовательность ограничена.
+        \item Если найдётся $N \in \N$ такое, что $x_n = A$ для каждого $n \geqslant N$, то $\lim\limits_{n \to \infty}x_n = A$.
+        \item Пусть $(V, \norm{\cdot})$ --- нормированное пространство. Если $\lim\limits_{n \to \infty}a_n = A$, $\lim\limits_{n \to \infty}b_n = B$, а $\alpha, \beta \in \R$, то $\lim\limits_{n \to \infty}(\alpha a_n + \beta b_n) = \alpha A + \beta B$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Допустим, последовательность $\{x_n\}$ имеет два предела $A \ne B$. Найдём окрестности $U(A)$ и $V(B)$, для которых $U(A) \cap V(B) = \varnothing$. Т.\,к. $A$ и $B$ --- пределы $\{x_n\}$, в каждую из этих окрестностей попадают все члены последовательности, кроме конечного их числа. А это невозможно, т.\,к. $U(A) \cap V(B) = \varnothing$.
+        \item Пусть $\lim\limits_{n \to \infty}x_n = A$. Тогда все точки, кроме $a_{i_1}, \ldots, a_{i_m}$ лежат в некоторой окрестности $B_{r_1}(A_1)$ точки $A$. Положим $r_2 \vcentcolon = \rho(A, A_1) + r_1$. Тогда $B_{r_2}(A) \supseteq B_{r_1}(A_1)$. Действительно, пусть $x \in B_{r_1}(A_1)$, т.\,е. $\rho(A_1, x) < r_1$. Тогда
+            \[
+                \rho(A, x) \leqslant \rho(A, A_1) + \rho(A_1, x) < \rho(A, A_1) + r_1,
+            \]
+            значит, $x \in B_{r_2}(A)$. Теперь положим $r = \max\{r_2, \rho(A, x_{i_1}), \ldots, \rho(A, x_{i_m})\}$. Тогда шар $B_r(A)$ содержит все точки последовательности $\{x_n\}$.
+        \item В окрестности $B_r(A)$ для любого $r$ содержатся все точки $\{x_n\}$, кроме конечного их числа.
+        \item Возьмём произвольное $\varepsilon > 0$. Т.\,к. $\lim\limits_{n \to \infty}a_n = A$ и $\lim\limits_{n \to \infty}b_n = B$, то $\exists N_1, N_2 \in \N$ такие, что
+            \[
+                \br{n \geqslant N_1 \Rightarrow x_n \in B_{\varepsilon / 2}(A) \Rightarrow \norm{x_n - A} < \frac{\varepsilon}{2}} \wedge \br{n \geqslant N_2 \Rightarrow x_n \in B_{\varepsilon / 2}(B) \Rightarrow \norm{x_n - B} < \frac{\varepsilon}{2}}
+            \]
+            (шары рассматриваются в метрике $\rho$, индуцированной с нормы $\norm{\cdot}$). Пусть $n \geqslant N \vcentcolon = \max\{N_1, N_2\}$, тогда выполнены оба неравенства выше, отсюда
+            \[
+                \norm{(\alpha a_n + \beta b_n) - (\alpha A + \beta B)} \leqslant \abs{\alpha}\norm{a_n - A} + \abs{\beta}\norm{b_n - B} < \frac{\abs{\alpha} + \abs{\beta}}{2} \cdot \varepsilon.
+            \]
+            Т.\,к. $\varepsilon > 0$ выбиралось произвольно, отсюда следует требуемое.
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}[ритерий сходимости последовательности в $\R^n$]
+    Допустим, $\{x^m = (x_1^m, \ldots, x_n^m)^t\}_{m = 1}^\infty$ --- последовательность в пространстве $(\R^n, \rho_2)$ с евклидовой метрикой, $a = (a_1, \ldots, a_n)^t \in \R^n$. Тогда
+    \[
+        \lim_{m \to \infty}x^m = a \Leftrightarrow \lim_{m \to \infty}x^m_i = a_i\quad\text{для всех $i = 1, \ldots, n$}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    Из неравенства
+    \[
+        \max\limits_{i = 1, \ldots, n}\abs{b_k} \leqslant \sqrt{\sum_{i = 1}^nb_i^2} \leqslant \sum_{i = 1}^n\abs{b_i}
+    \]
+    вытекает, что
+    \[
+        \abs{x_i^m - a_i} \leqslant \underbrace{\sqrt{\sum_{i = 1}^n(x_i^m - a_i)^2}}_{\rho_2(x^m, a)} \leqslant \sum_{i = 1}^n\abs{x_i^m - a_i}\quad\text{для всех $i = 1, \ldots, n$}.\eqno(\ast)
+    \]
+    Воспользуемся теоремой о предельном переходе в неравенствах для числовых последовательностей.
+
+    $\Rightarrow$. Допустим, $\lim\limits_{m \to \infty}x^m = a$, т.\,е. выражение в середине $(\ast)$ стремится к нулю при $m \to \infty$; следовательно, выражение слева тоже, т.\,е. $\lim\limits_{m \to \infty}x^m_i = a_i$ для каждого $i$.
+
+    $\Leftarrow$. Допустим, $\lim\limits_{m \to \infty}x_i^m = a_i$ для каждого $i$, т.\,е. каждое слагаемое справа в $(\ast)$ стремится к нулю при $m \to \infty$; значит, и вся сумма тоже. Но тогда выражение в середине $(\ast)$ тоже стремится к нулю, т.\,е. $\lim\limits_{m \to \infty}x^m = a$.
+\end{proof}
+
+\begin{definition}
+    Последовательность $\{x^m\}_{m = 1}^\infty$ в метрическом пространстве $(X, \rho)$ \textit{фундаментальна} (иначе, \textit{последовательность Коши}), если для всякого $\varepsilon > 0$ найдётся натуральное $M$ такое, что $\rho(x^m, x^\ell) < \varepsilon$ для всех $m, \ell \geqslant M$.
+\end{definition}
+
+\begin{definition}
+    Метрическое пространство \textit{полно}, если всякая фундаментальная последовательность в этом пространстве сходится.
+\end{definition}
+
+\begin{example}
+    \begin{enumerate}[nolistsep]
+        \item Пространство $(\R, \rho)$ (где $\rho$ индуцирована с нормы $\abs{\cdot}$) полно (вытекает из критерия Коши сходимости числовой последовательности).
+        \item Пространство $(\R \setminus \{0\}, \rho)$ (с той же метрикой $\rho$) не является полным: последовательность $\{x^m = 1 / m\}$ фундаментальна, но не имеет предела в $\R \setminus \{0\}$.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    Заметим, что
+    \begin{multline*}
+        \lim_{m \to \infty}x^m = a = (a_1, \ldots, a_n) \overset{\text{кр. сходимости в $\R^n$}}{\Longleftrightarrow} \lim\limits_{m \to \infty}x_i^m = a_i\ \forall i \overset{\text{кр. Коши}}{\Longleftrightarrow}\\ \Longleftrightarrow \{x_i^m\}_{m = 1}^\infty\text{ фундаментальна для всех $i$}.
+    \end{multline*}
+
+    Докажем, что последнее равносильно фундаментальности последовательности $\{x^m\}_{m = 1}^\infty$. Из уже выписываемого нами неравенства (см. начало доказательства т.\,2 в этом вопросе) следует
+    \[
+        \max\limits_{i = 1, \ldots, n}\abs{x_i^m - x_i^\ell} \leqslant \underbrace{\sqrt{\sum_{i = 1}^n\abs{x_i^m - x_i^\ell}^2}}_{\rho(x^m, x^\ell)} \leqslant \sum_{i = 1}^n\abs{x_i^m - x_i^\ell}.\eqno(\star)
+    \]
+
+    Возьмём любое $\varepsilon > 0$. Если для каждого $i$ последовательность $\{x_i^m\}$ фундаментально, то при достаточно больших $m$ и $\ell$ каждое слагаемое справа в $(\star)$ меньше $\varepsilon / n$, а вся сумма меньше $\varepsilon$. Тогда $\rho(x^m, x^\ell) < \varepsilon$ для тех же $m$ и $\ell$, т.\,е. последовательность $\{x^m\}$ фундаментальна.
+
+    Обратно, если $\{x^m\}$ фундаментальна, то $\rho(x^m, x^\ell) < \varepsilon$ для всех достаточно больших $m$ и $\ell$. Но тогда, из $(\star)$, $\abs{x^m_i - x^\ell_i} < \varepsilon$ для тех же $m$ и $\ell$ и всех $i$, т.\,е. каждая последовательность $\{x^m_i\}_{m = 1}^\infty$ фундаментальна.
+\end{proof}
+

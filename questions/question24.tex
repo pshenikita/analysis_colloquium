@@ -1,0 +1,67 @@
+\section{Метрические и нормированные пространства. Внутренность, внешность, граница множества, производное множество}
+
+\begin{definition}
+    Пусть $(X, \rho)$ --- метрическое пространство. \textit{Открытым шаром} радиуса $r$ с центром в точке $a \in X$ называется множество
+    \[
+        B_r(a) \vcentcolon = \{x \in X : \rho(x, a) < r\},
+    \]
+    а \textit{замкнутым шаром} с теми же радиусом и центром --- множество
+    \[
+        \overline{B}_r(a) \vcentcolon = \{x \in X : \rho(x, a) \leqslant r\}.
+    \]
+\end{definition}
+
+\begin{definition}
+    Любой открытый шар, содержащий точку $x$, называется её \textit{окрестностью}. Иногда будем писать $U(x)$ для окрестности точки $x$, а $\mathring{U}(x)$ --- для \textit{проколотой окрестности} точки $x$, $\mathring{U}(x) \vcentcolon = U(x) \setminus \{x\}$. Шар $B_r(x)$ с центром в самой точке $x$ называют ещё и \textit{$r$-окрестностью} (\textit{центрированной окрестностью}) точки $x$.
+\end{definition}
+
+\begin{proposal}
+    Всякая окрестность точки $x$ содержит некоторую $r$-окрестность точки $x$.
+\end{proposal}
+
+\begin{proof}
+    В самом деле, пусть $B_{r_1}(a)$ --- окрестность точки $x$. Тогда $\rho(x, a) = r_2 < r_1$. Положим $r \vcentcolon = (r_1 - r_2) / 2$ и рассмотрим открытый шар $B_r(x)$. Для всех $y \in B_r(a)$ имеем:
+    \[
+        \rho(y, a) \leqslant \rho(y, x) + \rho(x, a) < r + r_2 = \frac{r_1 - r_2}{2} + r_2 = \frac{r_1 + r_2}{2} < r_1.
+    \]
+    Значит, $y \in B_{r_1}(a)$, поэтому $B_r(x) \subset B_{r_1}(a)$.
+\end{proof}
+
+\begin{proposal}
+    Пересечение конечного числа центрированных окрестностей одной и той же точки есть центрированная окрестность этой точки:
+\end{proposal}
+
+\begin{proof}
+    $\ds\bigcap_{i = 1}^mB_{r_i}(x) = B_r(x)$, $r = \min\limits_{i = 1, \ldots, m}r_i$.
+\end{proof}
+
+\begin{definition}
+    Пусть $(X, \rho)$ --- метрическое пространство, $E \subset X$. Точка $a \in X$ является:
+    \begin{enumerate}[nolistsep]
+        \item \textit{внутренней} точкой множества $E$, если найдётся окрестность $U(a) \subseteq E$;
+        \item \textit{внешней} для $E$, если существует $U(a) \subseteq (X \setminus E)$;
+        \item \textit{граничной точкой} $E$, если каждая окрестность $U(a)$ имеет непустое пересечение как с $E$, так и с $X \setminus E$;
+        \item \textit{предельной точкой} множества $E$, если в любой её окрестности находится бесконечное число точек из $E$;
+        \item \textit{изолированной точкой} $E$, если $U(a) \cap E = \{a\}$ для некоторой окрестности $U(a)$.
+    \end{enumerate}
+
+    Далее:
+    \begin{enumerate}[nolistsep]
+        \item \textit{внутренность} множества $E$ --- множество $\inter E$ всех внутренних точек $E$;
+        \item \textit{внешность} множества $E$ --- множество $\ext E$ всех внешних точек $E$;
+        \item \textit{граница} множества $E$ --- множество $\partial E$ граничных точек $E$;
+        \item \textit{производное множество} для $E$ --- множество $E^\prime$ всех предельных точек $E$.
+    \end{enumerate}
+\end{definition}
+
+Ясно, что $X = \inter E \sqcup \ext E \sqcup \partial E$.
+
+\begin{example}
+    Положим $X = \R$, тогда:
+    \begin{enumerate}[nolistsep]
+        \item $\inter\N = \varnothing$, $\ext\N = \R \setminus \N$, $\partial\N = \N$, $\N^\prime = \varnothing$.
+        \item $\inter\Q = \varnothing$, $\ext\Q = \varnothing$, $\partial\Q = \R$, $\Q^\prime = \R$.
+        \item $\inter(0; 1) = (0; 1)$, $\ext(0; 1) = (-\infty; 0) \cup (1; +\infty)$, $\partial(0; 1) = \{0, 1\}$, $(0; 1)^\prime = [0; 1]$.
+    \end{enumerate}
+\end{example}
+
