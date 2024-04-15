@@ -25,8 +25,11 @@ fill((x, 0)--(x + 0.5, 0)--(x + 0.5, min(f(x), f(x + 0.5)))--(x, min(f(x), f(x +
 draw((x, 0)--(x + 0.5, 0)--(x + 0.5, min(f(x), f(x + 0.5)))--(x, min(f(x), f(x + 0.5)))--cycle, 0.5 * currentpen);
 // draw((x + 0.3, 0)--(x + 0.3, f(x + 0.3)), dashed);
 // dot("${}$", (x + 0.3, f(x + 0.3)), dir(0));
-/* % */ label(format("$a_%d$", (int)(2 * x)), (x, -0.2));
+if (x < 4)
+/* % */ label(format("$a_%d$", (int)(2 * x) - 1), (x, -0.2));
+else
+label("$\cdots$", (x, -0.2));
 }
-/* % */ label(format("$a_%d$", (int)(2 * x)), (x, -0.2));
+label("$a_n$", (x, -0.2));
 
 draw(graph(f, -0.3, 5), currentpen + 1);
