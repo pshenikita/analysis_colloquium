@@ -23,7 +23,7 @@
 \[
     A = A_{f, [a; b]} \vcentcolon = \left\{(x, y) \in \R^2\;\middle\vert\; x \in [a; b] \wedge y \in [0; f(x)]\right\} \subset \R^2,
 \]
-связанную с графиком функции $f$. Тогда интегральная сумма $\mathcal{S}(f, T\xi)$ совпадает с площадью объединения прямоугольников, построенных на отрезка разбиения $T$ как на основаниях и имеющих высоту $f(\xi_i)$:
+связанную с графиком функции $f$. Тогда интегральная сумма $\mathcal{S}(f, T\xi)$ совпадает с площадью объединения прямоугольников, построенных на отрезках разбиения $T$ как на основаниях и имеющих высоту $f(\xi_i)$:
 
 \begin{center}
     \begin{asy}
@@ -75,40 +75,7 @@
     Число $I$ называют \textit{интегралом Римана} функции $f$ по отрезку $[a; b]$, обозначается $\ds\int\limits_a^bf(x)dx$.
 \end{definition}
 
-Следующая задача даёт способ вычисления интеграла Римана:
-
-\begin{problem}
-    (А) Пусть $f \in R[a; b]$, $\{T^n\xi^n\}_{n = 1}^\infty$ --- последовательность отмеченных разбиений отрезка $[a; b]$, причём $d(T^n) \to 0$ при $n \to \infty$. Докажите, что
-    \[
-        \int\limits_a^bf(x)dx = \lim_{n \to \infty}\mathcal{S}(f, T^n\xi^n).
-    \]
-
-    (Б) Разобъём отрезок $[a; b]$ на $n$ равных отрезков $\Delta_j^{(n)}$, $1 \leqslant j \leqslant n$ длины $(b - a) / n$, а затем в каждом из них произвольным образом выберем метку $\xi_j^{(n)}$. Покажите, что
-    \[
-        \int\limits_a^bf(x)dx = \lim_{n \to \infty}\frac{b - a}{n}\sum_{j = 1}^nf(\xi_j^{(n)}).
-    \]
-\end{problem}
-
-\begin{solution}
-    (А) По определению предела последовательности $d(T^n)$,
-    \[
-        \forall \varepsilon > 0\;\exists \mathcal{N}_\varepsilon: (n > \mathcal{N}_\varepsilon) \Rightarrow \br{\abs{d(T^n)} < \varepsilon}\eqno(\ast)
-    \]
-    По определению интеграла Римана
-    \[
-        \forall \varepsilon > 0\; \exists \delta > 0: \br{d(T) < \delta} \Rightarrow \br{\abs{\mathcal{S}(f, T\xi) - I} < \varepsilon}.
-    \]
-    Перепишем последнее высказывание с учётом $(\ast)$:
-    \[
-        \forall\varepsilon > 0\; \exists N_\varepsilon \vcentcolon = \mathcal{N}_\varepsilon: (n > N_\varepsilon) \Rightarrow (\abs{\mathcal{S}(f, T\xi) - I} < \varepsilon).
-    \]
-    Значит, утверждение теоремы верно по опредлению предела последовательности.
-
-    (Б) По предыдущему пункту
-    \[
-        \int\limits_a^bf(x)dx = \lim_{n \to \infty}\mathcal{S}(f, T^n\xi^n) = \lim_{n \to \infty}\br{\sum_{j = 1}^nf(\xi_j^{(n)})|\Delta_j^{(n)}|} = \lim_{n \to \infty}\frac{b - a}{n}\sum_{j = 1}^nf(\xi_j^{(n)}).
-    \]
-\end{solution}
+Задача $1^\circ$ даёт способ вычисления интеграла Римана.
 
 \begin{proposal}
     Если $f$ интегрируема по Риману на отрезке $[a; b]$, то она ограничена на $[a; b]$.

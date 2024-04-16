@@ -227,14 +227,8 @@
 }
 
 % Оболочка для упражнения
-\newcounter{problem}
 \newenvironment{problem}[1][]{\par\smallskip
-\refstepcounter{problem}
-    \ifx&#1&
-        \smallskip\noindent{\bfseries Задача \theproblem.}
-    \else
-        \smallskip\noindent{\bfseries Задача \theproblem\;{\mdseries(#1)}.}
-    \fi
+    \smallskip\noindent{\bfseries Задача #1.}
     }{
     \par\smallskip
 }

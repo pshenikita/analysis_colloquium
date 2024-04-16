@@ -26,7 +26,7 @@
     \end{gather*}
     Т.\,к. $\varepsilon > 0$ выбиралось произвольно, то $\ds I = (D)\lowint_a^bf(x)dx = (D)\upint_a^bf(x)dx = (D)\int_a^bf(x)dx$.
 
-    $(2) \Rightarrow (3)$. Допустим, то существует $\ds (D)\int_a^bf(x)dx = I$, т.\,е. $\ds (D)\lowint_a^bf(x)dx = (D)\upint_a^bf(x)dx$. Тогда для любого $\varepsilon > 0$ найдутся разбиения $T_1$ и $T_2$ такие, что
+    $(2) \Rightarrow (3)$. Допустим, что существует $\ds (D)\int_a^bf(x)dx = I$, т.\,е. $\ds (D)\lowint_a^bf(x)dx = (D)\upint_a^bf(x)dx$. Тогда для любого $\varepsilon > 0$ найдутся разбиения $T_1$ и $T_2$ такие, что
     \[
         S(f, T_2) - \frac{\varepsilon}{2} < I < s(f, T_1) + \frac{\varepsilon}{2}.
     \]
@@ -75,20 +75,4 @@
     \]
     Значит, $\ds(D)\lowint\limits_a^b\operatorname{Dir} = 0$ и $\ds (D)\upint\limits_a^b\operatorname{Dir} = b - a$. Несовпадение интегралов даёт $f \notin R[a; b]$.
 \end{proof}
-
-\begin{problem}
-    Докажите, что функция Римана
-    \[
-        \operatorname{Riem}(x) =
-        \begin{cases}
-            \frac{1}{n},&\text{если $x = \frac{m}{n}$, $\frac{m}{n}$ --- несократимая дробь},\\
-            0,&\text{если $x \notin \Q$}
-        \end{cases}
-    \]
-    интегрируема по Риману на каждом отрезке $[a; b]$ и вычислите $\ds (R)\int\limits_a^b\operatorname{Riem}(x)dx$.
-\end{problem}
-
-\begin{solution}
-    Пока не решил, но знаю правильный ответ --- интеграл функции Римана равен $0$ на любом отрезке.
-\end{solution}
 

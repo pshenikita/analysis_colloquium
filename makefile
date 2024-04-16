@@ -1,6 +1,6 @@
 all: ancol.pdf
 
-ancol.pdf: ancol.tex preamble.sty questions/* ancol-*.pdf
+ancol.pdf: ancol.tex preamble.sty questions/* ancol-*.pdf problems.tex
 	lualatex $<
 
 asy:
