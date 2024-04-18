@@ -1,16 +1,16 @@
 \section{Преобразование Абеля. Вторая теорема о среднем для интеграла Римана}
 
 \begin{lemma}
-    Пусть числа $A_k \vcentcolon = \sum_{i = 1}^ka_i$, $k = 1, 2, \ldots, n$, удовлетворяют неравенствам $m \leqslant A_k \leqslant M$, а $b_i \geqslant b_{i + 1} \geqslant 0$ при $i = 1, 2, \ldots, n - 1$. Тогда
+    Пусть числа $A_k \vcentcolon = \sum\limits_{i = 1}^ka_i$, $k = 1, 2, \ldots, n$, удовлетворяют неравенствам $m \leqslant A_k \leqslant M$, а $b_i \geqslant b_{i + 1} \geqslant 0$ при $i = 1, 2, \ldots, n - 1$. Тогда
     \[
-        mb_i \leqslant \sum_{i = 1}^na_ib_i \leqslant Mb_1.
+        mb_1 \leqslant \sum_{i = 1}^na_ib_i \leqslant Mb_1.
     \]
 \end{lemma}
 
 \begin{proof}
     Докажем правое из неравенств (левое аналогично):
     \[
-        \sum_{i = 1}^na_ib_i = A_nb_n + \sum_{i = 1}^{n - 1}A_i(b_i - b_{i + 1}) \leqslant Mb_n + \sum_{i = 1}^{n - 1}M(b_i  b_{i + 1}) = Mb_n + Mb_1 - Mb_n = Mb_1.
+        \sum_{i = 1}^na_ib_i = A_nb_n + \sum_{i = 1}^{n - 1}A_i(b_i - b_{i + 1}) \leqslant Mb_n + \sum_{i = 1}^{n - 1}M(b_i - b_{i + 1}) = Mb_n + Mb_1 - Mb_n = Mb_1.
     \]
 \end{proof}
 
@@ -31,7 +31,7 @@
 \end{lemma}
 
 \begin{proof}
-    Функия $\ds G(x) \vcentcolon = \int\limits_a^x g(t)dt$ непрерывна на $[a; b]$. Поэтому она ограничена на $[a; b]$, обозначим $m \vcentcolon = \min\limits_{x \in [a; b]} G(x)$, $M \vcentcolon = \max\limits_{x \in [a; b]} G(x)$. Сначала установим формулу
+    Функция $\ds G(x) \vcentcolon = \int\limits_a^x g(t)dt$ непрерывна на $[a; b]$. Поэтому она ограничена на $[a; b]$, обозначим $m \vcentcolon = \min\limits_{x \in [a; b]} G(x)$, $M \vcentcolon = \max\limits_{x \in [a; b]} G(x)$. Сначала установим неравенство
     \[
         mf(a) \leqslant \int\limits_a^bf(x)g(x)dx \leqslant Mf(a).\eqno(\ast)
     \]
@@ -42,7 +42,7 @@
     \end{multline*}
     причём $E$ мало по абсолютной величине:
     \begin{multline*}
-        \abs{E} \leqslant \sum_{i = 1}^n\int\limits_{x_{i - 1}}^{x_i}\abs{f(x) - f(x_{i - 1})}\abs{g(x)}dx \leqslant C\sum_{i = 1}^n\int\limits_{x_{i - 1}}^{x_i}\omega(g, \Delta_i)dx = C\sum_{i = 1}^n\int\limits_{x_{i - 1}}^{x_i}\omega(f, \Delta_i)dx =\\ = C\sum_{i = 1}^n\omega(f, \Delta_i)\abs{\Delta_i} = C\omega(f, T) < \varepsilon.
+        \abs{E} \leqslant \sum_{i = 1}^n\int\limits_{x_{i - 1}}^{x_i}\abs{f(x) - f(x_{i - 1})}\abs{g(x)}dx \leqslant C\sum_{i = 1}^n\int\limits_{x_{i - 1}}^{x_i}\omega(g, \Delta_i)dx =\\ = C\sum_{i = 1}^n\omega(f, \Delta_i)\abs{\Delta_i} = C\omega(f, T) < \varepsilon.
     \end{multline*}
     Учтём неотрицательность и невозрастание функции $f$ на $[a; b]$ и применим лемму 1 с 
     \begin{gather*}
@@ -52,7 +52,7 @@
     \end{gather*}
     Получим
     \begin{gather*}
-        mf(a) \leqslant \sum_{i = 1}^nf(x_{i - 1})\br{G(x_i - G(x_{i - 1}))} \leqslant Mf(a);\\
+        mf(a) \leqslant \sum_{i = 1}^nf(x_{i - 1})\br{G(x_i) - G(x_{i - 1})} \leqslant Mf(a);\\
         mf(a) \leqslant \sum_{i = 1}^nf(x_{i - 1})\int\limits_{x_{i - 1}}^{x_i}g(x)dx \leqslant Mf(a);\\
         mf(a) \leqslant \int\limits_a^bf(x)g(x)dx - E \leqslant Mf(a),\quad\abs{E} < \varepsilon.
     \end{gather*}
@@ -69,10 +69,10 @@
 Теперь докажем теорему, ради которой тут собрались:
 
 \begin{proof}
-    Если $f$ не убывает на $[a; b]$, то функция $h(x) \vcentcolon = f(b) - f(x)$ неотрицательна, невозрастает и интегрируема на $[a; b]$. Применим лемму и проведём преобразования:
+    Если $f$ не убывает на $[a; b]$, то функция $h(x) \vcentcolon = f(b) - f(x)$ неотрицательна, не возрастает и интегрируема на $[a; b]$. Применим лемму и проведём преобразования:
     \begin{gather*}
         \int\limits_a^bh(x)g(x)dx = h(a)\int\limits_a^\xi g(x)dx;\quad\int\limits_a^b\br{f(b) - f(x)}g(x)dx = \br{f(b) - f(a)}\int\limits_a^\xi g(x)dx;\\
-        f(b)\br{\int\limits_a^bf(x)dx - \int\limits_a^\xi f(x)dx} + f(a)\int\limits_a^\xi g(x)dx = \int\limits_a^bf(x)g(x)dx.
+        f(b)\br{\int\limits_a^bg(x)dx - \int\limits_a^\xi g(x)dx} + f(a)\int\limits_a^\xi g(x)dx = \int\limits_a^bf(x)g(x)dx.
     \end{gather*}
     Если $f$ не возрастает на $[a; b]$, функция $h(x) \vcentcolon = f(x) - f(b)$ неотрицательна, не возрастает и интегрируема на $[a; b]$. Повторяя выкладки выше, снова получим требуемое.
 \end{proof}

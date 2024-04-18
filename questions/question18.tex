@@ -20,7 +20,7 @@
 
     Докажем формулу $(\ast)$. По условию, $x(t), y(t) \in C^{(1)}[a; b]$, поэтому $x^\prime(t), y^\prime(t) \in C[a; b]$. Значит, функция $f(t) \vcentcolon = \sqrt{(x^\prime(t))^2 + (y^\prime(t))^2}$ непрерывна, и интеграл в $(\ast)$ определён.
 
-    Возьмём какое-нибудь $\varepsilon > 0$. Т.\,к. $f \in R[a; b]$, найдётся $\delta_1 > 0$ такое, что для каждого отмеченного $\delta_i$-разбиения $T\xi$ отрезка $[a; b]$ верно
+    Возьмём какое-нибудь $\varepsilon > 0$. Т.\,к. $f \in R[a; b]$, найдётся $\delta_1 > 0$ такое, что для каждого отмеченного $\delta_1$-разбиения $T\xi$ отрезка $[a; b]$ верно
     \[
         \abs{\mathcal{S}(f, T\xi) - \int\limits_a^bf(t)dt} < \varepsilon.
     \]
@@ -30,7 +30,7 @@
         (\varphi - \psi) < \delta_2 \Rightarrow \abs{y^\prime(\varphi) - y^\prime(\psi)} < \varepsilon.
     \]
 
-    Положим $\delta \vcentcolon = \min\{\delta_1, \delta_2\}$. Далее, найдём разбиение $T = \{\Delta_i = [a_{i - 1}, a_i]\}_{i = 1}^m$, для которого длина вписанной ломаной $\varepsilon$-ближка к длине кривой:
+    Положим $\delta \vcentcolon = \min\{\delta_1, \delta_2\}$. Далее, найдём разбиение $T = \{\Delta_i = [a_{i - 1}, a_i]\}_{i = 1}^m$, для которого длина вписанной ломаной $\varepsilon$-близка к длине кривой:
     \[
         \ell(\gamma) - \varepsilon < \sum_{i = 1}^m\abs{P_{i - 1}P_i} \leqslant \ell(\gamma).
     \]
@@ -39,7 +39,7 @@
     \begin{multline*}
         \sum_{i = 1}^m\abs{P_{i - 1}P_i} = \sum_{i = 1}^m\sqrt{(x(a_i) - x(a_{i - 1}))^2 + (y(a_i) - y(a_{i - 1}))^2} \overset{\text{т.\,Лагранжа}}{=\joinrel=}\\ = \sum_{i = 1}^m\sqrt{(x^\prime(\varphi_i))^2 + (y^\prime(\psi_i))^2}\abs{\Delta_i} = \sum_{i = 1}^m\sqrt{(x^\prime(\varphi_i))^2 + (y^\prime(\varphi_i))^2}\abs{\Delta_i} + E = \mathcal{S}(f, T\xi) + E,
     \end{multline*}
-    где $\ds E \vcentcolon = \sum_{i = 1}^m\br{\sqrt{(x^\prime(\varphi_i))^2 + (y^\prime(\psi_i))^2}} - \sqrt{(x^\prime(\varphi_i))^2 + (y^\prime(\varphi_i))^2}\abs{\Delta_i}$, а отмеченное разбиение $T\xi$ получилось добавлением меток $\xi_i$ к имеющемуся разбиению $T$.
+    где $\ds E \vcentcolon = \sum_{i = 1}^m\br{\sqrt{(x^\prime(\varphi_i))^2 + (y^\prime(\psi_i))^2} - \sqrt{(x^\prime(\varphi_i))^2 + (y^\prime(\varphi_i))^2}}\abs{\Delta_i}$, а отмеченное разбиение $T\xi$ получилось добавлением меток $\xi_i$ к имеющемуся разбиению $T$.
 
     Для оценки величины $E$ нам потребуется неравенство
     \[

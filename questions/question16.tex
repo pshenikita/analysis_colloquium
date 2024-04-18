@@ -5,9 +5,7 @@
     \[
         \V_a^bf \vcentcolon = \sup\limits_T\sum_{i = 1}^m\abs{f(a_i) - f(a_{i - 1})},
     \]
-    где $\sup$ берётся по всем разбиениям $T = \{[a_{i - 1}, a_i]\}_{i = 1}^m$ отрезка $[a; b]$.
-
-    Если $\V\limits_a^bf < +\infty$, то $f$ --- \textit{функция ограниченной вариации} на $[a; b]$. Запись: $f \in BV[a; b]$.
+    где $\sup$ берётся по всем разбиениям $T = \{[a_{i - 1}, a_i]\}_{i = 1}^m$ отрезка $[a; b]$. Если $\V\limits_a^bf < +\infty$, то $f$ --- \textit{функция ограниченной вариации} на $[a; b]$. Запись: $f \in BV[a; b]$.
 \end{definition}
 
 Для разбиения $T = \{[a_{i - 1}, a_i]\}_{i = 1}^m$ отрезка $[a; b]$ введём обозначение
@@ -59,7 +57,7 @@
     \]
     Тогда $T_1 \sqcup T_2$ --- разбиение отрезка $[a; b]$ и
     \[
-        \V_a^bf \geqslant V(f, T_1 \cup T_2) = V(f, T_1) + V(f, T_2) > \V_a^cf + \V_c^bf - 2\varepsilon.
+        \V_a^bf \geqslant V(f, T_1 \sqcup T_2) = V(f, T_1) + V(f, T_2) > \V_a^cf + \V_c^bf - 2\varepsilon.
     \]
     Т.\,к. $\varepsilon > 0$ выбиралось произвольно,
     \[
@@ -78,5 +76,41 @@
     \[
         \V_a^bf \leqslant \V_a^cf + \V_c^bf.
     \]
+\end{proof}
+
+\begin{lemma}
+    Если $f \in BV[a; b]$, то:
+    \begin{enumerate}[nolistsep]
+        \item функции $V$ и $V - f$ не убывают на $[a; b]$, $V(x) \vcentcolon = \V\limits_a^xf$;
+        \item $f$ есть разность двух неубывающих функций.
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Пусть $x_2 > x_1$. Имеем:
+            \[
+                V(x_2) = \V\limits_a^{x_2}f = \V\limits_a^{x_1} + \V\limits_{x_1}^{x_2} \geqslant \V\limits_a^{x_1}f = V(x_1);\quad V(x_2) - V(x_1) = \V\limits_{x_1}^{x_2} \geqslant \abs{f(x_2) - f(x_1)} \geqslant f(x_2) - f(x_1),
+            \]
+            а значит, $(V - f)(x_2) \geqslant (V - f)(x_1)$.
+        \item $f$ есть разность функций $V$ и $V - f$, которые не убывают, согласно п.\,1.
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}[О структуре $BV$-функций]
+    $f \in BV[a; b] \Leftrightarrow f$ есть разность двух неубывающих функций.
+\end{theorem}
+
+\begin{proof}
+    $\Rightarrow$. Доказано в предыдущей лемме.
+
+    $\Leftarrow$. Пусть $f = g - h$, где $g$ и $h$ не убывают на $[a; b]$. Возьмём произвольное разбиение $T = \{[a_{i - 1}; a_i]\}_{i = 1}^m$ отрезка $[a; b]$. Тогда:
+    \begin{multline*}
+        V(f, T) = \sum_{i = 1}^m\abs{g(a_i) + h(a_i) - g(a_{i - 1}) - g(a_{i - 1})} \leqslant \sum_{i = 1}^m\abs{g(a_i) - g(a_{i - 1})} + {}\\{} + \sum_{i = 1}^m\abs{h(a_i) - h(a_{i - 1})} = g(b) - g(a) + h(b) - h(a);
+    \end{multline*}
+    \[
+        \V\limits_a^bf = \sup\limits_TV(f, T) \leqslant g(b) - g(a) + h(b) - h(a) < \infty.
+    \]
+    Значит, $f \in BV[a; b]$ по определению.
 \end{proof}
 

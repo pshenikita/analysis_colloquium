@@ -77,7 +77,7 @@
 \begin{proof}
     Интегрируемость влечёт ограниченность: $\abs{f(x)} \leqslant M$ и $\abs{g(x)} \leqslant M$ для некоторого $M > 0$ и всех $x \in [a; b]$. Из интегрируемости также вытекает (теорема Дарбу), что для любого $\varepsilon > 0$ найдутся разбиения $T_1$ и $T_2$ отрезка $[a; b]$ такие, что $\omega(f, T_1) < \varepsilon$ и $\omega(g, T_2) < \varepsilon$. Разбиение $T = \{\Delta_i\} \vcentcolon = T_1 \cap T_2$ мельче $T_1$ и $T_2$, отсюда
     \begin{gather*}
-        \omega(f, T) \leqslant \omega(f, T_1) < \varepsilon,\quad\omega(g, T) \leqslant \omega(g, T_1) < \varepsilon;\\
+        \omega(f, T) \leqslant \omega(f, T_1) < \varepsilon,\quad\omega(g, T) \leqslant \omega(g, T_2) < \varepsilon;\\
         \omega(fg, T) = \sum_i\omega(fg, \Delta_i)\abs{\Delta_i} \leqslant M\sum_i\br{\omega(f, \Delta_i) + \omega(g, \Delta_i)}\abs{\Delta_i} = M\br{\omega(f, T) + \omega(g, T)} < 2M\varepsilon.
     \end{gather*}
     Применяя в обратную сторону теорему Дарбу, получаем $fg \in R[a; b]$.

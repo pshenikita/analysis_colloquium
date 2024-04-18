@@ -10,11 +10,11 @@
 \end{definition}
 
 \begin{definition}[Интеграл Римана "---Стилтьеса]
-    Функция $f: [a; b] \to \R$ \textit{интегрируема в смысле Римана "---Стилтьеса} функции $f: [a; b] \to \R$ по функции $G \in BV[a; b]$ к значению $I \in \R$, если для каждого $\varepsilon > 0$ найдётся $\delta > 0$ такое, что всех отмеченных $\delta$-разбиений $T\xi = \{\br{[a_{i - 1}; a_i], \xi_i}\}_{i = 1}^m$ отрезка $[a; b]$ выполнено неравенство
+    Функция $f: [a; b] \to \R$ \textit{интегрируема в смысле Римана "---Стилтьеса} по функции $G \in BV[a; b]$ к значению $I \in \R$, если для каждого $\varepsilon > 0$ найдётся $\delta > 0$ такое, что всех отмеченных $\delta$-разбиений $T\xi = \{\br{[a_{i - 1}; a_i], \xi_i}\}_{i = 1}^m$ отрезка $[a; b]$ выполнено неравенство
     \[
         \abs{\mathcal{S}(fdG, T\xi) - I} = \abs{\sum_{i = 1}^mf(\xi_i)(G(a_i) - G(a_{i - 1})) - I} < \varepsilon.
     \]
-    Запись: $\ds (RS)\int\limits_a^bf(x)dG(x) = I$. Число $I$ есть \textit{интеграл Римана "---Стилтьеса} от функции $f$ по функции $G$ по отрезку $[a; b]$.
+    Запись: $\ds (RS)\int\limits_a^bf(x)dG(x) = I$. Число $I$ есть \textit{интеграл Римана "---Стилтьеса} от функции $f$ по функции $G$ на отрезке $[a; b]$.
 \end{definition}
 
 \begin{remark}
@@ -56,7 +56,7 @@
     Итак, пусть $G$ не убывает. Для каждого разбиения $T = \{[a_{i - 1}; a_i]\}$ отрезка $[a; b]$ составим \textit{нижнюю} и $\textit{верхнюю суммы Дарбу}$ для интеграла Римана "---Стилтьеса $\ds\int\limits_a^bfdG$:
     \begin{gather*}
         s(fdG, T) = \sum_im_i\br{G(a_i) - G(a_{i - 1})},\quad m_i \vcentcolon = \min\limits_{[a_{i - 1}; a_i]}f;\\
-        S(fdG, T) = \sum_iM_i\br{G(a_i) - G(a_{i - 1})},\quad M_i \vcentcolon = \max\limits_[a_{i - 1}; a_i]f.
+        S(fdG, T) = \sum_iM_i\br{G(a_i) - G(a_{i - 1})},\quad M_i \vcentcolon = \max\limits_{[a_{i - 1}; a_i]}f.
     \end{gather*}
 
     Почти дословно повторяя рассуждения, изложенные выше, несложно доказать, что
@@ -76,7 +76,7 @@
     \]
     Кроме того,
     \[
-        S(fdG, T) - s(fdG, T) = \sum_i(M_i - m_i)(G(a_i) - G(a_{i - 1})) < \varepsilon\sum_i(G(a_i) - G(a_{i - 1})) = \varepsilon(G(b) - g(a)).
+        S(fdG, T) - s(fdG, T) = \sum_i(M_i - m_i)(G(a_i) - G(a_{i - 1})) < \varepsilon\sum_i(G(a_i) - G(a_{i - 1})) = \varepsilon(G(b) - G(a)).
     \]
 
     Отсюда и из $(\ast)$ получаем $\abs{\mathcal{S}(fdG, T\xi) - I} < \varepsilon(G(b) - G(a))$. Следовательно, $f$ интегрируема по $G$ на отрезке $[a; b]$ и $\ds(RS)\int\limits_a^bfdG = I$.

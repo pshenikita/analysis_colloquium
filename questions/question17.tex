@@ -12,7 +12,7 @@
         V(f, T) = \sum_{i = 1}^m\abs{f(a_i) - f(a_{i - 1})} \overset{\text{т.\,Лагранжа}}{=\joinrel=} \sum_{i = 1}^m\abs{f^\prime(\xi_i)}(a_i - a_{i - 1}) \leqslant\\\leqslant \max\limits_{x \in [a; b]}\abs{f^\prime(x)}\sum_{i = 1}^m(a_i - a_{i - 1}) = \max\limits_{x \in [a; b]}\abs{f^\prime(x)}(b - a).
     \end{multline*}
 
-    Мы воспользовались тем, что функция $\abs{f^\prime}$ непрерывна, а потому ограничена на $[a; b]$. Из последнего неравенства мы видим, что $\V\limits_a^b \leqslant \max\limits_{x \in [a; b]}\abs{f^\prime(x)}(b - a) < +\infty$.
+    Мы воспользовались тем, что функция $\abs{f^\prime}$ непрерывна, а потому ограничена на $[a; b]$. Из последнего неравенства мы видим, что $\V\limits_a^bf \leqslant \max\limits_{x \in [a; b]}\abs{f^\prime(x)}(b - a) < +\infty$.
 
     Далее, возьмём произвольное $\varepsilon > 0$. Найдётся $\delta > 0$ такое, что для всякого отмеченного $\delta$-разбиения $T\xi$ отрезка $[a; b]$ верно $\abs{\mathcal{S}(\abs{f^\prime}, T\xi) - I} < \varepsilon$. Найдём разбиение $T = \{[a_{i - 1}; a_i]\}_{i = 1}^m$, для которого
     \[

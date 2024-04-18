@@ -13,7 +13,7 @@
 \begin{proof}
     Пусть $E = \{a_1, \ldots, a_n\}$, $C \vcentcolon = \max\{f(a_1), \ldots, f(a_n)\}$. Выберем любое $\varepsilon > 0$, положим $\delta \vcentcolon = \varepsilon / (Cn)$ и возьмём произвольное $\delta$-разбиение $T\xi = \{(\Delta_i, \xi_i)\}$ отрезка $[a; b]$. Тогда
     \[
-        \abs{\mathcal{S}(f, T\xi)} < \abs{\sum_{\xi_i \in E}g(\xi_i)\abs{\Delta_i}} + \abs{\sum_{\xi_i \ne E}g(\xi_i)\abs{\Delta_i}} \leqslant Cn\delta + 0 = \varepsilon.
+        \abs{\mathcal{S}(f, T\xi)} < \abs{\sum_{\xi_i \in E}g(\xi_i)\abs{\Delta_i}} + \abs{\sum_{\xi_i \notin E}g(\xi_i)\abs{\Delta_i}} \leqslant Cn\delta + 0 = \varepsilon.
     \]
     Согласно определению интеграла Римана, $g \in R[a; b]$ и $\ds\int\limits_a^bg = 0$.
 \end{proof}
@@ -44,7 +44,7 @@
 \begin{theorem}[Об интеграле по симметричному отрезку от чётных и нечётных функций]
     Пусть $f \in R[-a; a]$. Если функция $f$ чётна, то
     \[
-        \int\limits_{-a}^af = \int\limits_0^af,\quad\int\limits_{-a}^af = 2\int\limits_0^af,
+        \int\limits_{-a}^0f = \int\limits_0^af,\quad\int\limits_{-a}^af = 2\int\limits_0^af,
     \]
     а если нечётна, то
     \[
@@ -55,7 +55,7 @@
 \begin{proof}
     Каждому отмеченному разбиению  $T\xi = \{(\Delta_i, \xi_i)\}_i$ отрезка $[0; a]$ однозначно соответствует <<симметричное>> отмеченное разбиение $\widetilde{T}$ (того же диаметра), отрезки и метки в котором симметричны $\Delta_i$ и $\xi_i$ относительно нуля. Для чётной функции $f$
     \[
-        \mathcal{S}(f, T\xi) = \sum_{i = 1}^mf(\xi)\abs{\Delta_i} = \sum_{i = 1}^mf(-\xi)\abs{\Delta_i} = \mathcal{S}(f, \widetilde{T}\widetilde{\xi}),
+        \mathcal{S}(f, T\xi) = \sum_{i = 1}^mf(\xi_i)\abs{\Delta_i} = \sum_{i = 1}^mf(-\xi_i)\abs{\Delta_i} = \mathcal{S}(f, \widetilde{T}\widetilde{\xi}),
     \]
     и определение интеграла Римана даёт $\ds\int\limits_0^af = \int\limits_{-a}^0f$. Далее,
     \[
@@ -63,7 +63,7 @@
     \]
     Если $f$ нечётна, то
     \begin{gather*}
-        \mathcal{S}(f, T\xi) = \sum_{i = 1}^mf(\xi)\abs{\Delta_i} = \sum_{i = 1}^m-f(-\xi)\abs{\Delta_i} = -\mathcal{S}(f, \widetilde{T}\widetilde{\xi}),\\
+        \mathcal{S}(f, T\xi) = \sum_{i = 1}^mf(\xi_i)\abs{\Delta_i} = \sum_{i = 1}^m-f(-\xi_i)\abs{\Delta_i} = -\mathcal{S}(f, \widetilde{T}\widetilde{\xi}),\\
         \int\limits_{-a}^0f = -\int\limits_0^af,\quad\int\limits_{-a}^af = \int\limits_{-a}^0f + \int\limits_0^af = -\int\limits_0^af + \int\limits_0^af = 0.
     \end{gather*}
 \end{proof}

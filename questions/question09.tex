@@ -70,7 +70,7 @@
 \begin{proof}
     Возьмём любое $\varepsilon > 0$. Определение нижнего интеграла Дарбу даёт существование разбиений $T^1$ отрезка $[a; c]$ и $T^2$ отрезка $[c; b]$ таких, что
     \[
-        s(f, T^2) > (D)\lowint_a^cf - \varepsilon,\quad s(f, T^2) > (D)\lowint_c^bf - \varepsilon.
+        s(f, T^1) > (D)\lowint_a^cf - \varepsilon,\quad s(f, T^2) > (D)\lowint_c^bf - \varepsilon.
     \]
     Для разбиений $T = T^1 \sqcup T^2$ отрезка $[a; b]$ имеем:
     \begin{multline*}
@@ -97,7 +97,7 @@
 \begin{proof}
     Из интегрируемости вытекает ограниченность $f$ и на $[a; c]$, и на $[c; b]$, значит, и на $[a; b]$ тоже. Далее,
     \[
-        (D)\lowint_a^b = (D)\lowint_a^cf + (D)\lowint_c^bf \overset{\text{критерий Дарбу}}{=\joinrel=} (D)\upint_a^cf + (D)\upint_c^bf = (D)\int\limits_a^bf.
+        (D)\lowint_a^b = (D)\lowint_a^cf + (D)\lowint_c^bf \overset{\text{критерий Дарбу}}{=\joinrel=} (D)\upint_a^cf + (D)\upint_c^bf = (D)\upint_a^bf.
     \]
     Согласно, критерию Дарбу, $f \in R[a; b]$ и каждый верхний или нижний интеграл Дарбу в последнем выражении можно заменить на интеграл Римана.
 \end{proof}
