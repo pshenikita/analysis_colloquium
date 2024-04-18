@@ -5,9 +5,9 @@
 \end{statement}
 
 \begin{proof}
-    Возьмём $\varepsilon > 0$ и такое $C > 0$, что $\abs{f(x)} \leqslant C$ для всех $x \in [a; b]$ (существует из ограниченности $f$). Пользуясь тем, что функция $f$ имеет конечное число точек разрыва, построим разбиение $T = T^1 \sqcup T^2$ отрезка $[a; b]$ так, что сумма длин отрезков $\Delta_i \in T^1$ меньше $\frac{\varepsilon}{4C}$, а на всех отрезках $\Delta_i \in T^2$ функция $f$ непрерывна. Последнее означает, что $f$ равномерно непрерывна на $\Delta_i$, поэтому найдётся $\delta_i > 0$ такое, что $\ds\br{\abs{x - z} < \delta} \wedge \br{x, z \in \Delta_i} \Rightarrow \abs{f(x) - f(z)} < \frac{\varepsilon}{2(b - a)}$.
+    Возьмём $\varepsilon > 0$ и такое $C > 0$, что $\abs{f(x)} \leqslant C$ для всех $x \in [a; b]$ (существует из ограниченности $f$). Пользуясь тем, что функция $f$ имеет конечное число точек разрыва, построим разбиение $T = T^1 \sqcup T^2$ отрезка $[a; b]$ так, что сумма длин отрезков $\Delta_i \in T^1$ меньше $\frac{\varepsilon}{4C}$, а на всех отрезках $\Delta_i \in T^2$ функция $f$ непрерывна. Последнее означает, что $f$ равномерно непрерывна на $\Delta_i$, поэтому найдётся $\delta_i > 0$ такое, что $\ds\br{\abs{x - z} < \delta_i} \wedge \br{x, z \in \Delta_i} \Rightarrow \abs{f(x) - f(z)} < \frac{\varepsilon}{2(b - a)}$.
 
-    Т.\,к. набор $T^2$ конечен, $\delta > 0$ можно выбрать общим для всех $\Delta_i \in T^2$ (взяв $\delta \vcentcolon = \min\limits_{i}\Delta_i$). Имеем:
+    Т.\,к. набор $T^2$ конечен, $\delta > 0$ можно выбрать общим для всех $\Delta_i \in T^2$ (взяв $\delta \vcentcolon = \min\limits_{i}\delta_i$). Имеем:
     \begin{multline*}
         S(f, T) - s(f, T) = S(f, T^1) - s(f, T^1) + S(f, T^2) - s(f, T^2) = \sum_{\Delta_i \in T^1}\br{\sup_{\Delta_i}f - \inf\limits_{\Delta_i}f}\abs{\Delta_i} +\\ + \sum_{\Delta_i \in T^2}\br{\sup_{\Delta_i}f - \inf_{\Delta_i}f}\abs{\Delta_i} < 2C\sum_{\Delta_i \in T^1}\abs{\Delta_i} + \frac{\varepsilon}{2(b - a)}\sum_{\Delta_i \in T^2}\abs{\Delta_i} < \varepsilon.
     \end{multline*}
