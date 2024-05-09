@@ -212,10 +212,10 @@
 \begin{solution}
     Рассмотрим произвольное разбиение $T = \{[a_{i - 1}; a_i]\}_{i = 1}^m$. Тогда
     \[
-        V(f, T) = \sum_{i = 1}^m\abs{\int\limits_a^{a_i}f(t)dt - \int\limits_a^{a_{i - 1}}f(t)dt} = \sum_{i = 1}^m\abs{\,\int\limits_{a_{i - 1}}^{a_i}f(t)dt} \leqslant \abs{\sum_{i = 1}^m\int\limits_{a_{i - 1}}^{a_i}f(t)dt} = \abs{\int\limits_a^bf(t)dt}.
+        V(f, T) = \sum_{i = 1}^m\abs{\int\limits_a^{a_i}f(t)dt - \int\limits_a^{a_{i - 1}}f(t)dt} = \sum_{i = 1}^m\abs{\,\int\limits_{a_{i - 1}}^{a_i}f(t)dt}.
     \]
 
-    Отсюда, $\ds\V\limits_a^b\int\limits_a^xf(t)dt \leqslant \abs{\int\limits_a^bf(t)dt} < +\infty$, т.\,к. $f \in R[a; b]$.
+    Число в правой части является конечным (по теореме об интегрируемости на подотрезках). Отсюда, $\ds\V\limits_a^b\int\limits_a^xf(t)dt < +\infty$, т.\,к. $f \in R[a; b]$.
 \end{solution}
 
 \begin{problem}[22$^\circ$]
