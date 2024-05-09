@@ -158,6 +158,251 @@
 \end{problem}
 
 \begin{solution}
-    Не понял, как делать.
+    Здесь единственное отличие от теоремы о вариации монотонной функции в том, что первый модуль раскроется в другую сторону. Рассмотрим любое разбиение $T = \{[a_{i - 1}; a_i]\}_{i = 1}^m$
+    \[
+        V(f, T) = \sum_{i = 1}^m\abs{f(a_i) - f(a_{i - 1})} = f(a_0) - f(a_1) + \sum_{i = 2}^m\br{f(a_i) - f(a_{i - 1})} = 1 + \sin 1 - 2 \cdot \sin a_1.
+    \]
+    Отсюда
+    \[
+        \V_0^1f = \sup_T(1 + \sin 1 - 2 \cdot \sin a_1) = \lim_{a_1 \to 0+}(1 + \sin 1 - 2 \cdot \sin a_1) = 1 + \sin 1.
+    \]
+\end{solution}
+
+\begin{problem}[18$^\circ$]
+    Вычислите $\V\limits_0^1f$, где
+    \[
+        f(x) =
+        \begin{cases}
+            0,& x = 0,\\
+            x\sin\br{\frac{1}{x}},& 0 < x \leqslant 1.
+        \end{cases}
+    \]
+\end{problem}
+
+\begin{solution}
+    Это важный пример непрерывной на отрезке функции, вариация которой на этом отрезке неограничена. Возьмём в качестве границ отрезков разбиения точки касания графика функции $f$ с прямыми $y = x$ и $y = -x$. Точки находятся так:
+    \[
+        \sin\br{\frac{1}{x}} = \pm 1\qquad\Leftrightarrow\qquad\frac{1}{x} = \frac{\pi}{2} + \pi k,\quad k \in \N\qquad\Leftrightarrow\qquad x = \frac{1}{\pi} \cdot \frac{2}{k + 2},\quad k \in \N.
+    \]
+
+    Итак, рассматриваем разбиения вида $T = \{a_{i - 1}; a_i\}_{i = 1}^m$, где
+    \[
+        a_0 = 1,\quad a_i = \frac{1}{\pi} \cdot \frac{2}{i + 2},\quad a_m = 0,
+    \]
+    $i = 1, \ldots, m - 1$. Причём, $f(a_{2k}) = a_{2k}$ и $f(a_{2k + 1}) = -a_{2k + 1}$. Теперь
+    \[
+        V(f, T) = \sum_{i = 0}^m\abs{f(a_i) - f(a_{i - 1})} \geqslant \sum_{i = 1}^{m - 1}\abs{f(a_i) - f(a_{i - 1})} = \sum_{i = 1}^{m - 1}\br{\frac{1}{\pi} \cdot \frac{2}{i + 2} + \frac{1}{\pi} \cdot \frac{2}{i + 1}} = \frac{2}{\pi}\sum_{i = 1}^{m - 1}\frac{1}{i}.
+    \]
+
+    Справа стоит частичная сумма гармонического ряда, который, как известно, расходится. Поэтому вариация функции $f$ на отрезке $[0; 1]$ неограничена.
+\end{solution}
+
+\begin{problem}[19$^\circ$]
+    Докажите, что функция Дирихле не является функцией ограниченной вариации ни на каком невырожденном в точку отрезке $[a; b]$.
+\end{problem}
+
+\begin{solution}
+    На любом отрезке бесконечно много рациональных и иррациональных чисел. Поэтому в сумме из определения вариации мы сможем сделать сколько угодно слагаемых, равных $1$. Таким образом, вариация функции Дирихле неограничена.
+\end{solution}
+
+\begin{problem}[21$^\circ$]
+    Докажите, что интеграл Римана с переменным верхним пределом от любой функции $f \in R[a; b]$ является функцией ограниченной вариации на $[a; b]$.
+\end{problem}
+
+\begin{solution}
+    Рассмотрим произвольное разбиение $T = \{[a_{i - 1}; a_i]\}_{i = 1}^m$. Тогда
+    \[
+        V(f, T) = \sum_{i = 1}^m\abs{\int\limits_a^{a_i}f(t)dt - \int\limits_a^{a_{i - 1}}f(t)dt} = \sum_{i = 1}^m\abs{\,\int\limits_{a_{i - 1}}^{a_i}f(t)dt} \leqslant \abs{\sum_{i = 1}^m\int\limits_{a_{i - 1}}^{a_i}f(t)dt} = \abs{\int\limits_a^bf(t)dt}.
+    \]
+
+    Отсюда, $\ds\V\limits_a^b\int\limits_a^xf(t)dt \leqslant \abs{\int\limits_a^bf(t)dt} < +\infty$, т.\,к. $f \in R[a; b]$.
+\end{solution}
+
+\begin{problem}[22$^\circ$]
+    Докажите, что если $f \in BV[a; b]$, то $\alpha f \in BV[a; b]$ при любом $\alpha \in \R$ и
+    \[
+        \V_a^b(\alpha f) = \alpha \V_a^bf.
+    \]
+\end{problem}
+
+\begin{solution}
+    Рассмотрим произвольное разбиение $T = \{[a_{i - 1}; a_i]\}_{i = 1}^m$. Тогда
+    \[
+        V(\alpha f, T) = \sum_{i = 1}^m\abs{\alpha f(a_i) - \alpha f(a_{i - 1})} = \alpha\sum_{i = 1}^m\abs{f(a_i) - f(a_{i - 1})} = \alpha V(f, T).
+    \]
+
+    Отсюда $\V\limits_a^b(\alpha f) = \alpha \V\limits_a^bf < +\infty$, т.\,к. $f \in BV[a; b]$.
+\end{solution}
+
+\begin{problem}[23$^\circ$]
+    Докажите, что если $f, g \in BV[a; b]$, то $f + g, fg \in BV[a; b]$, причём
+    \[
+        \V_a^b(f + g) \leqslant \V_a^bf + \V_a^bg,\qquad \V_a^b(fg) \leqslant M\br{\V_a^bf + \V_a^bg},\quad M \vcentcolon = \{f(x), g(x) : x \in [a; b]\}.
+    \]
+\end{problem}
+
+\begin{solution}
+    Рассмотрим произвольное разбиение $T = \{[a_{i - 1}; a_i]\}$. Тогда
+    \begin{multline*}
+        V(f + g, T) = \sum_{i = 1}^m\abs{f(a_i) + g(a_i) - f(a_{i - 1}) - g(a_{i - 1})} \leqslant\\ \leqslant \sum_{i = 1}^m\abs{f(a_i) - f(a_{i - 1})} + \sum_{i = 1}^m\abs{g(a_i) - g(a_{i - 1})} = V(f, T) + V(g, T)
+    \end{multline*}
+    и
+    \begin{multline*}
+        V(fg, t) = \sum_{i = 1}^m\abs{f(a_i)g(a_i) - f(a_{i - 1})g(a_{i - 1})} =\\ = \sum_{i = 1}^m\abs{f(a_i)g(a_i) - f(a_i)g(a_{i - 1}) + f(a_i)g(a_{i - 1}) - f(a_{i - 1})g(a_{i - 1})} =\\ = \sum_{i = 1}^m\abs{f(a_i)(g(a_i) - g(a_{i - 1})) + g(a_{i - 1})(f(a_i) - f(a_{i - 1}))} \leqslant M\br{\V\limits_a^bf + \V\limits_a^bg}.
+    \end{multline*}
+
+    Отсюда сразу следует требуемое.
+\end{solution}
+
+\begin{problem}[26$^\circ$]
+    Вычислите интеграл Римана "---Стилтьеса $\ds(RS)\int\limits_{-1}^1dG(x)$,
+    \[
+        G(x) =
+        \begin{cases}
+            -1,&\text{если $x < 0$},\\
+            1,&\text{если $x \geqslant 0$}.
+        \end{cases}
+    \]
+\end{problem}
+
+\begin{solution}
+    Рассмотрим произвольное разбиение $T = \{[a_{i - 1}; a_i]\}_{i = 1}^m$ с любыми метками. Найдём наименьшее $i_0 \in [1; m]$, что $a_{i_0 - 1} < 0$, а $a_{i_0} \geqslant 0$. Распишем интегральную сумму Римана "---Стилтьеса по определению:
+    \begin{multline*}
+        \mathcal{S}(dG, T\xi) = \sum_{i = 1}^m\br{G(a_i) - G(a_{i - 1})} = \sum_{i < i_0}\underbrace{\br{G(a_i) - G(a_{i - 1})}}_{= 0} +\\ + \underbrace{G(a_{i_0}) - G(a_{i_0 - 1})}_{= 2} + \sum_{i > i_0}\underbrace{\br{G(a_i) - G(a_{i - 1})}}_{= 0} = 2.
+    \end{multline*}
+
+    Получили, что для всех разбиений эта сумма равна $2$. А значит, и интеграл равен $2$.
+\end{solution}
+
+\begin{problem}[27$^\circ$]
+    Для любой функции $f \in C[-1; 1]$ и функции $G$ из предыдущей задачи вычислите $\ds(RS)\int\limits_{-1}^1f(x)dG(x)$.
+\end{problem}
+
+\begin{solution}
+    Рассмотрим произвольное разбиение $T = \{[a_{i - 1}; a_i]\}_{i = 1}^m$ с любыми метками. Найдём наименьшее $i_0 \in [1; m]$, что $a_{i_0 - 1} < 0$, а $a_{i_0} \geqslant 0$. Распишем интегральную сумму Римана "---Стилтьеса по определению:
+    \begin{multline*}
+        \mathcal{S}(fdG, T\xi) = \sum_{i = 1}^mf(\xi_i)\br{G(a_i) - G(a_{i - 1})} = \sum_{i < i_0}f(\xi_i)\underbrace{\br{G(a_i) - G(a_{i - 1})}}_{= 0} +\\ + f(\xi_{i_0})\underbrace{G(a_{i_0}) - G(a_{i_0 - 1})}_{= 2} + \sum_{i > i_0}f(\xi_i)\underbrace{\br{G(a_i) - G(a_{i - 1})}}_{= 0} = 2f(\xi_{i_0}).
+    \end{multline*}
+
+    Возьмём произвольное $\varepsilon > 0$ и положим $I \vcentcolon = 2f(0)$. При любом разбиении мы можем взять $\varepsilon_{i_0} = 0$ (т.\,к. всегда найдётся отрезок разбиения, содержащий точку $0$) и для такого разбиения разность между интегральной суммой и $I$ будет $0 < \varepsilon$. Так что искомый интеграл равен $2f(0)$.
+\end{solution}
+
+\begin{problem}[28$^\circ$]
+    Рассмотрим функции $f, G: [0; 1] \to \R$,
+    \[
+        f(x) =
+        \begin{cases}
+            1 & \text{при $x = \frac{1}{2}$},\\
+            0 & \text{иначе},
+        \end{cases}\quad
+        G(x) =
+        \begin{cases}
+            0 & \text{при $x \leqslant \frac{1}{2}$},\\
+            1 & \text{при $x > \frac{1}{2}$}.
+        \end{cases}
+    \]
+    Покажите, что $f$ не интегрируема по $G$ по отрезку $[0; 1]$ в смысла Римана "---Стилтьеса.
+\end{problem}
+
+\begin{solution}
+    Для любого разбиения можно взять метки $\{\xi_i\}_{i = 1}^m$, среди которых не найдётся $\xi_{i_0} = \frac{1}{2}$. При этом, для этого же разбиения можно взять другой набор меток $\{\xi^\prime_i\}_{i = 1}^m$, что среди них найдётся $\xi^\prime_{j_0} = \frac{1}{2}$. Для первого набора меток интеральная сумма Римана "---Стилтьеса будет равна $0$ (все $f(\xi_i)$ равны нулю), для второго --- $\frac{1}{2}$. Таким образом, ни для какого $\varepsilon < \frac{1}{2}$ не найдётся $\delta > 0$ такого, что любое $\delta$-разбиение удовлетворяет свойству из определения интеграла Римана "---Стилтьеса для какого-то $I$. Так что функция $f$ не интегрируема по Риману "---Стилтьесу по функции $G$ на отрезке $[0; 1]$.
+\end{solution}
+
+\begin{problem}[31$^\circ$]
+    При каких действительных $\alpha$ сходится $\ds\int\limits_2^{+\infty}\frac{dx}{x\ln^\alpha x}$?
+\end{problem}
+
+\begin{solution}
+    По определению несобственного интеграла:
+    \[
+        \int\limits_2^{+\infty}\frac{dx}{x\ln^\alpha x} = \lim_{b \to +\infty}\int\limits_2^{b}\frac{dx}{x\ln^\alpha x}.
+    \]
+    Найдём интеграл Римана под знаком предела:
+    \[
+        \int\limits_2^b\frac{dx}{x\ln^\alpha x} =
+        \left\{
+            \begin{array}{l}
+                \ln x = t,\\
+                x = e^t,\\
+                dx = e^tdt
+            \end{array}
+        \right\} = \int\limits_2^b\frac{\cancel{e^t}dt}{\cancel{e^t} \cdot t^\alpha} = \int\limits_2^bt^{-\alpha}dt =
+    \begin{cases}
+        \left.\frac{t^{1 - \alpha}}{1 - \alpha}\right|_2^b = \frac{1}{1 - \alpha}\br{b^{1 - \alpha} - 2^{1 - \alpha}},&\alpha \ne 1\\
+        \left.\ln t\;\right|_2^b = \ln b - \ln 2,&\alpha = 1.
+    \end{cases}
+    \]
+    Отсюда видно, что при $\alpha \leqslant 1$ значение предела есть $+\infty$, а при $\alpha > 1$ интеграл сходится.
+\end{solution}
+
+\begin{problem}[32$^\circ$]
+    Докажите сходимость несобственного интеграла
+    \[
+        \frac{1}{\sqrt{2\pi}}\int\limits_{-\infty}^{+\infty}e^{-\frac{x^2}{2}}dx.
+    \]
+\end{problem}
+
+\begin{solution}
+    Напишу позже.
+\end{solution}
+
+\begin{problem}[35$^\circ$]
+    Докажите, что для дискретной метрики выполнены все аксиомы метрики.
+\end{problem}
+
+\begin{solution}
+    Первые две аксиомы, очевидно, выполнены. Проверим неравенство треугольника. Если точки $x$, $y$ и $z$ совпадают, то оно выполнено. Иначе:
+    \[
+        \rho(x, y) \leqslant 1 \leqslant \rho(x, z) + \rho(z, y).
+    \]
+\end{solution}
+
+\begin{problem}[36$^\circ$]
+    Докажите, что для парижской метрики выполнены все аксиомы метрики.
+\end{problem}
+
+\begin{solution}
+    Первые две аксиомы, очевидно, выполнены. Проверим неравенство треугольника. В случае совпадения некоторых точек среди $x$, $y$ и $z$ неравенство выполнено. Осталось рассмотреть случай, когда они попарно различны:
+    \[
+        \rho(x, z) + \rho(z, y) = f(x) + 2\underbrace{f(z)}_{\geqslant 0} + f(y) \geqslant f(x) + f(y) = \rho(x, y).
+    \]
+\end{solution}
+
+\begin{problem}[37$^\circ$]
+    Докажите, что метрика Хэмминга удовлетворяет всем аксиомам метрики.
+\end{problem}
+
+\begin{solution}
+    Первые два свойства, очевидно, выполнены. Проверим неравенство треугольника.
+    \[
+        \rho(x, z) + \rho(z, y) = \sum_{i = 1}^n\abs{x_i - z_i} + \sum_{i = 1}^n\abs{z_i - y_i} \geqslant \sum_{i = 1}^n\abs{x_i - y_i} = \rho(x, y).
+    \]
+\end{solution}
+
+\begin{problem}[39$^\circ$]
+    Докажите, что пара $(C[a; b], \norm{\bs{\cdot}}_1)$, где $\norm{f}_1 \vcentcolon = \max\limits_{x \in [a; b]}\abs{f(x)}$ является нормированным пространством. В качестве следствия докажите, что $(C[a; b], \rho)$, $\rho(f, g) \vcentcolon = \max\limits_{x \in [a; b]}\abs{f(x) - g(x)}$ --- метрическое пространство.
+\end{problem}
+
+\begin{remark}
+    В задаче $39^\circ$ у Михаила Геннадьевича, видимо, была ошибка в условии. Исправил, как сам понял. Рекомендую ознакомиться с конспектом Михаила Геннадьевича и посмотреть на формулировку в нём.
+\end{remark}
+
+\begin{solution}
+    Проверим все аксиомы метрики. Первые две, очевидно, выполнены. Осталось проверить неравенство треугольника. Рассмотрим функции $f, g \in C[a; b]$, и пусть $\max\limits_{x \in [a; b]}\abs{f(x)}$ достигается при $x = x_f$, $\max\limits_{x \in [a; b]}\abs{g(x)}$ достигается при $x = x_g$, а $\max\limits_{x \in [a; b]}\abs{f(x) + g(x)}$ достигается при $x = x_{fg}$. Теперь:
+    \[
+        \norm{f}_1 + \norm{g}_1 = \abs{f(x_f)} + \abs{g(x_g)} \geqslant \abs{f(x_{fg})} + \abs{f(x_{fg})} \geqslant \abs{f(x_{fg}) + g(x_{fg})} = \norm{f + g}_1.
+    \]
+
+    Таким образом, выполнено неравенство треугольника для нормы. Теперь заменим, что $\rho(f, g) = \norm{f - g}_1$. Так что $\rho$ является метрикой, индуцированной нормой $\norm{\bs{\cdot}}_1$.
+\end{solution}
+
+Делать задачи 40 "---42, честно говоря, уже лениво. Они очень похожи на уже решённые.
+
+\begin{problem}[44$^\circ$]
+    Постройте пример открытых множеств в метрическом пространстве, пересечение которых не является открытым.
+\end{problem}
+
+\begin{solution}
+    Можно взять любую бесконечную вложенную последовательность открытых шаров в стандартной метрике $\R^n$. Их пересечением является единственная точка, т.\,е. замкнутое множество.
 \end{solution}
 
